@@ -1,4 +1,4 @@
-### Car Spotting iOS/Web App
+## Car Spotting iOS/Web App
 January 7, 2016
 
 An iOS and/or web that is essentially Instagram dedicated for car spotters.
@@ -16,7 +16,7 @@ Audience is of all ages, anyone can be a car spotter.
 #### Business Models
 - Free app/service – revenue would come in through sponsored posts/ads. I think this is particularly a good idea because of the niche market. Car spotters would likely have their own car projects, so services like car detailing, parts, photography equipment etc. could potentially get a good amount of traction.
   
-  *This car is available at your local dealer* could be shown on posts, from sponsoring dealerships.
+  *This car is available at your local dealer* could be shown on posts, from sponsoring dealerships. Book a test drive, etc.
 
 - One time paid app – The iOS app would have a one time purchase fee, something like $2.49. This might be a good idea, however I don’t know if people would be willing to pay a fee when they could use something like Instagram for free. One plus is that a fee may increase the quality of posts and it might feel more like an exclusive ‘club’.
 
@@ -30,3 +30,19 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### User Onboarding
 - Ask for favourite car types/brands, which would be used to help recommend following certain accounts.
+
+---
+
+### Views
+
+#### Home Feed
+
+#### Photo/Post
+- Title displaying car info, make etc. eg *2016 Jaguar F-Type R AWD*
+- Photo itself
+- Poster's comment with a *view more/ellipsis* that shows more detailed information of the car; horsepower, engine, gearbox etc.
+- Location of shot, which would go to a map view when tapped on.
+
+#### User Profile
+- Shows name, location, bio, avatar etc.
+- Most photographed car company
