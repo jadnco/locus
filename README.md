@@ -38,7 +38,7 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### Home Feed
 
-#### Photo/Post
+#### Photo/Post/Spot
 - Title displaying car info, make etc. eg *2016 Jaguar F-Type R AWD*
 - Photo itself
 - Poster's comment with a *view more/ellipsis* that shows more detailed information of the car; horsepower, engine, gearbox etc.
@@ -47,6 +47,13 @@ Audience is of all ages, anyone can be a car spotter.
 #### User Profile
 - Shows name, location, bio, avatar etc.
 - Most photographed car company
+
+#### Feed
+- Shows recent posts by all the users that are followed.
+
+#### Camera
+- Interface that takes the photo/videos
+- Includes blur feature for license plates.
 
 ## Development
 

@@ -13,9 +13,9 @@
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "react-native": "^0.18.0-rc"
+    "react-native": "^0.18.0-rc",
+    "react-native-scrollable-tab-view": "^0.3.4"
   }
 }

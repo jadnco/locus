@@ -11,7 +11,7 @@ import React, {
   ScrollView,
 } from 'react-native';
 
-class Feed extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +21,7 @@ class Feed extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Text>Feed View</Text>
+        <Text>Profile View with some more test</Text>
       </ScrollView>
     );
   }
@@ -34,19 +34,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  main: {
+    flex: 1,
+    backgroundColor: '#AAAAAA',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  image: {
+    backgroundColor: '#CCCCCC',
+    flex: 1,
+    resizeMode: 'cover',
   },
 });
 
-module.exports = Feed;/*= {
+module.exports = Profile;/*= {
   title: 'Feed View Title',
   component: Feed,
 };*/

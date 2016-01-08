@@ -6,36 +6,36 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  NavigatorIOS,
+  TabBarIOS,
 } from 'react-native';
 
-import Feed from './app/views/Feed';
+import SpotView from './app/views/Spot';
+import FeedView from './app/views/Feed';
+import ProfileView from './app/views/Profile';
+
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 class locus extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     return (
-      <NavigatorIOS initialRoute={{component: Feed, title: 'My View Title Tester'}} />
+      <ScrollableTabView tabBarPosition='bottom'>
+        <FeedView tabLabel='Feed' />
+        <SpotView tabLabel='Post' />
+        <ProfileView tabLabel='Profile' />
+      </ScrollableTabView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
 });
 
 AppRegistry.registerComponent('locus', () => locus);

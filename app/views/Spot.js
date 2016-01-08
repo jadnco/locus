@@ -9,9 +9,12 @@ import React, {
   ListView,
   TextInput,
   ScrollView,
+  Image,
 } from 'react-native';
 
-class Feed extends Component {
+import TestImage from '../images/test-post.jpeg';
+
+class Spot extends Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +24,12 @@ class Feed extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Text>Feed View</Text>
+        <View>
+          <Text>This is the post title</Text>
+        </View>
+        <View style={styles.main}>
+          <Image source={TestImage} style={styles.image} />
+        </View>
       </ScrollView>
     );
   }
@@ -30,23 +38,19 @@ class Feed extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  main: {
+    flex: 1,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  image: {
+    backgroundColor: '#CCCCCC',
+    resizeMode: 'cover',
+    height: 400,
+    width: null,
   },
 });
 
-module.exports = Feed;/*= {
+module.exports = Spot;/*= {
   title: 'Feed View Title',
   component: Feed,
 };*/
