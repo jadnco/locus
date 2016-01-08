@@ -11,16 +11,9 @@
     "url": "https://github.com/jadnco/locus/issues"
   },
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh",
-    "test": "mocha --compilers js:babel-register"
+    "start": "node_modules/react-native/packager/packager.sh"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.3.13",
-    "chai": "^3.4.1",
-    "enzyme": "^1.2.0",
-    "mocha": "^2.3.4",
-    "react-addons-test-utils": "^0.14.3"
   },
   "dependencies": {
     "react-native": "^0.18.0-rc"

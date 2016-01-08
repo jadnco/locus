@@ -6,14 +6,13 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS,
   ListView
 } from 'react-native';
 
-export class Feed extends Component {
+class Feed extends Component {
   render() {
     return (
-      <Text>This is the feed view.</Text>
+      <Text>This is the feed view. YOLO.</Text>
     );
   }
 }
@@ -36,3 +35,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+module.exports = Feed;

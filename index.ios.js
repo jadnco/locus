@@ -9,12 +9,12 @@ import React, {
   NavigatorIOS
 } from 'react-native';
 
-import {Feed} from 'components/Feed';
+import Feed from './app/views/Feed';
 
 class locus extends Component {
   render() {
     return (
-      <NavigatorIOS initialRoute={{title: 'Test', component: Feed}} />
+      <NavigatorIOS initialRoute={{component: Feed, title: 'My View Title Tester'}} />
     );
   }
 }
