@@ -1,4 +1,4 @@
-## Car Spotting iOS/Web App
+# Car Spotting iOS/Web App
 January 7, 2016
 
 An iOS and/or web that is essentially Instagram dedicated for car spotters.
@@ -31,9 +31,7 @@ Audience is of all ages, anyone can be a car spotter.
 #### User Onboarding
 - Ask for favourite car types/brands, which would be used to help recommend following certain accounts.
 
----
-
-### Views
+## Views
 
 #### Home Feed
 
@@ -46,3 +44,33 @@ Audience is of all ages, anyone can be a car spotter.
 #### User Profile
 - Shows name, location, bio, avatar etc.
 - Most photographed car company
+
+## Development
+
+### Models
+
+#### User
+
+- `firstName`
+  - Type: String
+  - Example: *John*
+- `lastName`
+  - Type: String
+  - Example: *Smith*
+- `fullName`
+  Concatenation of the `firstName` and `lastName`.
+  
+  - Type: String
+  - Example: *John Smith*
+- `String: handle`
+  Username and unique identifier with minimum characters of three.
+
+  - Type: String
+  - Example: *jadnco*
+- `joinDate`
+  When the user first created their account.
+
+  - Type: Date
+  - Example: *2015-12-29T01:46:49.453Z*
+- `email`
+  Email address used to sign up.
