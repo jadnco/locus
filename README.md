@@ -51,26 +51,31 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### User
 
-- `firstName`
-  - Type: String
-  - Example: *John*
-- `lastName`
-  - Type: String
-  - Example: *Smith*
-- `fullName`
+`firstName`
+  Type: String
+  Example: *John*
+
+`lastName`
+  Type: String
+  Example: *Smith*
+
+`fullName`
   Concatenation of the `firstName` and `lastName`.
-  
-  - Type: String
-  - Example: *John Smith*
-- `String: handle`
+    
+  Type: String
+  Example: *John Smith*
+
+`handle`
   Username and unique identifier with minimum characters of three.
 
-  - Type: String
-  - Example: *jadnco*
-- `joinDate`
+  Type: String
+  Example: *jadnco*
+
+`joinDate`
   When the user first created their account.
 
-  - Type: Date
-  - Example: *2015-12-29T01:46:49.453Z*
-- `email`
+  Type: Date
+  Example: *2015-12-29T01:46:49.453Z*
+
+`email`
   Email address used to sign up.
