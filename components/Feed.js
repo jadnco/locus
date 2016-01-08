@@ -6,15 +6,14 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS
+  NavigatorIOS,
+  ListView
 } from 'react-native';
 
-import {Feed} from 'components/Feed';
-
-class locus extends Component {
+export class Feed extends Component {
   render() {
     return (
-      <NavigatorIOS initialRoute={{title: 'Test', component: Feed}} />
+      <Text>This is the feed view.</Text>
     );
   }
 }
@@ -37,5 +36,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('locus', () => locus);
