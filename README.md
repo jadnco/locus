@@ -27,6 +27,8 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### Technology
 - React Native
+- Potential APIs
+  - [Edmunds Vehicle API](http://developer.edmunds.com/api-documentation/vehicle/index.html)
 
 #### User Onboarding
 - Ask for favourite car types/brands, which would be used to help recommend following certain accounts.
