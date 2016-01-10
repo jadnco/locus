@@ -38,6 +38,7 @@ class Spot extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black',
   },
   main: {
     flex: 1,

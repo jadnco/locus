@@ -55,6 +55,10 @@ Audience is of all ages, anyone can be a car spotter.
 - Interface that takes the photo/videos
 - Includes blur feature for license plates.
 
+#### Notifications
+
+#### Search
+
 ## Development
 
 ### Models

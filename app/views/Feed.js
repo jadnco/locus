@@ -9,7 +9,13 @@ import React, {
   ListView,
   TextInput,
   ScrollView,
+  TouchableHighlight,
+  Image,
+  NavigatorIOS,
 } from 'react-native';
+
+import TestImage from '../images/test-post.jpeg';
+import Spot from './Spot';
 
 class Feed extends Component {
   constructor(props) {
@@ -20,9 +26,7 @@ class Feed extends Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text>Feed View</Text>
-      </ScrollView>
+      <NavigatorIOS initialRoute={{title: 'yolo', component: Spot}}></NavigatorIOS>
     );
   }
 }
