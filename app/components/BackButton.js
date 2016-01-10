@@ -9,14 +9,14 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import {navigationBar} from '../styles';
 
-class SearchButton extends Component {
+class BackButton extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Icon name='search' style={navigationBar.iconRight} />
+        <Icon name='chevron-left' style={navigationBar.iconLeft} />
       </TouchableOpacity>
     );
   }
 }
 
-module.exports = SearchButton;
+module.exports = BackButton;

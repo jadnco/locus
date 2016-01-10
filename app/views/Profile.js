@@ -14,7 +14,7 @@ import React, {
 
 import Spot from './Spot';
 
-import TestImage from '../images/test-post.jpeg';
+import CarOne from '../images/car-1.jpeg';
 
 import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
@@ -40,14 +40,10 @@ class Profile extends Component {
           automaticallyAdjustContentInsets={false}>
 
           <View>
-            <Image source={TestImage} style={styles.image} />
+            <Image source={CarOne} style={styles.image} />
           </View>
           <View>
             <Text>This is the image title</Text>
-          </View>
-          <View>
-            <Text>These are the comments.</Text>
-            <Image source={TestImage} style={styles.image} />
           </View>
         </ScrollView>
       </View>
@@ -68,7 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Profile;/*= {
-  title: 'Feed View Title',
-  component: Feed,
-};*/
+module.exports = Profile;

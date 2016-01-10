@@ -12,7 +12,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import TestImage from '../images/test-post.jpeg';
+import CarOne from '../images/car-1.jpeg';
 
 class Spot extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class Spot extends Component {
           <Text>This is the post title</Text>
         </View>
         <View style={styles.main}>
-          <Image source={TestImage} style={styles.image} />
+          <Image source={CarOne} style={styles.image} />
         </View>
       </ScrollView>
     );

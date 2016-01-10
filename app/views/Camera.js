@@ -14,8 +14,6 @@ import React, {
 
 import Spot from './Spot';
 
-import TestImage from '../images/test-post.jpeg';
-
 import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
 

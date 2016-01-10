@@ -6,7 +6,7 @@ import React, {
   StyleSheet,
   Text,
   View,
-  NavigatorIOS,
+  Navigator,
   TabBarIOS,
 } from 'react-native';
 
@@ -22,24 +22,42 @@ class locus extends Component {
     super(props);
 
     this.state = {
-      selectedTab: 'profile',
+
+      // Default selected tab
+      selectedTab: 'feed',
     };
   }
 
-  tabChange(tab) {
+  _tabChange(tab) {
     this.setState({
       selectedTab: tab,
     });
+  }
+
+  _renderScene(route, navigator) {
+    return <route.component route={route} navigator={navigator} />;
   }
 
   render() {
     return (
       <TabBarIOS tintColor='white' barTintColor='black'>
         <Icon.TabBarItem
+          title='Home'
+          iconName='location'
+          selected={this.state.selectedTab === 'feed'}
+          onPress={() => this._tabChange('feed')}>
+
+          <Navigator
+            initialRoute={{component: FeedView}}
+            renderScene={this._renderScene} />
+
+        </Icon.TabBarItem>
+
+        <Icon.TabBarItem
           title='Camera'
           iconName='camera'
           selected={this.state.selectedTab === 'camera'}
-          onPress={() => this.tabChange('camera')}>
+          onPress={() => this._tabChange('camera')}>
 
           <CameraView />
         </Icon.TabBarItem>
@@ -48,7 +66,7 @@ class locus extends Component {
           title='Profile'
           iconName='user'
           selected={this.state.selectedTab === 'profile'}
-          onPress={() => this.tabChange('profile')}>
+          onPress={() => this._tabChange('profile')}>
 
           <ProfileView />
         </Icon.TabBarItem>

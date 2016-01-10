@@ -1,7 +1,6 @@
 'use strict';
 
 import React, {
-  AppRegistry,
   Component,
   StyleSheet,
   Text,
@@ -9,13 +8,17 @@ import React, {
   ListView,
   TextInput,
   ScrollView,
-  TouchableHighlight,
+  Navigator,
   Image,
-  NavigatorIOS,
 } from 'react-native';
 
-import TestImage from '../images/test-post.jpeg';
-import Spot from './Spot';
+import NavigationBar from 'react-native-navbar';
+import SearchButton from '../components/SearchButton';
+
+import Search from './Search';
+
+import CarOne from '../images/car-1.jpeg';
+import CarTwo from '../images/car-2.jpeg';
 
 class Feed extends Component {
   constructor(props) {
@@ -26,7 +29,34 @@ class Feed extends Component {
 
   render() {
     return (
-      <NavigatorIOS initialRoute={{title: 'yolo', component: Spot}}></NavigatorIOS>
+      <View style={styles.container}>
+        <NavigationBar
+          title={{title: 'L O C U S'}}
+          rightButton={
+            <SearchButton onPress={() => {
+              this.props.navigator.push({
+                component: Search,
+              });
+            }} />
+          } />
+
+        <ScrollView
+          style={styles.container}
+          contentInset={{bottom: 49}}
+          automaticallyAdjustContentInsets={false}>
+
+          <View>
+            <Image source={CarTwo} style={styles.image} />
+          </View>
+          <View>
+            <Text>This is the image title</Text>
+          </View>
+          <View>
+            <Text>These are the comments.</Text>
+            <Image source={CarOne} style={styles.image} />
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -34,23 +64,14 @@ class Feed extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  image: {
+    height: 300,
+    flex: 1,
+    flexDirection: 'column',
+    resizeMode: 'cover',
   },
 });
 
-module.exports = Feed;/*= {
-  title: 'Feed View Title',
-  component: Feed,
-};*/
+module.exports = Feed;
