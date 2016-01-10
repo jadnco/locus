@@ -16,6 +16,8 @@ import SpotView from './app/views/Spot';
 import FeedView from './app/views/Feed';
 import ProfileView from './app/views/Profile';
 import CameraView from './app/views/Camera';
+import NotificationsView from './app/views/Notifications';
+import MessagesView from './app/views/Messages';
 
 class locus extends Component {
   constructor(props) {
@@ -54,12 +56,30 @@ class locus extends Component {
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
+          title='Notifications'
+          iconName='bell'
+          selected={this.state.selectedTab === 'notifications'}
+          onPress={() => this._tabChange('notifications')}>
+
+          <NotificationsView />
+        </Icon.TabBarItem>
+
+        <Icon.TabBarItem
           title='Camera'
           iconName='camera'
           selected={this.state.selectedTab === 'camera'}
           onPress={() => this._tabChange('camera')}>
 
           <CameraView />
+        </Icon.TabBarItem>
+
+        <Icon.TabBarItem
+          title='Messages'
+          iconName='comment'
+          selected={this.state.selectedTab === 'messages'}
+          onPress={() => this._tabChange('messages')}>
+
+          <MessagesView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem

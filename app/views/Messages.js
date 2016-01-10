@@ -17,7 +17,7 @@ import Spot from './Spot';
 import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
 
-class Notifications extends Component {
+class Messages extends Component {
   constructor(props) {
     super(props);
 
@@ -29,14 +29,14 @@ class Notifications extends Component {
       <View style={styles.container}>
         <NavigationBar
             barTintColor='white'
-            title={{title: 'Notifications'}} />
+            title={{title: 'Messages'}} />
 
         <ScrollView
           style={styles.container}
           contentInset={{bottom: 49}}
           automaticallyAdjustContentInsets={false}>
 
-          <Text>This is the Notifications view</Text>
+          <Text>This is the Messages view</Text>
         </ScrollView>
       </View>
     );
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Notifications;
+module.exports = Messages;
