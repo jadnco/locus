@@ -47,6 +47,7 @@ Audience is of all ages, anyone can be a car spotter.
 #### User Profile
 - Shows name, location, bio, avatar etc.
 - Most photographed car company
+- What car they own
 
 #### Feed
 - Shows recent posts by all the users that are followed.

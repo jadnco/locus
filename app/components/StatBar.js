@@ -16,42 +16,44 @@ class StatBar extends Component {
     let {title, ...other} = this.props;
 
     return (
-      <ScrollView
-        horizontal={true}
-        automaticallyAdjustContentInsets={false}
-        contentContainerStyle={styles.scrollView}>
+      <View>
+        <ScrollView
+          horizontal={true}
+          automaticallyAdjustContentInsets={false}
+          contentContainerStyle={styles.container}>
 
-        <View style={styles.stat}>
-          <Text>560hp</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>305km/h</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>0-100km/h 3.8s</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>3.0L TT</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>1,510kg</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>CTY 1.11L/100km</Text>
-        </View>
-        <View style={styles.stat}>
-          <Text>HWY 6.7L/100km</Text>
-        </View>
-        <View style={[styles.stat, styles.lastStat]}>
-          <Text>USD$68,335</Text>
-        </View>
-      </ScrollView>
+          <View style={styles.stat}>
+            <Text>560hp</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>305km/h</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>0-100km/h 3.8s</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>3.0L TT</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>1,510kg</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>CTY 1.11L/100km</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text>HWY 6.7L/100km</Text>
+          </View>
+          <View style={[styles.stat, styles.lastStat]}>
+            <Text>USD$68,335</Text>
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
+  container: {
     padding: 10,
     borderBottomWidth: 1,
     borderColor: '#EEEEEE',
