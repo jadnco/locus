@@ -15,8 +15,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import SpotView from './app/views/Spot';
 import FeedView from './app/views/Feed';
 import ProfileView from './app/views/Profile';
-
-import ScrollableTabView from 'react-native-scrollable-tab-view';
+import CameraView from './app/views/Camera';
 
 class locus extends Component {
   constructor(props) {
@@ -35,14 +34,14 @@ class locus extends Component {
 
   render() {
     return (
-      <TabBarIOS tintColor='#E3453D' barTintColor='black'>
+      <TabBarIOS tintColor='white' barTintColor='black'>
         <Icon.TabBarItem
-          title='Search'
-          iconName='search'
-          selected={this.state.selectedTab === 'search'}
-          onPress={() => this.tabChange('search')}>
+          title='Camera'
+          iconName='camera'
+          selected={this.state.selectedTab === 'camera'}
+          onPress={() => this.tabChange('camera')}>
 
-          <FeedView />
+          <CameraView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
