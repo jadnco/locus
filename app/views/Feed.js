@@ -14,11 +14,9 @@ import React, {
 
 import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 import Search from './Search';
-
-import CarOne from '../images/car-1.jpeg';
-import CarTwo from '../images/car-2.jpeg';
 
 class Feed extends Component {
   constructor(props) {
@@ -46,14 +44,17 @@ class Feed extends Component {
           automaticallyAdjustContentInsets={false}>
 
           <View>
-            <Image source={CarTwo} style={styles.image} />
+            <ResponsiveImage
+              source={{uri: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg'}}
+              style={styles.image} />
+              <Text>These are the comments.</Text>
           </View>
           <View>
-            <Text>This is the image title</Text>
-          </View>
-          <View>
-            <Text>These are the comments.</Text>
-            <Image source={CarOne} style={styles.image} />
+            
+            <ResponsiveImage
+              source={{uri: 'http://image.motortrend.ca/f/89683392+w640/2016-Mclaren-675LT-rear-end.jpg'}}
+              style={styles.image} />
+              <Text>These are the comments.</Text>
           </View>
         </ScrollView>
       </View>
@@ -67,10 +68,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   image: {
-    height: 300,
     flex: 1,
-    flexDirection: 'column',
-    resizeMode: 'cover',
+    flexDirection: 'row',
   },
 });
 
