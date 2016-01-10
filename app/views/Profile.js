@@ -10,14 +10,14 @@ import React, {
   ScrollView,
   NavigatorIOS,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 
-import Spot from './Spot';
+import TopBar from '../components/TopBar';
+
+import FollowButton from '../components/FollowButton';
 
 import CarOne from '../images/car-1.jpeg';
-
-import NavigationBar from 'react-native-navbar';
-import SearchButton from '../components/SearchButton';
 
 class Profile extends Component {
   constructor(props) {
@@ -29,10 +29,9 @@ class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationBar
-          barTintColor='white'
-          title={{title: 'L O C U S'}}
-          rightButton={<SearchButton onPress={() => alert('search clicked')} />} />
+        <TopBar
+          title='jadnco'
+          rightButton={<FollowButton />} />
 
         <ScrollView
           style={styles.container}
