@@ -5,10 +5,7 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
 import NavigationBar from 'react-native-navbar';
-
-import {navigationBar} from '../styles';
 
 class SearchButton extends Component {
   render() {
@@ -16,8 +13,8 @@ class SearchButton extends Component {
 
     return (
       <NavigationBar
-            barTintColor='white'
-            title={{title: title}} {...other} />
+        barTintColor='white'
+        title={{title: title}} {...other} />
     );
   }
 }
