@@ -13,7 +13,7 @@ class SearchButton extends Component {
 
     return (
       <NavigationBar
-        barTintColor='white'
+        tintColor='white'
         title={{title: title}} {...other} />
     );
   }
