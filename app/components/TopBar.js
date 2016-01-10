@@ -2,21 +2,33 @@
 
 import React, {
   Component,
+  StyleSheet,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 import NavigationBar from 'react-native-navbar';
 
-class SearchButton extends Component {
+class TopBar extends Component {
   render() {
     let {title, ...other} = this.props;
 
     return (
-      <NavigationBar
-        tintColor='white'
-        title={{title: title}} {...other} />
+      <View style={styles.topBar}>
+        <NavigationBar
+          tintColor='white'
+          title={{title: title}} {...other} />
+
+      </View>
     );
   }
 }
 
-module.exports = SearchButton;
+const styles = StyleSheet.create({
+  topBar: {
+    borderColor: '#EEEEEE',
+    borderBottomWidth: 1,
+  },
+});
+
+module.exports = TopBar;

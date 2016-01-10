@@ -30,7 +30,7 @@ class Profile extends Component {
     return (
       <View style={styles.container}>
         <TopBar
-          title='jadnco'
+          title='oscar'
           rightButton={<FollowButton />} />
 
         <ScrollView

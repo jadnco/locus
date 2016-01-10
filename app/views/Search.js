@@ -34,7 +34,8 @@ class Search extends Component {
 
         <ScrollView
           contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          automaticallyAdjustContentInsets={false}
+          style={styles.scrollView}>
 
           <View style={styles.container}>
             <Text>This is the Search view</Text>
@@ -51,6 +52,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent:'center',
     height: 900,
+    backgroundColor: 'white',
+  },
+  scrollView: {
     backgroundColor: 'white',
   },
 });
