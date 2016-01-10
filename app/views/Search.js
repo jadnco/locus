@@ -12,7 +12,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import NavigationBar from 'react-native-navbar';
+import TopBar from '../components/TopBar';
 
 import BackButton from '../components/BackButton';
 
@@ -26,8 +26,8 @@ class Search extends Component {
   render() {
     return (
       <View>
-        <NavigationBar
-          title={{title: 'Search'}}
+        <TopBar
+          title='Search'
           leftButton={
             <BackButton onPress={() => this.props.navigator.pop()} />
           } />

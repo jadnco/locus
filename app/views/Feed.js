@@ -12,7 +12,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import NavigationBar from 'react-native-navbar';
+import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
 
 import Search from './Search';
@@ -30,8 +30,8 @@ class Feed extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationBar
-          title={{title: 'L O C U S'}}
+        <TopBar
+          title='L O C U S'
           rightButton={
             <SearchButton onPress={() => {
               this.props.navigator.push({

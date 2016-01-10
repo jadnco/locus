@@ -12,6 +12,8 @@ import React, {
   Image,
 } from 'react-native';
 
+import TopBar from '../components/TopBar';
+
 import CarOne from '../images/car-1.jpeg';
 
 class Spot extends Component {
@@ -23,14 +25,7 @@ class Spot extends Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View>
-          <Text>This is the post title</Text>
-        </View>
-        <View style={styles.main}>
-          <Image source={CarOne} style={styles.image} />
-        </View>
-      </ScrollView>
+      <TopBar title='Post' />
     );
   }
 }
@@ -51,7 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Spot;/*= {
-  title: 'Feed View Title',
-  component: Feed,
-};*/
+module.exports = Spot;

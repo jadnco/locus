@@ -14,7 +14,7 @@ import React, {
 
 import Spot from './Spot';
 
-import NavigationBar from 'react-native-navbar';
+import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
 
 class Messages extends Component {
@@ -27,9 +27,7 @@ class Messages extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavigationBar
-            barTintColor='white'
-            title={{title: 'Messages'}} />
+        <TopBar title='Messages' />
 
         <ScrollView
           style={styles.container}
