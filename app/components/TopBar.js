@@ -11,14 +11,13 @@ import NavigationBar from 'react-native-navbar';
 
 class TopBar extends Component {
   render() {
-    let {title, ...other} = this.props;
+    let {title, style, ...other} = this.props;
 
     return (
-      <View style={styles.topBar}>
+      <View style={[styles.topBar, style]}>
         <NavigationBar
           tintColor='white'
           title={{title: title}} {...other} />
-
       </View>
     );
   }

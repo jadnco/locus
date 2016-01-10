@@ -88,7 +88,7 @@ class locus extends Component {
           selected={this.state.selectedTab === 'profile'}
           onPress={() => this._tabChange('profile')}>
 
-          <ProfileView />
+          <SpotView />
         </Icon.TabBarItem>
 
       </TabBarIOS>
