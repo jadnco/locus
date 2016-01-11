@@ -10,13 +10,16 @@ import React, {
   TextInput,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 
 import TopBar from '../components/TopBar';
 import BackButton from '../components/BackButton';
 import StatBar from '../components/StatBar';
-
+import Avatar from '../components/Avatar';
 import ResponsiveImage from '../components/ResponsiveImage';
+
+import ProfileView from './Profile';
 
 import CarOne from 'image!car-1';
 
@@ -52,7 +55,20 @@ class Spot extends Component {
               style={styles.image} />
           </View>
 
-          <Text style={{padding: 20}}>Some text</Text>
+          <View style={{padding: 10}}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                this.props.navigator.push({
+                  component: ProfileView,
+                });
+              }}>
+
+              <Avatar size={40} />
+
+            </TouchableOpacity>
+            <Text>{title}</Text>
+          </View>
         </ScrollView>
       </View>
     );
