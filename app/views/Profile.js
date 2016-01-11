@@ -18,6 +18,7 @@ import TopBar from '../components/TopBar';
 import FollowButton from '../components/FollowButton';
 import ResponsiveImage from '../components/ResponsiveImage';
 import Avatar from '../components/Avatar';
+import BackButton from '../components/BackButton';
 
 class Profile extends Component {
   constructor(props) {
@@ -31,7 +32,10 @@ class Profile extends Component {
       <View style={styles.container}>
         <TopBar
           title='oscar'
-          rightButton={<FollowButton />} />
+          rightButton={<FollowButton />}
+          leftButton={
+            this.props.navigator && <BackButton onPress={() => this.props.navigator.pop()} />
+          }  />
 
         <ScrollView
           style={styles.container}
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: 'white',
   },
   image: {
     flex: 1,

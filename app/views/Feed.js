@@ -19,8 +19,8 @@ import ResponsiveImage from '../components/ResponsiveImage';
 import Avatar from '../components/Avatar';
 
 import SpotView from './Spot';
-
 import SearchView from './Search';
+import ProfileView from './Profile';
 
 class Feed extends Component {
   constructor(props) {
@@ -82,7 +82,18 @@ class Feed extends Component {
                 </TouchableOpacity>
 
                 <View style={{padding: 10}}>
-                  <Avatar size={40} />
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => {
+                      this.props.navigator.push({
+                        component: ProfileView,
+                        data: spot,
+                      });
+                    }}>
+
+                    <Avatar size={40} />
+
+                  </TouchableOpacity>
                   <Text>{spot.title}</Text>
                 </View>
               </View>
