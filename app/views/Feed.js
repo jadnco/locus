@@ -67,17 +67,24 @@ class Feed extends Component {
 
           {this.spots.map((spot, i) => {
             return (
-              <TouchableOpacity
-                key={i}
-                onPress={() => {
-                  this.props.navigator.push({
-                    component: SpotView,
-                    data: spot,
-                  });
-                }}>
+              <View key={i}>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    this.props.navigator.push({
+                      component: SpotView,
+                      data: spot,
+                    });
+                  }}>
 
-                <ResponsiveImage source={{uri: spot.img}} style={styles.image} />
-              </TouchableOpacity>);
+                  <ResponsiveImage source={{uri: spot.img}} style={styles.image} />
+                </TouchableOpacity>
+
+                <View style={{padding: 10}}>
+                  <Text>{spot.title}</Text>
+                </View>
+              </View>
+            );
           })}
         </ScrollView>
       </View>
