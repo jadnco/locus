@@ -16,6 +16,7 @@ import React, {
 import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
 import ResponsiveImage from '../components/ResponsiveImage';
+import Avatar from '../components/Avatar';
 
 import SpotView from './Spot';
 
@@ -81,6 +82,7 @@ class Feed extends Component {
                 </TouchableOpacity>
 
                 <View style={{padding: 10}}>
+                  <Avatar size={40} />
                   <Text>{spot.title}</Text>
                 </View>
               </View>

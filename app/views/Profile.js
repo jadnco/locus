@@ -19,8 +19,6 @@ import FollowButton from '../components/FollowButton';
 import ResponsiveImage from '../components/ResponsiveImage';
 import Avatar from '../components/Avatar';
 
-import CarOne from '../images/car-1.jpeg';
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +48,7 @@ class Profile extends Component {
 
                 <View style={styles.overlay}></View>
 
-                <Avatar style={{position: 'absolute', bottom: -26, left: 16}} />                
+                <Avatar size={80} style={{position: 'absolute', bottom: -26, left: 16}} />                
               </View>
             </ResponsiveImage>
           </View>
@@ -77,7 +75,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     opacity: 0.2,
     position: 'absolute',
-    elevation: 3,
     top: 0,
     left: 0,
     right: 0,
