@@ -28,13 +28,15 @@ class Spot extends Component {
   }
 
   render() {
+    let {title, img} = this.props.data;
+
     return (
       <View style={styles.container}>
         <TopBar
-          title='2016 Jaguar F-Type R Coupé'
+          title={title}
           style={{borderBottomWidth: 0}}
           leftButton={
-            <BackButton onPress={() => alert('BackButton pressed')} />
+            <BackButton onPress={() => this.props.navigator.pop()} />
           } />
 
         <StatBar />
@@ -46,7 +48,7 @@ class Spot extends Component {
 
           <View>
             <ResponsiveImage
-              source={{uri: 'http://www.diseno-art.com/news_content/wp-content/uploads/2013/11/Jaguar-F-Type-Coupe-1.jpg'}}
+              source={{uri: img}}
               style={styles.image} />
           </View>
 
@@ -60,6 +62,7 @@ class Spot extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   scroll: {
     flexDirection: 'column',

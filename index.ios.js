@@ -12,7 +12,6 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import SpotView from './app/views/Spot';
 import FeedView from './app/views/Feed';
 import ProfileView from './app/views/Profile';
 import CameraView from './app/views/Camera';
@@ -26,7 +25,7 @@ class locus extends Component {
     this.state = {
 
       // Default selected tab
-      selectedTab: 'profile',
+      selectedTab: 'feed',
     };
   }
 
@@ -37,7 +36,12 @@ class locus extends Component {
   }
 
   _renderScene(route, navigator) {
-    return <route.component route={route} navigator={navigator} />;
+    return (
+      <route.component
+        data={route.data}
+        route={route}
+        navigator={navigator} />
+    );
   }
 
   render() {
@@ -58,6 +62,7 @@ class locus extends Component {
         <Icon.TabBarItem
           title='Notifications'
           iconName='bell'
+          badge={3}
           selected={this.state.selectedTab === 'notifications'}
           onPress={() => this._tabChange('notifications')}>
 
@@ -88,7 +93,7 @@ class locus extends Component {
           selected={this.state.selectedTab === 'profile'}
           onPress={() => this._tabChange('profile')}>
 
-          <SpotView />
+          <ProfileView />
         </Icon.TabBarItem>
 
       </TabBarIOS>

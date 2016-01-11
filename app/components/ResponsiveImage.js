@@ -4,7 +4,6 @@ import React, {
   Component,
   Image,
   Dimensions,
-  View,
 } from 'react-native';
 
 class ResponsiveImage extends Component {
