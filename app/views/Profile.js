@@ -16,6 +16,8 @@ import React, {
 import TopBar from '../components/TopBar';
 
 import FollowButton from '../components/FollowButton';
+import ResponsiveImage from '../components/ResponsiveImage';
+import Avatar from '../components/Avatar';
 
 import CarOne from '../images/car-1.jpeg';
 
@@ -39,10 +41,18 @@ class Profile extends Component {
           automaticallyAdjustContentInsets={false}>
 
           <View>
-            <Image source={CarOne} style={styles.image} />
-          </View>
-          <View>
-            <Text>This is the image title</Text>
+            <ResponsiveImage
+              source={{uri: 'http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1'}}
+              style={styles.image}>
+
+              <View
+                style={{position: 'relative', backgroundColor: 'black'}}>
+
+                <View style={styles.overlay}></View>
+
+                <Avatar style={{position: 'absolute', bottom: -26, left: 16}} />                
+              </View>
+            </ResponsiveImage>
           </View>
         </ScrollView>
       </View>
@@ -56,10 +66,22 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   image: {
-    height: 300,
     flex: 1,
-    flexDirection: 'column',
-    resizeMode: 'cover',
+    flexDirection: 'row',
+    overflow: 'visible',
+  },
+
+  // TODO: Add linear gradient
+  overlay: {
+    width: 414,
+    backgroundColor: 'black',
+    opacity: 0.2,
+    position: 'absolute',
+    elevation: 3,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 

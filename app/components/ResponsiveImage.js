@@ -31,14 +31,18 @@ class ResponsiveImage extends Component {
   }
 
   render() {
-    let {source, style, ...other} = this.props;
+    let {source, style, children, ...other} = this.props;
     let {width, height} = this.state;
 
     return (
       <Image
         source={source}
         style={[{width, height}, style]}
-        {...other} />
+        {...other}>
+
+        {children}
+
+      </Image>
     );
   }
 }
