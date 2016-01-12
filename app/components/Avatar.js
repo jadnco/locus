@@ -37,7 +37,7 @@ class Avatar extends Component {
 
 const styles = StyleSheet.create({
   avatar: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: 'white',
     resizeMode: 'cover',
   },

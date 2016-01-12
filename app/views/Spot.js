@@ -51,7 +51,7 @@ class Spot extends Component {
 
           <View>
             <ResponsiveImage
-              source={{uri: img}}
+              source={img}
               style={styles.image} />
           </View>
 

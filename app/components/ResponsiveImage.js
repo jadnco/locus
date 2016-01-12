@@ -4,6 +4,7 @@ import React, {
   Component,
   Image,
   Dimensions,
+  View,
 } from 'react-native';
 
 class ResponsiveImage extends Component {
@@ -20,12 +21,12 @@ class ResponsiveImage extends Component {
     let _window = Dimensions.get('window');
     let ratio;
 
-    Image.getSize(this.props.source.uri, (width, height) => {
+    Image.getSize(this.props.source, (width, height) => {
       ratio = width / height;
 
       this.setState({
         width: this.props.width || _window.width,
-        height: (this.props.width || _window.width) / ratio,
+        height: this.props.height || (_window.width / ratio),
       });
     });
   }
@@ -35,14 +36,16 @@ class ResponsiveImage extends Component {
     let {width, height} = this.state;
 
     return (
-      <Image
-        source={source}
-        style={[{width, height}, style]}
-        {...other}>
+      <View style={{overflow: 'hidden'}}>
+        <Image
+          source={{uri: source}}
+          style={[{width, height}, style]}
+          {...other}>
 
-        {children}
+          {children}
 
-      </Image>
+        </Image>
+      </View>
     );
   }
 }

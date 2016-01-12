@@ -42,6 +42,10 @@ class Feed extends Component {
         title: 'Jaguar F-Type R',
       },
       {
+        img: 'http://www.foundonthestreet.net/wp-content/uploads/2014/08/Ferrari-458-Italia-Portrait-Detail-Front.jpg',
+        title: 'Ferrari 458 Italia',
+      },
+      {
         img: 'http://images.car.bauercdn.com/pagefiles/20741/mercedes-amg-gts-091.jpg',
         title: 'Mercedes-AMG GT S',
       },
@@ -78,10 +82,10 @@ class Feed extends Component {
                     });
                   }}>
 
-                  <ResponsiveImage source={{uri: spot.img}} style={styles.image} />
+                  <ResponsiveImage source={spot.img} style={styles.image} />
                 </TouchableOpacity>
 
-                <View style={{padding: 10}}>
+                <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => {
@@ -92,9 +96,8 @@ class Feed extends Component {
                     }}>
 
                     <Avatar size={40} />
-
                   </TouchableOpacity>
-                  <Text>{spot.title}</Text>
+                  <Text style={{marginTop: 11, marginLeft: 20}}>{spot.title}</Text>
                 </View>
               </View>
             );
