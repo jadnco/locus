@@ -47,40 +47,48 @@ class Profile extends Component {
             <ResponsiveImage
               source='http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1'
               style={styles.image}
-              height={160}>
+              height={200}>
 
               <View style={styles.overlay}></View>
             </ResponsiveImage>
 
             <View style={styles.top}>
 
-              <Avatar size={80} style={styles.avatar} />
+              
 
-              <View style={{backgroundColor: 'transparent'}}>
-                <Text style={styles.name}>Oscar Isaac</Text>
-                <Text style={styles.handle}>@oscar</Text>
+              <View style={styles.user}>
+                <Avatar size={80} style={styles.avatar} />
 
-                <Text style={styles.bio}>This is the bio, it shouldn't be too long. This should be good.</Text>
-                <Text style={styles.location}>Winnipeg, Canada</Text>
+                <View>
+                  <Text style={styles.name}>Oscar Isaac</Text>
+                  <Text style={styles.handle}>@oscar</Text>
+
+                  <View style={styles.countItems}>
+                    <View style={styles.info}>
+                      <Text style={styles.infoNumber}>156</Text>
+                      <Text style={styles.infoTitle}>Spots</Text>
+                    </View>
+
+                    <View style={styles.info}>
+                      <Text style={styles.infoNumber}>869</Text>
+                      <Text style={styles.infoTitle}>Following</Text>
+                    </View>
+
+                    <View style={styles.info}>
+                      <Text style={styles.infoNumber}>896.2K</Text>
+                      <Text style={styles.infoTitle}>Followers</Text>
+                    </View>
+                  </View>
+
+                 
+                </View>
+                 
               </View>
 
-              <View style={styles.countItems}>
+              <Text style={styles.bio}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat mollis dolor.</Text>
+              <Text style={styles.location}>Winnipeg, Canada</Text>
 
-                <View style={styles.info}>
-                  <Text style={styles.infoNumber}>156</Text>
-                  <Text style={styles.infoTitle}>Spots</Text>
-                </View>
-
-                <View style={styles.info}>
-                  <Text style={styles.infoNumber}>869</Text>
-                  <Text style={styles.infoTitle}>Following</Text>
-                </View>
-
-                <View style={styles.info}>
-                  <Text style={styles.infoNumber}>896.2K</Text>
-                  <Text style={styles.infoTitle}>Followers</Text>
-                </View>
-              </View>
+              
             </View>
         </ScrollView>
       </View>
@@ -91,7 +99,6 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: 'white',
   },
   top: {
@@ -101,10 +108,7 @@ const styles = StyleSheet.create({
     borderColor: '#EEEEEE',
   },
   info: {
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
+    marginRight: 20,
   },
   infoNumber: {
     fontSize: 17,
@@ -114,9 +118,15 @@ const styles = StyleSheet.create({
   infoTitle: {
     color: 'grey',
   },
+  user: {
+    flexDirection: 'row',
+    marginTop: -50,
+  },
   avatar: {
-    marginTop: -26,
-    alignSelf: 'center',
+    //marginTop: -26,
+    marginLeft: 8,
+    marginRight: 14,
+    marginTop: 12,
     // position: 'absolute',
     // bottom: -26,
     // left: 16,
@@ -142,35 +152,33 @@ const styles = StyleSheet.create({
 
   name: {
     fontSize: 17,
-    color: 'black',
-    alignSelf: 'center',
-    marginTop: 8,
+    color: 'white',
+    //marginTop: 8,
   },
 
   handle: {
     color: 'grey',
-    alignSelf: 'center',
+    marginBottom: 7,
   },
 
   location: {
     color: 'grey',
-    alignSelf: 'center',
-    marginTop: 17,
+    marginTop: 14,
+    paddingHorizontal: 8,
   },
 
   bio: {
     color: 'black',
-    alignSelf: 'center',
-    textAlign: 'center',
-    marginTop: 17,
-    width: 260,
+    marginTop: 14,
+    paddingHorizontal: 8,
+    //width: 220,
   },
 
   countItems: {
     backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 17,
   },
 });
 
