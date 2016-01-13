@@ -11,6 +11,7 @@ import React, {
   NavigatorIOS,
   Image,
   TouchableOpacity,
+  SegmentedControlIOS,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -20,6 +21,11 @@ import FollowButton from '../components/FollowButton';
 import ResponsiveImage from '../components/ResponsiveImage';
 import Avatar from '../components/Avatar';
 import BackButton from '../components/BackButton';
+
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+
+import SpotGrid from '../components/SpotGrid';
+import ProfileTabBar from '../components/ProfileTabBar';
 
 class Profile extends Component {
   constructor(props) {
@@ -89,6 +95,16 @@ class Profile extends Component {
               <Text style={styles.location}>Winnipeg, Canada</Text>
 
               
+            </View>
+            <View style={styles.scrollNavBar}>
+              <ScrollableTabView
+                renderTabBar={() => <ProfileTabBar />}>
+
+                <SpotGrid height={600} tabLabel='spots' />
+                <View height={600} tabLabel='likes'>
+                  <Text>Likes</Text>
+                </View>
+              </ScrollableTabView>
             </View>
         </ScrollView>
       </View>
@@ -180,6 +196,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 17,
   },
+
+  view: {
+    paddingHorizontal: 8,
+  }
 });
 
 module.exports = Profile;

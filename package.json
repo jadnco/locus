@@ -17,6 +17,7 @@
   "dependencies": {
     "react-native": "^0.18.0-rc",
     "react-native-navbar": "^1.1.6",
+    "react-native-scrollable-tab-view": "^0.3.4",
     "react-native-vector-icons": "^1.0.4"
   }
 }
