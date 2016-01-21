@@ -21,14 +21,13 @@ class SpotGrid extends Component {
   }
 
   componentDidMount() {
-    let rows = this._getRows(values, 2);
+    // this.imgs = [<ResponsiveImage
+    //               source='http://www.carpixel.net/w/f945eb65154e8e0f99df09e9daf0cee1/jaguar-c-x75-007-spectre-car-wallpaper-34872.jpg' />,
+    //               <ResponsiveImage
+    //               source='https://s-media-cache-ak0.pinimg.com/236x/98/e9/4c/98e94c5cc565f74b32317a65900c9059.jpg' />, ];
+    // let rows = this._getRows(this.imgs, 2);
 
-    this.setState({rows});
-
-    this.imgs = [<ResponsiveImage
-                  source='http://www.carpixel.net/w/f945eb65154e8e0f99df09e9daf0cee1/jaguar-c-x75-007-spectre-car-wallpaper-34872.jpg' />,
-                  <ResponsiveImage
-                  source='https://s-media-cache-ak0.pinimg.com/236x/98/e9/4c/98e94c5cc565f74b32317a65900c9059.jpg' />, ];
+    // this.setState({rows});
   }
 
   _getRows(array, length) {
@@ -43,25 +42,28 @@ class SpotGrid extends Component {
 
   render() {
     let {style, ...other} = this.props;
-    
 
-    let grid = this.state.rows.map((v, i) => {
-      return (
-        <View key={i} style={styles.row}>
-          {v.map((b, j) => {
-            return (
-              <View key={j} style={styles.thumbnail}>
-                {this.imgs[Math.floor(Math.random()*this.imgs.length)]}
-              </View>
-            );
-          })}
-        </View>
-      );
-    });
+    // let grid = this.state.rows.map((v, i) => {
+    //   return (
+    //     <View style={styles.row}>
+    //     {this.imgs[0]}
+    //     </View>
+    //     <View style={styles.row}>
+    //     {this.imgs[1]}
+    //     </View>
+    //   );
+    // });
 
     return (
       <View>
-        {grid}
+        <View style={styles.row}>
+        <ResponsiveImage
+                  source='http://www.carpixel.net/w/f945eb65154e8e0f99df09e9daf0cee1/jaguar-c-x75-007-spectre-car-wallpaper-34872.jpg' />
+        </View>
+        <View style={styles.row}>
+          <ResponsiveImage
+                  source='https://s-media-cache-ak0.pinimg.com/236x/98/e9/4c/98e94c5cc565f74b32317a65900c9059.jpg' />
+        </View>
       </View>
     );
   }

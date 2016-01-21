@@ -25,7 +25,7 @@ class locus extends Component {
     this.state = {
 
       // Default selected tab
-      selectedTab: 'profile',
+      selectedTab: 'feed',
     };
   }
 
@@ -100,9 +100,5 @@ class locus extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-
-});
 
 AppRegistry.registerComponent('locus', () => locus);

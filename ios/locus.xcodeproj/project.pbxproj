@@ -29,6 +29,7 @@
 		9811DDEAE0984B4E88BF3068 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA733975661B4DE297A16B92 /* Ionicons.ttf */; };
 		9AC7A23C8F204B518D8B804D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D951E5442AC472AAE4096D8 /* Zocial.ttf */; };
 		9D1383C80CB8437081E00D2F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5686D73DA34F4CCBB94CF1B6 /* Octicons.ttf */; };
+		E48C252F1C46DA890008167F /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		E4B00AE61C41B2AE003FD533 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4B00AE51C41B2AE003FD533 /* EvilIcons.ttf */; };
 		E64F2DF4E0954E3B8E952120 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFD8699B84F84F9A9F331115 /* Entypo.ttf */; };
 /* End PBXBuildFile section */
@@ -159,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E48C252F1C46DA890008167F /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +715,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = locus;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -735,6 +738,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = locus;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

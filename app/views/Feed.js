@@ -22,6 +22,8 @@ import SpotView from './Spot';
 import SearchView from './Search';
 import ProfileView from './Profile';
 
+import Spot from '../components/Spot';
+
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -73,17 +75,14 @@ class Feed extends Component {
           {this.spots.map((spot, i) => {
             return (
               <View key={i}>
-                <TouchableOpacity
-                  activeOpacity={0.8}
+                <Spot
+                  data={spot}
                   onPress={() => {
                     this.props.navigator.push({
                       component: SpotView,
                       data: spot,
                     });
-                  }}>
-
-                  <ResponsiveImage source={spot.img} style={styles.image} />
-                </TouchableOpacity>
+                  }} />
 
                 <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
                   <TouchableOpacity
