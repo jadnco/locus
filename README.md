@@ -66,40 +66,11 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### User
 
-| Property  | Description | Type     | Example                  |
-|-----------|-------------|----------|--------------------------|
-| firstName |             | `String` | John                     |
-| lastName  |             | `String` | Smith                    |
-| fullName  |             | `String` | John Smith               |
-| handle    |             | `String` | johnSmith                |
-| joinDate  |             | `Date`   | 2015-12-29T01:46:49.453Z |
-| email     |             | `String` | john.smith@example.com   |
-
-`firstName`
-  Type: String
-  Example: *John*
-
-`lastName`
-  Type: String
-  Example: *Smith*
-
-`fullName`
-  Concatenation of the `firstName` and `lastName`.
-    
-  Type: String
-  Example: *John Smith*
-
-`handle`
-  Username and unique identifier with minimum characters of three.
-
-  Type: String
-  Example: *jadnco*
-
-`joinDate`
-  When the user first created their account.
-
-  Type: Date
-  Example: *2015-12-29T01:46:49.453Z*
-
-`email`
-  Email address used to sign up.
+| Property    | Description                                                  | Type     | Example                  |
+|-------------|--------------------------------------------------------------|----------|--------------------------|
+| `firstName` |                                                              | `String` | John                     |
+| `lastName`  |                                                              | `String` | Smith                    |
+| `fullName`  | Concatenation of the `firstName` and `lastName`.             | `String` | John Smith               |
+| `handle`    | Username and unique identifier with minimum of 3 characters. | `String` | johnSmith                |
+| `joinDate`  | When the user first created their account.                   | `Date`   | 2015-12-29T01:46:49.453Z |
+| `email`     | Email address used to sign up.                               | `String` | john.smith@example.com   |
