@@ -66,6 +66,15 @@ Audience is of all ages, anyone can be a car spotter.
 
 #### User
 
+| Property  | Description | Type     | Example                  |
+|-----------|-------------|----------|--------------------------|
+| firstName |             | `String` | John                     |
+| lastName  |             | `String` | Smith                    |
+| fullName  |             | `String` | John Smith               |
+| handle    |             | `String` | johnSmith                |
+| joinDate  |             | `Date`   | 2015-12-29T01:46:49.453Z |
+| email     |             | `String` | john.smith@example.com   |
+
 `firstName`
   Type: String
   Example: *John*
