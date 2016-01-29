@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -12,7 +14,7 @@ import React, {
 import user from 'image!user';
 
 class Avatar extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
   }
 

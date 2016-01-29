@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -19,7 +21,7 @@ import NotificationsView from './app/views/Notifications';
 import MessagesView from './app/views/Messages';
 
 class locus extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {
@@ -29,13 +31,13 @@ class locus extends Component {
     };
   }
 
-  _tabChange(tab) {
+  _tabChange(tab: String) {
     this.setState({
       selectedTab: tab,
     });
   }
 
-  _renderScene(route, navigator) {
+  _renderScene(route, navigator): Component {
     return (
       <route.component
         data={route.data}

@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -29,7 +31,7 @@ import SpotGrid from '../components/SpotGrid';
 import ProfileTabBar from '../components/ProfileTabBar';
 
 class Profile extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {};

@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -14,13 +16,13 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {navigationBar} from '../styles';
 
 class ProfileTabBar extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.labels = [];
   }
 
-  _renderTab(label, page) {
+  _renderTab(label: String, page: Number) {
     let isActive = this.props.activeTab === page;
 
     return (
@@ -50,7 +52,8 @@ class ProfileTabBar extends Component {
     };
 
     var left = this.props.scrollValue.interpolate({
-      inputRange: [0, 1], outputRange: [0, containerWidth / tabs.length],
+      inputRange: [0, 1],
+      outputRange: [0, containerWidth / tabs.length],
     });
 
     return (
