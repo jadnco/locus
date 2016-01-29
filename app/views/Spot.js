@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -26,7 +28,7 @@ import ParallaxView from 'react-native-parallax-view';
 import CarOne from 'image!car-1';
 
 class Spot extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {};

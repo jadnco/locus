@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -8,7 +10,7 @@ import React, {
 } from 'react-native';
 
 class ResponsiveImage extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {

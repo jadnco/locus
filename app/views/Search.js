@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -17,7 +19,7 @@ import TopBar from '../components/TopBar';
 import BackButton from '../components/BackButton';
 
 class Search extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {};

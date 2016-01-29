@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -13,7 +15,7 @@ import React, {
 import ResponsiveImage from './ResponsiveImage';
 
 class Avatar extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
   }
 
