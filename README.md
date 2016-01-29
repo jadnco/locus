@@ -1,9 +1,41 @@
-# Car Spotting iOS/Web App
+# Locus
 January 7, 2016
 
 An iOS and/or web that is essentially Instagram dedicated for car spotters.
 
 Audience is of all ages, anyone can be a car spotter.
+
+## Development
+
+### Getting Started
+
+### Models
+
+#### User
+
+| Property    | Description                                                  | Type     | Example                  |
+|-------------|--------------------------------------------------------------|----------|--------------------------|
+| `firstName` |                                                              | `String` | John                     |
+| `lastName`  |                                                              | `String` | Smith                    |
+| `fullName`  | Concatenation of the `firstName` and `lastName`.             | `String` | John Smith               |
+| `handle`    | Username and unique identifier with minimum of 3 characters. | `String` | johnSmith                |
+| `joinDate`  | When the user first created their account.                   | `Date`   | 2015-12-29T01:46:49.453Z |
+| `email`     | Email address used to sign up.                               | `String` | john.smith@example.com   |
+
+
+#### Spot
+- Embedded stats (km/h, $, etc)
+- Photo (thumbnail, large)
+- Poster (User ref)
+
+#### Location
+- lat, long
+- address eg. 123 Main Street
+
+
+Older process stuff below
+
+---
 
 #### Name Ideas
 - Spot – Good short name, but my be too similar to Spotify.
@@ -59,18 +91,3 @@ Audience is of all ages, anyone can be a car spotter.
 #### Notifications
 
 #### Search
-
-## Development
-
-### Models
-
-#### User
-
-| Property    | Description                                                  | Type     | Example                  |
-|-------------|--------------------------------------------------------------|----------|--------------------------|
-| `firstName` |                                                              | `String` | John                     |
-| `lastName`  |                                                              | `String` | Smith                    |
-| `fullName`  | Concatenation of the `firstName` and `lastName`.             | `String` | John Smith               |
-| `handle`    | Username and unique identifier with minimum of 3 characters. | `String` | johnSmith                |
-| `joinDate`  | When the user first created their account.                   | `Date`   | 2015-12-29T01:46:49.453Z |
-| `email`     | Email address used to sign up.                               | `String` | john.smith@example.com   |
