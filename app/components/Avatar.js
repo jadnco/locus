@@ -11,10 +11,13 @@ import React, {
   Image,
 } from 'react-native';
 
+type Props = {
+  size: number,
+  style: Object,
+};
+
 class Avatar extends Component {
-  constructor(props: Object): void {
-    super(props);
-  }
+  props: Props;
 
   render(): ReactElement {
     let {style, size, ...other} = this.props;

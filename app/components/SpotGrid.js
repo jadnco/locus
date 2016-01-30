@@ -13,8 +13,16 @@ import React, {
 import ResponsiveImage from './ResponsiveImage';
 
 const values = [5,6,66,44,33,7755,4,34,342,7,56];
+
+type Props = {
+  spots: Array<Object>,
+  style: Object,
+};
+
 class SpotGrid extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {

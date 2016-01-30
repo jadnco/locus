@@ -18,8 +18,14 @@ import TopBar from '../components/TopBar';
 
 import BackButton from '../components/BackButton';
 
+type Props = {
+  navigator: Array<Object>,
+};
+
 class Search extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {};

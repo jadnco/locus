@@ -19,8 +19,12 @@ import Spot from './Spot';
 import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
 
+type Props = {};
+
 class Camera extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {};

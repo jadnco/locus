@@ -20,6 +20,10 @@ import CameraView from './app/views/Camera';
 import NotificationsView from './app/views/Notifications';
 import MessagesView from './app/views/Messages';
 
+type State = {
+  selectedTab: string,
+};
+
 class locus extends Component {
   constructor(props: Object): void {
     super(props);

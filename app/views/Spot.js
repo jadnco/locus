@@ -27,8 +27,15 @@ import ParallaxView from 'react-native-parallax-view';
 
 import CarOne from 'image!car-1';
 
+type Props = {
+  navigator: Array<Object>,
+  data: Object,
+};
+
 class Spot extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {};

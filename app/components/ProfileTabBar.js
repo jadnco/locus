@@ -15,8 +15,18 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import {navigationBar} from '../styles';
 
+type Props = {
+  tabs: Array<string>,
+  containerWidth: number,
+  scrollValue: Object,
+  activeTab: number,
+  goToPage: Function,
+}
+
 class ProfileTabBar extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.labels = [];
@@ -41,7 +51,7 @@ class ProfileTabBar extends Component {
   }
 
   render(): ReactElement {
-    let {tabs, containerWidth} = this.props;
+    let {tabs, containerWidth, scrollValue} = this.props;
 
     let tabUnderlineStyle = {
       position: 'absolute',
@@ -51,7 +61,7 @@ class ProfileTabBar extends Component {
       bottom: 0,
     };
 
-    let left = this.props.scrollValue.interpolate({
+    let left = scrollValue.interpolate({
       inputRange: [0, 1],
       outputRange: [0, containerWidth / tabs.length],
     });

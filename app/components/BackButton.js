@@ -11,7 +11,13 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import {navigationBar} from '../styles';
 
+type Props = {
+  onPress: Function,
+};
+
 class BackButton extends Component {
+  props: Props;
+
   render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>

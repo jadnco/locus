@@ -9,8 +9,21 @@ import React, {
   View,
 } from 'react-native';
 
+type Props = {
+  source: string,
+  style: Object,
+  children: Array<ReactElement> | ReactElement,
+};
+
+type State = {
+  width: number,
+  height: number,
+};
+
 class ResponsiveImage extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {

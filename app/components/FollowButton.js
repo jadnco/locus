@@ -11,7 +11,13 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
+type State = {
+  active: boolean,
+};
+
 class FollowButton extends Component {
+  state: State;
+
   constructor(props: Object): void {
     super(props);
 

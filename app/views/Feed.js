@@ -26,8 +26,14 @@ import ProfileView from './Profile';
 
 import Spot from '../components/Spot';
 
+type Props = {
+  navigator: Array<Object>,
+};
+
 class Feed extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {};

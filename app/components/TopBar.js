@@ -11,7 +11,14 @@ import React, {
 
 import NavigationBar from 'react-native-navbar';
 
+type Props = {
+  title: string,
+  style: Object,
+};
+
 class TopBar extends Component {
+  props: Props;
+
   render(): ReactElement {
     let {title, style, ...other} = this.props;
 

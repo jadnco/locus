@@ -19,7 +19,7 @@ class Avatar extends Component {
   }
 
   render(): ReactElement {
-    let {style, size, ...other} = this.props;
+    let {...other} = this.props;
 
     return (
       <Text></Text>

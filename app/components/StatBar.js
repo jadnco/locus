@@ -13,7 +13,13 @@ import React, {
 
 import NavigationBar from 'react-native-navbar';
 
+type Props = {
+  title: string,
+};
+
 class StatBar extends Component {
+  props: Props;
+
   render(): ReactElement {
     let {title, ...other} = this.props;
 

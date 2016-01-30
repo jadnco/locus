@@ -30,8 +30,14 @@ import ParallaxView from 'react-native-parallax-view';
 import SpotGrid from '../components/SpotGrid';
 import ProfileTabBar from '../components/ProfileTabBar';
 
+type Props = {
+  navigator: Array<Object>,
+};
+
 class Profile extends Component {
-  constructor(props: Object): void {
+  props: Props;
+
+  constructor(props: Props): void {
     super(props);
 
     this.state = {};

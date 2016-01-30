@@ -14,10 +14,15 @@ import React, {
 
 import ResponsiveImage from './ResponsiveImage';
 
-class Avatar extends Component {
-  constructor(props: Object): void {
-    super(props);
-  }
+type Props = {
+  data: Object,
+  onPress: Function,
+  style: Object,
+  size: number,
+};
+
+class Spot extends Component {
+  props: Props;
 
   render(): ReactElement {
     let {data, onPress, style, size, ...other} = this.props;
@@ -36,4 +41,4 @@ class Avatar extends Component {
 const styles = StyleSheet.create({
 });
 
-module.exports = Avatar;
+module.exports = Spot;
