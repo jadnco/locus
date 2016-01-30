@@ -20,8 +20,8 @@ class ResponsiveImage extends Component {
   }
 
   componentDidMount(): void {
-    let _window = Dimensions.get('window');
-    let ratio;
+    let _window: {width: number} = Dimensions.get('window');
+    let ratio: number;
 
     Image.getSize(this.props.source, (width, height) => {
       ratio = width / height;

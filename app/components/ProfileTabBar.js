@@ -23,7 +23,7 @@ class ProfileTabBar extends Component {
   }
 
   _renderTab(label: string, page: number): ReactElement {
-    let isActive = this.props.activeTab === page;
+    let isActive: boolean = (this.props.activeTab === page);
 
     return (
       <TouchableOpacity
@@ -43,7 +43,7 @@ class ProfileTabBar extends Component {
   render(): ReactElement {
     let {tabs, containerWidth} = this.props;
 
-    var tabUnderlineStyle = {
+    let tabUnderlineStyle = {
       position: 'absolute',
       width: containerWidth / tabs.length,
       height: 1,
@@ -51,7 +51,7 @@ class ProfileTabBar extends Component {
       bottom: 0,
     };
 
-    var left = this.props.scrollValue.interpolate({
+    let left = this.props.scrollValue.interpolate({
       inputRange: [0, 1],
       outputRange: [0, containerWidth / tabs.length],
     });
