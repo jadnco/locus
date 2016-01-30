@@ -16,13 +16,13 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {navigationBar} from '../styles';
 
 class ProfileTabBar extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.labels = [];
   }
 
-  _renderTab(label: String, page: Number) {
+  _renderTab(label: string, page: number): ReactElement {
     let isActive = this.props.activeTab === page;
 
     return (
@@ -40,7 +40,7 @@ class ProfileTabBar extends Component {
     );
   }
 
-  render() {
+  render(): ReactElement {
     let {tabs, containerWidth} = this.props;
 
     var tabUnderlineStyle = {

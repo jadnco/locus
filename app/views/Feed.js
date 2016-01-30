@@ -27,7 +27,7 @@ import ProfileView from './Profile';
 import Spot from '../components/Spot';
 
 class Feed extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
@@ -56,7 +56,7 @@ class Feed extends Component {
     ];
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <View style={styles.container}>
         <TopBar

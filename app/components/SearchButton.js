@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {navigationBar} from '../styles';
 
 class SearchButton extends Component {
-  render() {
+  render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
         <Icon name='search' style={navigationBar.iconRight} />

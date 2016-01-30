@@ -12,11 +12,11 @@ import React, {
 } from 'react-native';
 
 class Avatar extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
   }
 
-  render() {
+  render(): ReactElement {
     let {style, size, ...other} = this.props;
 
     return (

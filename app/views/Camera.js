@@ -20,13 +20,13 @@ import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
 
 class Camera extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <Text>This is the camera view</Text>
     );

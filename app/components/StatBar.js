@@ -14,7 +14,7 @@ import React, {
 import NavigationBar from 'react-native-navbar';
 
 class StatBar extends Component {
-  render() {
+  render(): ReactElement {
     let {title, ...other} = this.props;
 
     return (

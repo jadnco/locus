@@ -14,11 +14,11 @@ import React, {
 import user from 'image!user';
 
 class Avatar extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
   }
 
-  render() {
+  render(): ReactElement {
     let {style, size, ...other} = this.props;
 
     return (

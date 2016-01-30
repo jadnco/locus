@@ -28,13 +28,13 @@ import ParallaxView from 'react-native-parallax-view';
 import CarOne from 'image!car-1';
 
 class Spot extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
   }
 
-  render() {
+  render(): ReactElement {
     let {title, img} = this.props.data;
 
     return (

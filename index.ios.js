@@ -21,7 +21,7 @@ import NotificationsView from './app/views/Notifications';
 import MessagesView from './app/views/Messages';
 
 class locus extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {
@@ -31,13 +31,13 @@ class locus extends Component {
     };
   }
 
-  _tabChange(tab: String) {
+  _tabChange(tab: string): void {
     this.setState({
       selectedTab: tab,
     });
   }
 
-  _renderScene(route, navigator): Component {
+  _renderScene(route: {component: ReactElement, data: Object}, navigator: Object): ReactElement {
     return (
       <route.component
         data={route.data}
@@ -46,7 +46,7 @@ class locus extends Component {
     );
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <TabBarIOS tintColor='white' barTintColor='black'>
         <Icon.TabBarItem

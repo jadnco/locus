@@ -19,13 +19,13 @@ import TopBar from '../components/TopBar';
 import BackButton from '../components/BackButton';
 
 class Search extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <View>
         <TopBar

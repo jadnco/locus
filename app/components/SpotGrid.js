@@ -14,7 +14,7 @@ import ResponsiveImage from './ResponsiveImage';
 
 const values = [5,6,66,44,33,7755,4,34,342,7,56];
 class SpotGrid extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {
@@ -22,17 +22,17 @@ class SpotGrid extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     // this.imgs = [<ResponsiveImage
     //               source='http://www.carpixel.net/w/f945eb65154e8e0f99df09e9daf0cee1/jaguar-c-x75-007-spectre-car-wallpaper-34872.jpg' />,
     //               <ResponsiveImage
     //               source='https://s-media-cache-ak0.pinimg.com/236x/98/e9/4c/98e94c5cc565f74b32317a65900c9059.jpg' />, ];
-    let rows = this._getRows(this.imgs, 2);
+    //let rows = this._getRows(this.imgs, 2);
 
     // this.setState({rows});
   }
 
-  _getRows(array: Array<number>, length: number) : Array<Component> {
+  _getRows(array: Array<ReactElement>, length: number): Array<Array<ReactElement>> {
     var res = [];
 
     while (array.length) {
@@ -42,7 +42,7 @@ class SpotGrid extends Component {
     return res;
   }
 
-  render() {
+  render(): ReactElement {
     let {style, ...other} = this.props;
 
     // let grid = this.state.rows.map((v, i) => {

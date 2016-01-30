@@ -10,7 +10,7 @@ import React, {
 } from 'react-native';
 
 class ResponsiveImage extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {
@@ -19,7 +19,7 @@ class ResponsiveImage extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     let _window = Dimensions.get('window');
     let ratio;
 
@@ -33,7 +33,7 @@ class ResponsiveImage extends Component {
     });
   }
 
-  render() {
+  render(): ReactElement {
     let {source, style, children, ...other} = this.props;
     let {width, height} = this.state;
 

@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {navigationBar} from '../styles';
 
 class BackButton extends Component {
-  render() {
+  render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
         <Icon name='chevron-left' style={navigationBar.iconLeft} />

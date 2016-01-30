@@ -20,13 +20,13 @@ import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
 
 class Messages extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <View style={styles.container}>
         <TopBar title='Messages' />

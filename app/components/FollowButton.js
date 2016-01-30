@@ -12,7 +12,7 @@ import React, {
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 class FollowButton extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {
@@ -20,13 +20,13 @@ class FollowButton extends Component {
     };
   }
 
-  _toggleActive() {
+  _toggleActive(): void {
     this.setState({
       active: !this.state.active,
     });
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <TouchableHighlight
         onPress={this._toggleActive.bind(this)}

@@ -12,7 +12,7 @@ import React, {
 import NavigationBar from 'react-native-navbar';
 
 class TopBar extends Component {
-  render() {
+  render(): ReactElement {
     let {title, style, ...other} = this.props;
 
     return (

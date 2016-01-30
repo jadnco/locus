@@ -31,13 +31,13 @@ import SpotGrid from '../components/SpotGrid';
 import ProfileTabBar from '../components/ProfileTabBar';
 
 class Profile extends Component {
-  constructor(props: Object) {
+  constructor(props: Object): void {
     super(props);
 
     this.state = {};
   }
 
-  render() {
+  render(): ReactElement {
     return (
       <View style={styles.container}>
         <TopBar
