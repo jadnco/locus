@@ -23,8 +23,6 @@ import ResponsiveImage from '../components/ResponsiveImage';
 
 import ProfileView from './Profile';
 
-import ParallaxView from 'react-native-parallax-view';
-
 import CarOne from 'image!car-1';
 
 type Props = {
@@ -55,30 +53,7 @@ class Spot extends Component {
 
         <StatBar />
 
-        <ParallaxView
-          backgroundSource={{uri: img}}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
-
-          <View style={{padding: 10}}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => {
-                this.props.navigator.push({
-                  component: ProfileView,
-                });
-              }}>
-
-              <Avatar size={40} />
-
-            </TouchableOpacity>
-            <Text>{title}</Text>
-          </View>
-
-
-        </ParallaxView>
-
-        {/* <ScrollView
+        <ScrollView
           contentContainerStyle={styles.scroll}
           contentInset={{bottom: 49}}
           automaticallyAdjustContentInsets={false}>
@@ -103,7 +78,7 @@ class Spot extends Component {
             </TouchableOpacity>
             <Text>{title}</Text>
           </View>
-        </ScrollView> */}
+        </ScrollView>
       </View>
     );
   }
