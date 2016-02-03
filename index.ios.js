@@ -31,7 +31,7 @@ class locus extends Component {
     this.state = {
 
       // Default selected tab
-      selectedTab: 'notifications',
+      selectedTab: 'feed',
     };
   }
 

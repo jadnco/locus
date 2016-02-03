@@ -28,7 +28,7 @@ class List extends Component {
     super(props);
 
     let dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
+      rowHasChanged: (first, second) => first !== second,
     });
 
     this.state = {

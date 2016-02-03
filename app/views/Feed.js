@@ -82,31 +82,7 @@ class Feed extends Component {
 
           {this.spots.map((spot, i) => {
             return (
-              <View key={i}>
-                <Spot
-                  data={spot}
-                  onPress={() => {
-                    this.props.navigator.push({
-                      component: SpotView,
-                      data: spot,
-                    });
-                  }} />
-
-                <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => {
-                      this.props.navigator.push({
-                        component: ProfileView,
-                        data: spot,
-                      });
-                    }}>
-
-                    <Avatar size={40} />
-                  </TouchableOpacity>
-                  <Text style={{marginTop: 11, marginLeft: 20}}>{spot.title}</Text>
-                </View>
-              </View>
+              <Spot key={i} data={spot} navigator={this.props.navigator} />
             );
           })}
         </ScrollView>

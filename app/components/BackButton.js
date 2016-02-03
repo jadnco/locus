@@ -21,7 +21,7 @@ class BackButton extends Component {
   render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Icon name='chevron-left' style={navigationBar.iconLeft} />
+        <Icon name='chevron-left' size={100} style={navigationBar.iconLeft} />
       </TouchableOpacity>
     );
   }

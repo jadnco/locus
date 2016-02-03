@@ -14,31 +14,58 @@ import React, {
 
 import ResponsiveImage from './ResponsiveImage';
 
+import Avatar from './Avatar';
+
+import ProfileView from '../views/Profile';
+import SpotView from '../views/Spot';
+
 type Props = {
   data: Object,
   onPress: Function,
   style: Object,
   size: number,
+  navigator: Array<Object>
 };
 
 class Spot extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {data, onPress, style, size, ...other} = this.props;
+    let {data, onPress, navigator, style, ...other} = this.props;
+    let {title, spotter} = data;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={onPress}>
+        style={[styles.wrapper, style]}
+        onPress={() => {
+          navigator.push({component: SpotView, data});
+        }}>
 
         <ResponsiveImage source={data.img} style={styles.image} />
+
+        <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => {
+              navigator.push({component: ProfileView, data});
+            }}>
+
+            <Avatar size={40} />
+          </TouchableOpacity>
+          <Text style={{marginTop: 11, marginLeft: 20}}>{title}</Text>
+        </View>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    margin: 8,
+    borderWidth: 1,
+    borderColor: '#EEEEEE',
+  },
 });
 
 module.exports = Spot;

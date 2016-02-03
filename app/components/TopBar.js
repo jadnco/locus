@@ -26,7 +26,7 @@ class TopBar extends Component {
       <View style={[styles.topBar, style]}>
         <NavigationBar
           tintColor='white'
-          title={{title: title}} {...other} />
+          title={{title}} {...other} />
       </View>
     );
   }

@@ -22,6 +22,9 @@ class FollowButton extends Component {
     super(props);
 
     this.state = {
+
+      // false: not following
+      // true: following
       active: false,
     };
   }
