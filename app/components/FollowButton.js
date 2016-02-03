@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -10,7 +12,7 @@ import React, {
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 class FollowButton extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {

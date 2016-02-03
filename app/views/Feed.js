@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -23,7 +25,7 @@ import SearchView from './Search';
 import ProfileView from './Profile';
 
 class Feed extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {};

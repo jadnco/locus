@@ -1,3 +1,5 @@
+/* @flow */
+
 'use strict';
 
 import React, {
@@ -18,7 +20,7 @@ import NavigationBar from 'react-native-navbar';
 import SearchButton from '../components/SearchButton';
 
 class Camera extends Component {
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
 
     this.state = {};

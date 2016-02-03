@@ -11,6 +11,8 @@ import React, {
   Image,
 } from 'react-native';
 
+import user from 'image!user';
+
 class Avatar extends Component {
   constructor(props: Object) {
     super(props);
@@ -20,17 +22,7 @@ class Avatar extends Component {
     let {style, size, ...other} = this.props;
 
     return (
-      <Image
-        source={{
-          uri: 'http://www.canalnoticias.com/wp-content/uploads/2015/01/Oscar-Isaac.jpg',
-        }}
-        style={[
-          styles.avatar,
-          {borderRadius: size / 2},
-          style]}
-        width={size}
-        height={size}
-        {...other} />
+      <Text></Text>
     );
   }
 }
@@ -43,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Avatar;
+module.exports = Comment;
