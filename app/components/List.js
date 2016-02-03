@@ -1,0 +1,58 @@
+/* @flow */
+
+'use strict';
+
+import React, {
+  Component,
+  StyleSheet,
+  View,
+  ListView,
+  Text,
+} from 'react-native';
+
+import ListItem from './ListItem';
+
+type Props = {
+  items: Array<Object>,
+  style: Object,
+};
+
+type State = {
+  data: Array<Object>,
+};
+
+class List extends Component {
+  props: Props;
+
+  constructor(props: Props): void {
+    super(props);
+
+    let dataSource = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
+
+    this.state = {
+      data: dataSource.cloneWithRows(this.props.items),
+    };
+  }
+
+  render(): ReactElement {
+    let {style, ...other} = this.props;
+
+    return (
+      <ListView
+        dataSource={this.state.data}
+        renderRow={data => <ListItem data={data} />} />
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  avatar: {
+    borderWidth: 2,
+    borderColor: 'white',
+    resizeMode: 'cover',
+  },
+});
+
+module.exports = List;

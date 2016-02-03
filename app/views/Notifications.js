@@ -18,6 +18,7 @@ import Spot from './Spot';
 
 import TopBar from '../components/TopBar';
 import SearchButton from '../components/SearchButton';
+import List from '../components/List';
 
 class Notifications extends Component {
   constructor(props: Object): void {
@@ -37,6 +38,17 @@ class Notifications extends Component {
           automaticallyAdjustContentInsets={false}>
 
           <Text>This is the Notifications view</Text>
+          <List items={[
+            {
+              title: 'row 1'
+            },
+            {
+              title: 'row 2'
+            },
+            {
+              title: 'row 3',
+            }
+          ]} />
         </ScrollView>
       </View>
     );
