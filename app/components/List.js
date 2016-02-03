@@ -14,6 +14,7 @@ import ListItem from './ListItem';
 
 type Props = {
   items: Array<Object>,
+  row: ?Function,
   style: Object,
 };
 
@@ -37,22 +38,15 @@ class List extends Component {
   }
 
   render(): ReactElement {
-    let {style, ...other} = this.props;
+    let {row, ...other} = this.props;
 
     return (
       <ListView
         dataSource={this.state.data}
-        renderRow={data => <ListItem data={data} />} />
+        renderRow={row || (data => <ListItem data={data} />)}
+        {...other} />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  avatar: {
-    borderWidth: 2,
-    borderColor: 'white',
-    resizeMode: 'cover',
-  },
-});
 
 module.exports = List;

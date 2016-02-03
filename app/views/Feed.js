@@ -26,6 +26,8 @@ import ProfileView from './Profile';
 
 import Spot from '../components/Spot';
 
+import List from '../components/List';
+
 type Props = {
   navigator: Array<Object>,
 };
@@ -75,17 +77,15 @@ class Feed extends Component {
             }} />
           } />
 
-        <ScrollView
-          style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          <List
+            items={this.spots}
+            style={styles.container}
+            contentInset={{bottom: 49}}
+            automaticallyAdjustContentInsets={false}
+            row={data =>
+              <Spot data={data} navigator={this.props.navigator} />
+            } />
 
-          {this.spots.map((spot, i) => {
-            return (
-              <Spot key={i} data={spot} navigator={this.props.navigator} />
-            );
-          })}
-        </ScrollView>
       </View>
     );
   }
