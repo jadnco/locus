@@ -33,9 +33,13 @@ type Props = {
 };
 
 class Spot extends Component {
+<<<<<<< HEAD
   props: Props;
 
   constructor(props: Props): void {
+=======
+  constructor(props: Object) {
+>>>>>>> 9e06532d8802930c5610abfc0f6aec08eca47024
     super(props);
 
     this.state = {};

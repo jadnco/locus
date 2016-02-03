@@ -29,7 +29,6 @@ class SpotGrid extends Component {
       rows: [],
     };
   }
-
   componentDidMount(): void {
     // this.imgs = [<ResponsiveImage
     //               source='http://www.carpixel.net/w/f945eb65154e8e0f99df09e9daf0cee1/jaguar-c-x75-007-spectre-car-wallpaper-34872.jpg' />,
