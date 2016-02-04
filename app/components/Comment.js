@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Comment;
+export default Comment;

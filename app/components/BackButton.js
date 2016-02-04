@@ -27,4 +27,4 @@ class BackButton extends Component {
   }
 }
 
-module.exports = BackButton;
+export default BackButton;

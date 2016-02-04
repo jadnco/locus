@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = TopBar;
+export default TopBar;

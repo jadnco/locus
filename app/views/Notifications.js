@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Notifications;
+export default Notifications;

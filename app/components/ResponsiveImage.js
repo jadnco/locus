@@ -65,4 +65,4 @@ class ResponsiveImage extends Component {
   }
 }
 
-module.exports = ResponsiveImage;
+export default ResponsiveImage;

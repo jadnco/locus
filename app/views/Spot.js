@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Spot;
+export default Spot;

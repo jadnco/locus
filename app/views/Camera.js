@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Camera;
+export default Camera;

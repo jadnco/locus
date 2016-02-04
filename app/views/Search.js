@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Search;
+export default Search;

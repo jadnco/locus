@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Feed;
+export default Feed;

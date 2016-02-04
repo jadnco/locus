@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = Messages;
+export default Messages;

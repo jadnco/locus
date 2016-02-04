@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = StatBar;
+export default StatBar;

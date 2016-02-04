@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ListItem;
+export default ListItem;
