@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: '#EEEEEE',
+    borderColor: '#dadbdb',
+    backgroundColor: '#FFFFFF',
   },
 });
 

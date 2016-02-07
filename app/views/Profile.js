@@ -26,7 +26,8 @@ import BackButton from '../components/BackButton';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
-import SpotGrid from '../components/SpotGrid';
+import Spot from '../components/Spot';
+import List from '../components/List';
 import ProfileTabBar from '../components/ProfileTabBar';
 
 type Props = {
@@ -40,6 +41,29 @@ class Profile extends Component {
     super(props);
 
     this.state = {};
+
+    this.spots = [
+      {
+        img: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg',
+        title: 'Aventador',
+      },
+      {
+        img: 'http://image.motortrend.ca/f/89683392+w640/2016-Mclaren-675LT-rear-end.jpg',
+        title: 'McLaren 675LT',
+      },
+      {
+        img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
+        title: 'Jaguar F-Type R',
+      },
+      {
+        img: 'http://www.foundonthestreet.net/wp-content/uploads/2014/08/Ferrari-458-Italia-Portrait-Detail-Front.jpg',
+        title: 'Ferrari 458 Italia',
+      },
+      {
+        img: 'http://images.car.bauercdn.com/pagefiles/20741/mercedes-amg-gts-091.jpg',
+        title: 'Mercedes-AMG GT S',
+      },
+    ];
   }
 
   render(): ReactElement {
@@ -104,16 +128,23 @@ class Profile extends Component {
 
               
             </View>
-            <View style={styles.scrollNavBar}>
-              <ScrollableTabView
-                renderTabBar={() => <ProfileTabBar />}>
 
-                <SpotGrid height={600} tabLabel='spots' />
-                <View height={600} tabLabel='likes'>
-                  <Text>Likes</Text>
-                </View>
-              </ScrollableTabView>
-            </View>
+            <ScrollableTabView
+              renderTabBar={() => <ProfileTabBar />}>
+
+              <List
+                tabLabel='spots'
+                items={this.spots}
+                scrollEnabled={false}
+                row={data => <Spot data={data} navigator={this.props.navigator} />}
+                style={styles.listView}
+                contentInset={{bottom: 49}}
+                automaticallyAdjustContentInsets={false} />
+
+              <View height={600} tabLabel='likes'>
+                <Text>Likes</Text>
+              </View>
+            </ScrollableTabView>
         </ScrollView>
       </View>
     );
@@ -123,7 +154,14 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
+  },
+  scroll: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
+  listView: {
+    backgroundColor: '#E4E8EA',
   },
   top: {
     backgroundColor: 'transparent',

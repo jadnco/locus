@@ -99,7 +99,9 @@ class locus extends Component {
           selected={this.state.selectedTab === 'profile'}
           onPress={() => this._tabChange('profile')}>
 
-          <ProfileView />
+          <Navigator
+            initialRoute={{component: ProfileView}}
+            renderScene={this._renderScene} />
         </Icon.TabBarItem>
 
       </TabBarIOS>
