@@ -63,8 +63,7 @@ class Spot extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     margin: 8,
-    borderWidth: 1,
-    borderColor: '#EEEEEE',
+    backgroundColor: '#FFFFFF',
   },
 });
 

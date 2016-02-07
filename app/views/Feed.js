@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#E4E8EA',
   },
   image: {
     flex: 1,

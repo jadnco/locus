@@ -34,7 +34,7 @@ class TopBar extends Component {
 
 const styles = StyleSheet.create({
   topBar: {
-    borderColor: '#EEEEEE',
+    borderColor: '#dadbdb',
     borderBottomWidth: 1,
   },
 });
