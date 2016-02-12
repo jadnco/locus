@@ -28,7 +28,8 @@ import CarOne from 'image!car-1';
 type Props = {
   navigator: Object,
   data: Object,
-  back: Function,
+  pop: Function,
+  push: Function,
 };
 
 class Spot extends Component {
@@ -42,15 +43,14 @@ class Spot extends Component {
 
   render(): ReactElement {
     let {title, img} = this.props.data;
-    let {back} = this.props;
-    console.log(back);
+    let {push, pop} = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
           title={title}
           style={{borderBottomWidth: 0}}
-          leftButton={<BackButton onPress={back} />}
+          leftButton={<BackButton onPress={pop} />}
         />
 
         <StatBar />
@@ -69,11 +69,7 @@ class Spot extends Component {
           <View style={{padding: 10}}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => {
-                this.props.navigator.push({
-                  component: ProfileView,
-                });
-              }}>
+              onPress={() => push({component: ProfileView})}>
 
               <Avatar size={40} />
 
