@@ -19,7 +19,8 @@ import TopBar from '../components/TopBar';
 import BackButton from '../components/BackButton';
 
 type Props = {
-  navigator: Object,
+  pop: Function,
+  push: Function,
 };
 
 class Search extends Component {
@@ -32,13 +33,13 @@ class Search extends Component {
   }
 
   render(): ReactElement {
+    let {pop} = this.props;
+
     return (
       <View>
         <TopBar
           title='Search'
-          leftButton={
-            <BackButton onPress={() => this.props.navigator.pop()} />
-          } />
+          leftButton={<BackButton onPress={pop} />} />
 
         <ScrollView
           contentInset={{bottom: 49}}
