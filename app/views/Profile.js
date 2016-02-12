@@ -31,7 +31,8 @@ import List from '../components/List';
 import ProfileTabBar from '../components/ProfileTabBar';
 
 type Props = {
-  navigator: Object,
+  push: Function,
+  pop: Function,
 };
 
 class Profile extends Component {
@@ -71,15 +72,15 @@ class Profile extends Component {
   }
 
   render(): ReactElement {
+    let {push, pop} = this.props;
+
     return (
       <View style={styles.container}>
         <TopBar
           title='Oscar Isaac'
           rightButton={<FollowButton />}
           style={{backgroundColor: 'transparent'}}
-          leftButton={
-            this.props.navigator && <BackButton onPress={() => this.props.navigator.pop()} />
-          }  />
+          leftButton={<BackButton onPress={pop} />} />
 
         <ScrollView
           style={styles.container}
@@ -140,7 +141,7 @@ class Profile extends Component {
                 tabLabel='spots'
                 items={this.spots}
                 scrollEnabled={false}
-                row={data => <SpotCard data={data} navigator={this.props.navigator} />}
+                row={data => <SpotCard data={data} push={push} pop={pop} />}
                 style={styles.listView}
                 contentInset={{bottom: 49}}
                 automaticallyAdjustContentInsets={false} />
