@@ -28,6 +28,7 @@ import CarOne from 'image!car-1';
 type Props = {
   navigator: Object,
   data: Object,
+  back: Function,
 };
 
 class Spot extends Component {
@@ -41,15 +42,16 @@ class Spot extends Component {
 
   render(): ReactElement {
     let {title, img} = this.props.data;
+    let {back} = this.props;
+    console.log(back);
 
     return (
       <View style={styles.container}>
         <TopBar
           title={title}
           style={{borderBottomWidth: 0}}
-          leftButton={
-            <BackButton onPress={() => this.props.navigator.pop()} />
-          } />
+          leftButton={<BackButton onPress={back} />}
+        />
 
         <StatBar />
 

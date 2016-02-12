@@ -29,7 +29,8 @@ import SpotCard from '../components/SpotCard';
 import List from '../components/List';
 
 type Props = {
-  navigator: Object,
+  push: Function,
+  pop: Function,
 };
 
 class Feed extends Component {
@@ -66,16 +67,14 @@ class Feed extends Component {
   }
 
   render(): ReactElement {
+    let {push, pop} = this.props;
+
     return (
       <View style={styles.container}>
         <TopBar
           title='L O C U S'
           rightButton={
-            <SearchButton onPress={() => {
-              this.props.navigator.push({
-                component: SearchView,
-              });
-            }} />
+            <SearchButton onPress={() => push({component: SearchView})} />
           } />
 
           <List
@@ -84,7 +83,7 @@ class Feed extends Component {
             contentInset={{bottom: 49}}
             automaticallyAdjustContentInsets={false}
             row={data =>
-              <SpotCard data={data} navigator={this.props.navigator} />
+              <SpotCard data={data} push={push} pop={pop} />
             } />
 
       </View>

@@ -41,20 +41,19 @@ class locus extends Component {
     });
   }
 
-  _renderScene(route: {component: ReactElement, data: Object}, navigator: Object): ReactElement {
+  _renderScene(route: {component: ReactElement, data: Object}, navigator: Navigator): ReactElement {
     return (
       <route.component
         data={route.data}
         route={route}
-        navigator={navigator} />
+        pop={navigator.pop}
+        push={navigator.push} />
     );
   }
 
   render(): ReactElement {
     return (
-      <TabBarIOS
-        tintColor='#CC9B47'
-        barTintColor='black'>
+      <TabBarIOS tintColor='#CC9B47' barTintColor='black'>
 
         <Icon.TabBarItem
           title='Home'

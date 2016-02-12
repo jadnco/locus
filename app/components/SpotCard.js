@@ -24,38 +24,28 @@ type Props = {
   onPress: Function,
   style: Object,
   size: number,
-  navigator: Object,
+  push: Function,
 };
 
 class SpotCard extends Component {
   props: Props;
 
-  _isNestedRoute(): boolean {
-    return this.props.navigator.getCurrentRoutes().length > 1;
-  }
-
-  _toProfileView(data: Object): void {
-    !this._isNestedRoute() && this.props.navigator.push({component: ProfileView, data});
-  }
-
   render(): ReactElement {
-    let {data, onPress, navigator, style, ...other} = this.props;
+    let {data, onPress, push, style, ...other} = this.props;
     let {title, spotter} = data;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
-        onPress={() => {
-          navigator.push({component: SpotView, data});
-        }}>
+        onPress={() => push({component: SpotView, data})}>
 
         <ResponsiveImage source={data.img} style={styles.image} />
 
         <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={data => this._toProfileView(data)}>
+            onPress={data => push({component: ProfileView, data})}>
 
             <Avatar size={40} />
           </TouchableOpacity>
