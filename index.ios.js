@@ -52,7 +52,10 @@ class locus extends Component {
 
   render(): ReactElement {
     return (
-      <TabBarIOS tintColor='white' barTintColor='black'>
+      <TabBarIOS
+        tintColor='#CC9B47'
+        barTintColor='black'>
+
         <Icon.TabBarItem
           title='Home'
           iconName='location'
@@ -102,6 +105,7 @@ class locus extends Component {
           <Navigator
             initialRoute={{component: ProfileView}}
             renderScene={this._renderScene} />
+
         </Icon.TabBarItem>
 
       </TabBarIOS>

@@ -40,6 +40,8 @@ Audience is of all ages, anyone can be a car spotter.
 - Tap the license plate, the app would automatically blur/censor the license plate.
 - Car selector. After taking an image, the user could manually select the car make, year etc. This would allow categories to be made. e.g. If someone wanted to see pictures of a 2012 Tesla Model S P85D, they would input that and results would be given back. This would be the ‘title’ of the image, use could also add their own comments.
 
+A Spot can have multiple photos (different angles). The user can choose which one is the 'featured' image, then it can be viewed as a slideshow.
+
 #### Technology
 - React Native
 - Potential APIs

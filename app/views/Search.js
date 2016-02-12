@@ -19,7 +19,7 @@ import TopBar from '../components/TopBar';
 import BackButton from '../components/BackButton';
 
 type Props = {
-  navigator: Array<Object>,
+  navigator: Object,
 };
 
 class Search extends Component {

@@ -26,7 +26,7 @@ import ProfileView from './Profile';
 import CarOne from 'image!car-1';
 
 type Props = {
-  navigator: Array<Object>,
+  navigator: Object,
   data: Object,
 };
 

@@ -21,7 +21,7 @@ class SearchButton extends Component {
   render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Icon name='search' style={navigationBar.iconRight} />
+        <Icon name='search' color='#CC9B47' style={navigationBar.iconRight} />
       </TouchableOpacity>
     );
   }

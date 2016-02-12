@@ -24,11 +24,19 @@ type Props = {
   onPress: Function,
   style: Object,
   size: number,
-  navigator: Array<Object>
+  navigator: Object,
 };
 
-class Spot extends Component {
+class SpotCard extends Component {
   props: Props;
+
+  _isNestedRoute(): boolean {
+    return this.props.navigator.getCurrentRoutes().length > 1;
+  }
+
+  _toProfileView(data: Object): void {
+    !this._isNestedRoute() && this.props.navigator.push({component: ProfileView, data});
+  }
 
   render(): ReactElement {
     let {data, onPress, navigator, style, ...other} = this.props;
@@ -47,9 +55,7 @@ class Spot extends Component {
         <View style={{padding: 10, flex: 1, flexDirection: 'row'}}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => {
-              navigator.push({component: ProfileView, data});
-            }}>
+            onPress={data => this._toProfileView(data)}>
 
             <Avatar size={40} />
           </TouchableOpacity>
@@ -67,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Spot;
+export default SpotCard;

@@ -26,12 +26,12 @@ import BackButton from '../components/BackButton';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
-import Spot from '../components/Spot';
+import SpotCard from '../components/SpotCard';
 import List from '../components/List';
 import ProfileTabBar from '../components/ProfileTabBar';
 
 type Props = {
-  navigator: Array<Object>,
+  navigator: Object,
 };
 
 class Profile extends Component {
@@ -43,6 +43,10 @@ class Profile extends Component {
     this.state = {};
 
     this.spots = [
+    {
+        img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
+        title: 'Jaguar F-Type R',
+      },
       {
         img: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg',
         title: 'Aventador',
@@ -136,7 +140,7 @@ class Profile extends Component {
                 tabLabel='spots'
                 items={this.spots}
                 scrollEnabled={false}
-                row={data => <Spot data={data} navigator={this.props.navigator} />}
+                row={data => <SpotCard data={data} navigator={this.props.navigator} />}
                 style={styles.listView}
                 contentInset={{bottom: 49}}
                 automaticallyAdjustContentInsets={false} />
