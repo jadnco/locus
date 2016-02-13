@@ -20,10 +20,10 @@ import BackButton from '../components/BackButton';
 import StatBar from '../components/StatBar';
 import Avatar from '../components/Avatar';
 import ResponsiveImage from '../components/ResponsiveImage';
+import List from '../components/List';
+import Comment from '../components/Comment';
 
 import ProfileView from './Profile';
-
-import CarOne from 'image!car-1';
 
 type Props = {
   navigator: Object,
@@ -39,6 +39,34 @@ class Spot extends Component {
     super(props);
 
     this.state = {};
+
+    this.comments = [
+      {
+        content: 'That clover helped my rat-fink brother steal my dream of going into space.',
+        created: '2m',
+        author: {name: 'Fry', handle: 'fry'},
+      },
+      {
+        content: 'Muy macho. Hey, gringos, here comes El Zoido to ruin your drinking water!',
+        created: '8d',
+        author: {name: 'Zoidberg', handle: 'zoidberg'},
+      },
+      {
+        content: 'Bender, you should be more ashamed of yourself than usual.',
+        created: '4h',
+        author: {name: 'Amy', handle: 'amy'},
+      },
+      {
+        content: 'Those delightful birds with their chirp chirp chirp and their tweet tweet splat.',
+        created: '6m',
+        author: {name: 'Professor', handle: 'professor'},
+      },
+      {
+        content: 'Now, be careful, Fry. And if you kill anyone, make sure to eat their heart to gain their courage. Their rich tasty courage.',
+        created: '58s',
+        author: {name: 'Professor', handle: 'professor'},
+      },
+    ];
   }
 
   render(): ReactElement {
@@ -75,6 +103,17 @@ class Spot extends Component {
 
             </TouchableOpacity>
             <Text>{title}</Text>
+          </View>
+
+          <View>
+            <List
+              items={this.comments}
+              style={styles.container}
+              scrollEnabled={false}
+              contentInset={{bottom: 49}}
+              automaticallyAdjustContentInsets={false}
+              row={data => <Comment data={data} />} />
+
           </View>
         </ScrollView>
       </View>

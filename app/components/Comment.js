@@ -13,16 +13,21 @@ import React, {
 
 import user from 'image!user';
 
-class Avatar extends Component {
+class Comment extends Component {
   constructor(props: Object): void {
     super(props);
   }
 
   render(): ReactElement {
     let {...other} = this.props;
+    let {content, author, created} = this.props.data;
 
     return (
-      <Text></Text>
+      <View>
+        <Text>{author.name}</Text>
+        <Text>{content}</Text>
+        <Text>{created}</Text>
+      </View>
     );
   }
 }
