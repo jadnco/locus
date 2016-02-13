@@ -80,7 +80,7 @@ class Profile extends Component {
           title='Oscar Isaac'
           rightButton={<FollowButton />}
           style={{backgroundColor: 'transparent'}}
-          leftButton={<BackButton onPress={pop} />} />
+          leftButton={pop && <BackButton onPress={pop} />} />
 
         <ScrollView
           style={styles.container}

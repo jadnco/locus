@@ -42,10 +42,12 @@ class locus extends Component {
   }
 
   _renderScene(route: {component: ReactElement, data: Object}, navigator: Navigator): ReactElement {
+    let _isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
+
     return (
       <route.component
         data={route.data}
-        pop={navigator.pop}
+        pop={!_isInitialRoute && navigator.pop}
         push={navigator.push} />
     );
   }
@@ -62,7 +64,7 @@ class locus extends Component {
 
           <Navigator
             initialRoute={{component: FeedView}}
-            renderScene={this._renderScene} />
+            renderScene={this._renderScene.bind(this)} />
 
         </Icon.TabBarItem>
 
@@ -102,7 +104,7 @@ class locus extends Component {
 
           <Navigator
             initialRoute={{component: ProfileView}}
-            renderScene={this._renderScene} />
+            renderScene={this._renderScene.bind(this)} />
 
         </Icon.TabBarItem>
 
