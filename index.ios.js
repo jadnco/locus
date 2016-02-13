@@ -45,7 +45,6 @@ class locus extends Component {
     return (
       <route.component
         data={route.data}
-        route={route}
         pop={navigator.pop}
         push={navigator.push} />
     );
