@@ -44,29 +44,36 @@ class Profile extends Component {
     this.state = {};
 
     this.spots = [
-    {
-        img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
-        title: 'Jaguar F-Type R',
-      },
-      {
-        img: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg',
-        title: 'Aventador',
-      },
-      {
-        img: 'http://image.motortrend.ca/f/89683392+w640/2016-Mclaren-675LT-rear-end.jpg',
-        title: 'McLaren 675LT',
-      },
       {
         img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
         title: 'Jaguar F-Type R',
-      },
-      {
-        img: 'http://www.foundonthestreet.net/wp-content/uploads/2014/08/Ferrari-458-Italia-Portrait-Detail-Front.jpg',
-        title: 'Ferrari 458 Italia',
+        created: '5 minutes ago',
+        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
       },
       {
         img: 'http://images.car.bauercdn.com/pagefiles/20741/mercedes-amg-gts-091.jpg',
         title: 'Mercedes-AMG GT S',
+        created: '5 minutes ago',
+        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
+      },
+      {
+        img: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg',
+        title: 'Aventador',
+        created: '5 minutes ago',
+        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
+      },
+      {
+        img: 'http://image.motortrend.ca/f/89683392+w640/2016-Mclaren-675LT-rear-end.jpg',
+        title: 'McLaren 675LT',
+        created: '5 minutes ago',
+        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
+      },
+      
+      {
+        img: 'http://www.foundonthestreet.net/wp-content/uploads/2014/08/Ferrari-458-Italia-Portrait-Detail-Front.jpg',
+        title: 'Ferrari 458 Italia',
+        created: '5 minutes ago',
+        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
       },
     ];
   }
@@ -141,7 +148,7 @@ class Profile extends Component {
                 tabLabel='spots'
                 items={this.spots}
                 scrollEnabled={false}
-                row={data => <SpotCard data={data} push={push} pop={pop} />}
+                row={data => <SpotCard data={data} push={push} />}
                 style={styles.listView}
                 contentInset={{bottom: 49}}
                 automaticallyAdjustContentInsets={false} />
@@ -194,6 +201,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 14,
     marginTop: 12,
+    borderWidth: 2,
+    borderColor: 'white',
     // position: 'absolute',
     // bottom: -26,
     // left: 16,
