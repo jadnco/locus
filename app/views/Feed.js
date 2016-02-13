@@ -90,8 +90,8 @@ class Feed extends Component {
           <List
             items={this.spots}
             style={styles.container}
-            contentInset={{bottom: 49}}
             automaticallyAdjustContentInsets={false}
+            onScroll={this.props._onScroll}
             row={data =>
               <SpotCard data={data} push={push} pop={pop} />
             } />
