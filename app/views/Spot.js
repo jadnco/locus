@@ -112,7 +112,7 @@ class Spot extends Component {
               scrollEnabled={false}
               contentInset={{bottom: 49}}
               automaticallyAdjustContentInsets={false}
-              row={data => <Comment data={data} />} />
+              row={data => <Comment {...data} />} />
 
           </View>
         </ScrollView>
