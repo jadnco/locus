@@ -15,4 +15,4 @@ const navigationBar = {
   },
 };
 
-export {navigationBar};
+export { navigationBar };

@@ -1,13 +1,8 @@
 /* @flow */
 
-'use strict';
-
 import React, {
   AppRegistry,
   Component,
-  StyleSheet,
-  Text,
-  View,
   Navigator,
   TabBarIOS,
 } from 'react-native';
@@ -42,72 +37,78 @@ class locus extends Component {
   }
 
   _renderScene(route: {component: ReactElement, data: Object}, navigator: Navigator): ReactElement {
-    let _isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
+    const _isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
 
     return (
       <route.component
         data={route.data}
         pop={!_isInitialRoute && navigator.pop}
-        push={navigator.push} />
+        push={navigator.push}
+      />
     );
   }
 
   render(): ReactElement {
     return (
-      <TabBarIOS tintColor='#CC9B47' barTintColor='black'>
-
+      <TabBarIOS tintColor="#CC9B47" barTintColor="black">
         <Icon.TabBarItem
-          title='Home'
-          iconName='location'
+          title="Home"
+          iconName="location"
           selected={this.state.selectedTab === 'feed'}
-          onPress={() => this._tabChange('feed')}>
+          onPress={() => this._tabChange('feed')}
+        >
 
           <Navigator
-            initialRoute={{component: FeedView}}
-            renderScene={this._renderScene.bind(this)} />
+            initialRoute={{ component: FeedView }}
+            renderScene={this._renderScene.bind(this)}
+          />
 
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
-          title='Notifications'
-          iconName='bell'
+          title="Notifications"
+          iconName="bell"
           badge={3}
           selected={this.state.selectedTab === 'notifications'}
-          onPress={() => this._tabChange('notifications')}>
+          onPress={() => this._tabChange('notifications')}
+        >
 
           <NotificationsView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
-          title='Camera'
-          iconName='camera'
+          title="Camera"
+          iconName="camera"
           selected={this.state.selectedTab === 'camera'}
-          onPress={() => this._tabChange('camera')}>
+          onPress={() => this._tabChange('camera')}
+        >
 
           <CameraView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
-          title='Messages'
-          iconName='comment'
+          title="Messages"
+          iconName="comment"
           selected={this.state.selectedTab === 'messages'}
-          onPress={() => this._tabChange('messages')}>
+          onPress={() => this._tabChange('messages')}
+        >
 
           <MessagesView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
-          title='Profile'
-          iconName='user'
+          title="Profile"
+          iconName="user"
           selected={this.state.selectedTab === 'profile'}
-          onPress={() => this._tabChange('profile')}>
+          onPress={() => this._tabChange('profile')}
+        >
 
           <Navigator
-            initialRoute={{component: ProfileView}}
-            renderScene={this._renderScene.bind(this)} />
+            initialRoute={{ component: ProfileView }}
+            renderScene={this._renderScene.bind(this)}
+          />
 
         </Icon.TabBarItem>
-
       </TabBarIOS>
     );
   }

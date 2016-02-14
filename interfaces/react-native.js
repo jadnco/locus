@@ -1,4 +1,4 @@
-declare module "react-native" {
+declare module 'react-native' {
   declare var Component: any;
   declare var StyleSheet: any;
   declare var Animated: any;
@@ -45,6 +45,6 @@ declare module "react-native" {
   declare var WebView: any;
 }
 
-declare module "react-native-vector-icons/EvilIcons" {
+declare module 'react-native-vector-icons/EvilIcons' {
   declare var exports: (callback: any) => any
 }
