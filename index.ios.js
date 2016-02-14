@@ -75,11 +75,9 @@ class locus extends Component {
   _setOffsetValue(event) {
     let offset = event.nativeEvent.contentOffset.y;
 
-    //Animated.event([{nativeEvent: {contentOffset: {y: this._scrollY}}}]);
-
     if (offset < 0) offset = 0;
 
-    this.height.setValue((offset <= this.scrollValue ? 0 : 49));
+    //this.height.setValue((offset <= this.scrollValue ? 0 : 49));
 
     this.scrollValue = offset;
   }
