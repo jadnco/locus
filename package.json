@@ -11,9 +11,18 @@
     "url": "https://github.com/jadnco/locus/issues"
   },
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "flow": "./node_modules/.bin/flow; exit 0",
+    "lint": "./node_modules/.bin/eslint --max-warnings 2 .; exit 0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^4.1.8",
+    "eslint": "^2.0.0",
+    "eslint-config-airbnb": "^5.0.1",
+    "eslint-plugin-flow-vars": "^0.1.3",
+    "eslint-plugin-react": "^3.16.1",
+    "flow-bin": "^0.21.0"
+  },
   "dependencies": {
     "react-native": "^0.18.1",
     "react-native-navbar": "^1.1.6",
