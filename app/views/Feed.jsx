@@ -46,7 +46,16 @@ class Feed extends Component {
         img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
         title: '2016 Jaguar F-Type R AWD',
         created: '12h',
-        spotter: {name: 'Oscar Isaac', handle: 'oscar'},
+        spotter: {
+          name: 'Oscar Isaac',
+          handle: 'oscar',
+          description: 'Just a normal dude who is in a few cool movies.',
+          location: 'Winnipeg, Canada',
+          likesCount: 198,
+          spotsCount: 97,
+          followersCount: 874,
+          followingCount: 12,
+        },
       },
       {
         img: 'http://images.car.bauercdn.com/pagefiles/20741/mercedes-amg-gts-091.jpg',

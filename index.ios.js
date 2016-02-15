@@ -23,6 +23,22 @@ class locus extends Component {
   constructor(props: Object): void {
     super(props);
 
+    // This should be cached
+    // as the user only logs in once
+    this.me = {
+      name: "John Smith",
+      handle: "smith89",
+      location: "Toronto, Canada",
+      email: "smith@example.com",
+      description: "Just a normal dude with a normal name.",
+      _id: "56b95ffa9a663798f7c98330",
+      created: "2016-02-09T03:41:46.934Z",
+      spotsCount: 26,
+      followingCount: 627,
+      followersCount: 165,
+      likesCount: 938
+    };
+
     this.state = {
 
       // Default selected tab
@@ -30,13 +46,13 @@ class locus extends Component {
     };
   }
 
-  _tabChange(tab: string): void {
+  tabChange(tab: string): void {
     this.setState({
       selectedTab: tab,
     });
   }
 
-  _renderScene(route: {component: ReactElement}, navigator: Navigator): ReactElement {
+  renderScene(route: {component: ReactElement}, navigator: Navigator): ReactElement {
     let { component, ...props } = route;
     const isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
 
@@ -58,12 +74,12 @@ class locus extends Component {
           title="Home"
           iconName="location"
           selected={this.state.selectedTab === 'feed'}
-          onPress={() => this._tabChange('feed')}
+          onPress={() => this.tabChange('feed')}
         >
 
           <Navigator
             initialRoute={{ component: FeedView }}
-            renderScene={this._renderScene.bind(this)}
+            renderScene={this.renderScene.bind(this)}
           />
 
         </Icon.TabBarItem>
@@ -73,7 +89,7 @@ class locus extends Component {
           iconName="bell"
           badge={3}
           selected={this.state.selectedTab === 'notifications'}
-          onPress={() => this._tabChange('notifications')}
+          onPress={() => this.tabChange('notifications')}
         >
 
           <NotificationsView />
@@ -83,7 +99,7 @@ class locus extends Component {
           title="Camera"
           iconName="camera"
           selected={this.state.selectedTab === 'camera'}
-          onPress={() => this._tabChange('camera')}
+          onPress={() => this.tabChange('camera')}
         >
 
           <CameraView />
@@ -93,7 +109,7 @@ class locus extends Component {
           title="Messages"
           iconName="comment"
           selected={this.state.selectedTab === 'messages'}
-          onPress={() => this._tabChange('messages')}
+          onPress={() => this.tabChange('messages')}
         >
 
           <MessagesView />
@@ -103,12 +119,12 @@ class locus extends Component {
           title="Profile"
           iconName="user"
           selected={this.state.selectedTab === 'profile'}
-          onPress={() => this._tabChange('profile')}
+          onPress={() => this.tabChange('profile')}
         >
 
           <Navigator
-            initialRoute={{ component: ProfileView }}
-            renderScene={this._renderScene.bind(this)}
+            initialRoute={{ component: ProfileView, ...this.me }}
+            renderScene={this.renderScene.bind(this)}
           />
 
         </Icon.TabBarItem>

@@ -33,6 +33,16 @@ import ProfileTabBar from '../components/ProfileTabBar';
 type Props = {
   push: Function,
   pop: Function,
+
+  // From response
+  name: string,
+  handle: string,
+  description: string,
+  location: string,
+  likesCount: number,
+  spotsCount: number,
+  followersCount: number,
+  followingCount: number,
 };
 
 class Profile extends Component {
@@ -41,7 +51,9 @@ class Profile extends Component {
   constructor(props: Props): void {
     super(props);
 
-    this.state = {};
+    this.state = {
+      loading: true,
+    };
 
     this.spots = [
       {
@@ -78,8 +90,29 @@ class Profile extends Component {
     ];
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  }
+
   render(): ReactElement {
     let { push, pop, ...data } = this.props;
+    let spots = <Text>Loading...</Text>;
+
+    if (!this.state.loading) {
+      spots = (
+        <List
+          tabLabel="Spots"
+          items={this.spots}
+          scrollEnabled={false}
+          row={data => <SpotCard {...data} push={push} />}
+          style={styles.listView}
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        />
+      );
+    }
 
     return (
       <View style={styles.container}>
@@ -111,50 +144,38 @@ class Profile extends Component {
                 <Avatar size={80} style={styles.avatar} />
 
                 <View>
-                  <Text style={styles.name}>Oscar Isaac</Text>
-                  <Text style={styles.handle}>@oscar</Text>
+                  <Text style={styles.name}>{data.name}</Text>
+                  <Text style={styles.handle}>@{data.handle}</Text>
 
                   <View style={styles.countItems}>
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>156</Text>
+                      <Text style={styles.infoNumber}>{data.spotsCount}</Text>
                       <Text style={styles.infoTitle}>Spots</Text>
                     </View>
 
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>869</Text>
+                      <Text style={styles.infoNumber}>{data.followingCount}</Text>
                       <Text style={styles.infoTitle}>Following</Text>
                     </View>
 
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>896.2K</Text>
+                      <Text style={styles.infoNumber}>{data.followersCount}</Text>
                       <Text style={styles.infoTitle}>Followers</Text>
                     </View>
                   </View>
-
-                 
                 </View>
-                 
               </View>
 
-              <Text style={styles.bio}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat mollis dolor.</Text>
-              <Text style={styles.location}>Winnipeg, Canada</Text>
-
-              
+              <Text style={styles.bio}>{data.description}</Text>
+              <Text style={styles.location}>{data.location}</Text>
             </View>
 
             <ScrollableTabView renderTabBar={() => <ProfileTabBar />}>
+              <View tabLabel={`Spots (${data.spotsCount})`}>
+                {spots}
+              </View>
 
-              <List
-                tabLabel='spots'
-                items={this.spots}
-                scrollEnabled={false}
-                row={data => <SpotCard {...data} push={push} />}
-                style={styles.listView}
-                contentInset={{ bottom: 49 }}
-                automaticallyAdjustContentInsets={false}
-              />
-
-              <View height={600} tabLabel='likes'>
+              <View height={600} tabLabel={`Likes (${data.likesCount})`}>
                 <Text>Likes</Text>
               </View>
             </ScrollableTabView>
