@@ -54,7 +54,7 @@ class locus extends Component {
 
   renderScene(route: {component: ReactElement}, navigator: Navigator): ReactElement {
     let { component, ...props } = route;
-    const isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
+    const isInitialRoute = Object.is(navigator.props.initialRoute.component, component);
 
     return (
 

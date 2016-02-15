@@ -13,6 +13,7 @@ import React, {
 } from 'react-native';
 
 import ResponsiveImage from './ResponsiveImage';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Avatar from './Avatar';
 
@@ -46,17 +47,45 @@ class SpotCard extends Component {
 
         <ResponsiveImage source={data.img} style={styles.image} />
 
-        <View style={{ padding: 10, flex: 1, flexDirection: 'row' }}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => push({ component: ProfileView, ...data.spotter })}
-          >
+        <View style={{ flexDirection: 'column' }}>
 
-            <Avatar size={40} />
-          </TouchableOpacity>
-          <View>
-            <Text style={styles.spotterName}>{data.spotter.name}</Text>
-            <Text style={styles.timestamp}>@{data.spotter.handle}</Text>
+          <View style={{ flexDirection: 'column', padding: 14 }}>
+            <View style={{ flexDirection: 'row' }}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => push({ component: ProfileView, ...data.spotter })}
+              >
+
+                <Avatar size={40} />
+              </TouchableOpacity>
+
+              <View>
+                <Text style={styles.spotterName}>{data.spotter.name}</Text>
+                <Text style={styles.timestamp}>@{data.spotter.handle}</Text>
+              </View>
+            </View>
+
+            <View style={{ paddingTop: 14 }}>
+              <Text>{data.description}</Text>
+            </View>
+          </View>
+
+          <View style={{ padding: 14, borderTopWidth: 1, borderColor: '#EEE', flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Icon name="star" size={30} color="#AAA" />
+              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.likesCount}</Text>
+            </View>
+            <View style={{ marginLeft: 16, flexDirection: 'row' }}>
+              <Icon name="comment" size={30} color="#AAA" />
+              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.commentsCount}</Text>
+            </View>
+
+            <Icon
+              name="share-apple"
+              size={30}
+              color="#AAA"
+              style={{ textAlign: 'right', flex: 1 }}
+            />
           </View>
         </View>
       </TouchableOpacity>

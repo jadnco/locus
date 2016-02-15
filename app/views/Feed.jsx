@@ -46,6 +46,9 @@ class Feed extends Component {
         img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
         title: '2016 Jaguar F-Type R AWD',
         created: '12h',
+        likesCount: 198,
+        commentsCount: 27,
+        description: 'A very cool shot I got while hiking up some mountains.',
         spotter: {
           name: 'Oscar Isaac',
           handle: 'oscar',
