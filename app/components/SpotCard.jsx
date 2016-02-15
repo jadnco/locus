@@ -20,54 +20,43 @@ import ProfileView from '../views/Profile';
 import SpotView from '../views/Spot';
 
 type Props = {
-  onPress: Function,
   style: Object,
   size: number,
   push: Function,
-  title: string,
-  spotter: Object,
-  created: string,
-  img: Object,
+  pop: ?Function,
 };
 
 class SpotCard extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {
-      title,
-      spotter,
-      created,
-      img,
-      push,
-      style,
-    } = this.props;
+    let { push, pop, style, ...data } = this.props;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
-        onPress={() => push({ component: SpotView, title, img, spotter, created})}
+        onPress={() => push({ component: SpotView, ...data })}
       >
 
         <View style={{ padding: 14, flexDirection: 'row' }}>
-          <Text>{title}</Text>
-          <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{created}</Text>
+          <Text>{data.title}</Text>
+          <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{data.created}</Text>
         </View>
 
-        <ResponsiveImage source={img} style={styles.image} />
+        <ResponsiveImage source={data.img} style={styles.image} />
 
         <View style={{ padding: 10, flex: 1, flexDirection: 'row' }}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={data => push({ component: ProfileView, spotter })}
+            onPress={() => push({ component: ProfileView, ...data.spotter })}
           >
 
             <Avatar size={40} />
           </TouchableOpacity>
           <View>
-            <Text style={styles.spotterName}>{spotter.name}</Text>
-            <Text style={styles.timestamp}>@{spotter.handle}</Text>
+            <Text style={styles.spotterName}>{data.spotter.name}</Text>
+            <Text style={styles.timestamp}>@{data.spotter.handle}</Text>
           </View>
         </View>
       </TouchableOpacity>

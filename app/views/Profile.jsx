@@ -79,12 +79,12 @@ class Profile extends Component {
   }
 
   render(): ReactElement {
-    let { push, pop } = this.props;
+    let { push, pop, ...data } = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
-          title='Oscar Isaac'
+          title={data.name}
           rightButton={<FollowButton />}
           style={{ backgroundColor: 'transparent' }}
           leftButton={pop && <BackButton onPress={pop} />}

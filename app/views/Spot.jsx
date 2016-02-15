@@ -70,12 +70,12 @@ class Spot extends Component {
   }
 
   render(): ReactElement {
-    let { title, push, img, pop } = this.props;
+    let { push, img, pop, ...data } = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
-          title={title}
+          title={data.title}
           style={{ borderBottomWidth: 0 }}
           leftButton={<BackButton onPress={pop} />}
         />
@@ -85,7 +85,8 @@ class Spot extends Component {
         <ScrollView
           contentContainerStyle={styles.scroll}
           contentInset={{ bottom: 49 }}
-          automaticallyAdjustContentInsets={false}>
+          automaticallyAdjustContentInsets={false}
+        >
 
           <View>
             <ResponsiveImage
@@ -97,13 +98,14 @@ class Spot extends Component {
           <View style={{ padding: 10 }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => push({ component: ProfileView, })}
+              onPress={() => push({ component: ProfileView, ...data.spotter })}
             >
 
               <Avatar size={40} />
+              <Text>{data.spotter.name}</Text>
+              <Text>@{data.spotter.handle}</Text>
 
             </TouchableOpacity>
-            <Text>{title}</Text>
           </View>
 
           <View>
@@ -113,7 +115,7 @@ class Spot extends Component {
               scrollEnabled={false}
               contentInset={{ bottom: 49 }}
               automaticallyAdjustContentInsets={false}
-              row={data => <Comment {...data} />}
+              row={comment => <Comment {...comment} />}
             />
 
           </View>
