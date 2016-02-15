@@ -33,18 +33,20 @@ class Search extends Component {
   }
 
   render(): ReactElement {
-    let {pop} = this.props;
+    let { pop } = this.props;
 
     return (
       <View>
         <TopBar
           title='Search'
-          leftButton={<BackButton onPress={pop} />} />
+          leftButton={<BackButton onPress={pop} />}
+        />
 
         <ScrollView
-          contentInset={{bottom: 49}}
+          contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
-          style={styles.scrollView}>
+          style={styles.scrollView}
+        >
 
           <View style={styles.container}>
             <Text>This is the Search view</Text>

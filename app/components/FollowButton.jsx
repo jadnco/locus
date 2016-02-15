@@ -39,7 +39,8 @@ class FollowButton extends Component {
     return (
       <TouchableHighlight
         onPress={this._toggleActive.bind(this)}
-        style={[styles.unactive, this.state.active && styles.active]}>
+        style={[styles.unactive, this.state.active && styles.active]}
+      >
 
         <Text style={this.state.active && styles.activeText}>
           {this.state.active && 'Following' || 'Follow'}

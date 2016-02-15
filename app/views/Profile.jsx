@@ -79,32 +79,33 @@ class Profile extends Component {
   }
 
   render(): ReactElement {
-    let {push, pop} = this.props;
+    let { push, pop } = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
           title='Oscar Isaac'
           rightButton={<FollowButton />}
-          style={{backgroundColor: 'transparent'}}
-          leftButton={pop && <BackButton onPress={pop} />} />
+          style={{ backgroundColor: 'transparent' }}
+          leftButton={pop && <BackButton onPress={pop} />}
+        />
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
             <ResponsiveImage
               source='http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1'
               style={styles.image}
-              height={200}>
+              height={200}
+            >
 
               <View style={styles.overlay}></View>
             </ResponsiveImage>
 
             <View style={styles.top}>
-
-              
 
               <View style={styles.user}>
                 <Avatar size={80} style={styles.avatar} />
@@ -141,8 +142,7 @@ class Profile extends Component {
               
             </View>
 
-            <ScrollableTabView
-              renderTabBar={() => <ProfileTabBar />}>
+            <ScrollableTabView renderTabBar={() => <ProfileTabBar />}>
 
               <List
                 tabLabel='spots'
@@ -151,7 +151,8 @@ class Profile extends Component {
                 row={data => <SpotCard data={data} push={push} />}
                 style={styles.listView}
                 contentInset={{bottom: 49}}
-                automaticallyAdjustContentInsets={false} />
+                automaticallyAdjustContentInsets={false}
+              />
 
               <View height={600} tabLabel='likes'>
                 <Text>Likes</Text>

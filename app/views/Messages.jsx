@@ -33,8 +33,9 @@ class Messages extends Component {
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
           <Text>This is the Messages view</Text>
         </ScrollView>

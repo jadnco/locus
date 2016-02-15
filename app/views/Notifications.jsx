@@ -34,21 +34,11 @@ class Notifications extends Component {
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
           <Text>This is the Notifications view</Text>
-          <List items={[
-            {
-              title: 'row 1'
-            },
-            {
-              title: 'row 2'
-            },
-            {
-              title: 'row 3',
-            }
-          ]} />
         </ScrollView>
       </View>
     );

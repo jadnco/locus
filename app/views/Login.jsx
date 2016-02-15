@@ -24,7 +24,8 @@ class Login extends Component {
 
         <ScrollView
           style={styles.container}
-          automaticallyAdjustContentInsets={false}>
+          automaticallyAdjustContentInsets={false}
+        >
 
           <Text>Login with Twitter or Facebook.</Text>
         </ScrollView>

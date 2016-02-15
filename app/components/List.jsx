@@ -38,13 +38,14 @@ class List extends Component {
   }
 
   render(): ReactElement {
-    let {row, ...other} = this.props;
+    let { row, ...other } = this.props;
 
     return (
       <ListView
         dataSource={this.state.data}
         renderRow={row || (data => <ListItem data={data} />)}
-        {...other} />
+        {...other}
+      />
     );
   }
 }

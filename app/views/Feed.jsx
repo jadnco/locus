@@ -77,24 +77,26 @@ class Feed extends Component {
   }
 
   render(): ReactElement {
-    let {push, pop} = this.props;
+    let { push, pop } = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
           title='L O C U S'
           rightButton={
-            <SearchButton onPress={() => push({component: SearchView})} />
-          } />
+            <SearchButton onPress={() => push({ component: SearchView })} />
+          }
+        />
 
           <List
             items={this.spots}
             style={styles.container}
-            contentInset={{bottom: 49}}
+            contentInset={{ bottom: 49 }}
             automaticallyAdjustContentInsets={false}
             row={data =>
               <SpotCard data={data} push={push} pop={pop} />
-            } />
+            }
+          />
 
       </View>
     );

@@ -27,19 +27,23 @@ class Comment extends Component {
   }
 
   render(): ReactElement {
-    let {content, author, created, ...other} = this.props;
+    let { content, author, created, ...other } = this.props;
 
     return (
-      <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start', padding: 8, borderTopWidth: 1, borderColor: '#dadbdb'}}>
+      <View
+        style={{ flexDirection: 'row', padding: 8, borderTopWidth: 1, borderColor: '#dadbdb' }}
+      >
+
         <Avatar
           size={40}
-          source={{uri: 'https://upload.wikimedia.org/wikipedia/en/c/c4/Futurama_106_-_A_Fishful_of_Dollars.jpg'}} />
+          source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/c/c4/Futurama_106_-_A_Fishful_of_Dollars.jpg' }}
+        />
 
-        <View style={{marginLeft: 8, flex: 1}}>
-          <Text style={{fontWeight: 'bold'}}>{author.name}</Text>
-          <Text style={{color: 'grey'}}>@{author.handle}</Text>
-          <Text style={{marginTop: 8}}>{content}</Text>
-          <Text style={{color: 'grey', marginTop: 8}}>{created}</Text>
+        <View style={{ marginLeft: 8, flex: 1 }}>
+          <Text style={{ fontWeight: 'bold' }}>{author.name}</Text>
+          <Text style={{ color: 'grey' }}>@{author.handle}</Text>
+          <Text style={{ marginTop: 8 }}>{content}</Text>
+          <Text style={{ color: 'grey', marginTop: 8 }}>{created}</Text>
         </View>
       </View>
     );

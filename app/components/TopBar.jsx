@@ -20,13 +20,14 @@ class TopBar extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {title, style, ...other} = this.props;
+    let { title, style, ...other } = this.props;
 
     return (
       <View style={[styles.topBar, style]}>
         <NavigationBar
           tintColor='white'
-          title={{title}} {...other} />
+          title={{ title }} {...other}
+        />
       </View>
     );
   }

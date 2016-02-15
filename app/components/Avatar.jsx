@@ -20,8 +20,7 @@ class Avatar extends Component {
   props: Props;
 
   render(): ReactElement {
-    // this is a test
-    let { style, size, ...other } = this.props;// this is just a comment
+    let { style, size, ...other } = this.props;
 
     return (
       <Image
@@ -31,7 +30,8 @@ class Avatar extends Component {
         style={[styles.avatar, { borderRadius: size / 2 }, style]}
         width={size}
         height={size}
-        {...other} />
+        {...other}
+      />
     );
   }
 }
