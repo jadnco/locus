@@ -94,7 +94,7 @@ class Feed extends Component {
             contentInset={{ bottom: 49 }}
             automaticallyAdjustContentInsets={false}
             row={data =>
-              <SpotCard data={data} push={push} pop={pop} />
+              <SpotCard {...data} push={push} pop={pop} />
             }
           />
 

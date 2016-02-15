@@ -148,9 +148,9 @@ class Profile extends Component {
                 tabLabel='spots'
                 items={this.spots}
                 scrollEnabled={false}
-                row={data => <SpotCard data={data} push={push} />}
+                row={data => <SpotCard {...data} push={push} />}
                 style={styles.listView}
-                contentInset={{bottom: 49}}
+                contentInset={{ bottom: 49 }}
                 automaticallyAdjustContentInsets={false}
               />
 

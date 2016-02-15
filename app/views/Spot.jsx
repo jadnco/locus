@@ -26,9 +26,10 @@ import ProfileView from './Profile';
 
 type Props = {
   navigator: Object,
-  data: Object,
+  title: string,
   pop: Function,
   push: Function,
+  img: Object,
 };
 
 class Spot extends Component {
@@ -69,8 +70,7 @@ class Spot extends Component {
   }
 
   render(): ReactElement {
-    let { title, img } = this.props.data;
-    let { push, pop } = this.props;
+    let { title, push, img, pop } = this.props;
 
     return (
       <View style={styles.container}>
@@ -97,7 +97,7 @@ class Spot extends Component {
           <View style={{ padding: 10 }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => push({ component: ProfileView })}
+              onPress={() => push({ component: ProfileView, })}
             >
 
               <Avatar size={40} />
@@ -111,7 +111,7 @@ class Spot extends Component {
               items={this.comments}
               style={styles.container}
               scrollEnabled={false}
-              contentInset={{bottom: 49}}
+              contentInset={{ bottom: 49 }}
               automaticallyAdjustContentInsets={false}
               row={data => <Comment {...data} />}
             />

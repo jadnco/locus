@@ -20,25 +20,34 @@ import ProfileView from '../views/Profile';
 import SpotView from '../views/Spot';
 
 type Props = {
-  data: Object,
   onPress: Function,
   style: Object,
   size: number,
   push: Function,
+  title: string,
+  spotter: Object,
+  created: string,
+  img: Object,
 };
 
 class SpotCard extends Component {
   props: Props;
 
   render(): ReactElement {
-    let { data, onPress, push, style, ...other } = this.props;
-    let { title, spotter, created } = data;
+    let {
+      title,
+      spotter,
+      created,
+      img,
+      push,
+      style,
+    } = this.props;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
-        onPress={() => push({ component: SpotView, data })}
+        onPress={() => push({ component: SpotView, title, img, spotter, created})}
       >
 
         <View style={{ padding: 14, flexDirection: 'row' }}>
@@ -46,12 +55,12 @@ class SpotCard extends Component {
           <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{created}</Text>
         </View>
 
-        <ResponsiveImage source={data.img} style={styles.image} />
+        <ResponsiveImage source={img} style={styles.image} />
 
         <View style={{ padding: 10, flex: 1, flexDirection: 'row' }}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={data => push({ component: ProfileView, data })}
+            onPress={data => push({ component: ProfileView, spotter })}
           >
 
             <Avatar size={40} />

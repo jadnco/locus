@@ -36,14 +36,17 @@ class locus extends Component {
     });
   }
 
-  _renderScene(route: {component: ReactElement, data: Object}, navigator: Navigator): ReactElement {
-    const _isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
+  _renderScene(route: {component: ReactElement}, navigator: Navigator): ReactElement {
+    let { component, ...props } = route;
+    const isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
 
     return (
+
+      // `component` by itself does not work
       <route.component
-        data={route.data}
-        pop={!_isInitialRoute && navigator.pop}
+        pop={!isInitialRoute && navigator.pop}
         push={navigator.push}
+        {...props}
       />
     );
   }
