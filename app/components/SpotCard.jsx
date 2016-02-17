@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  ActionSheetIOS,
   Component,
   StyleSheet,
   TouchableHighlight,
@@ -25,10 +26,24 @@ type Props = {
   size: number,
   push: Function,
   pop: ?Function,
+
+  title: string,
 };
 
 class SpotCard extends Component {
   props: Props;
+
+  showShareActionSheet(): void {
+    ActionSheetIOS.showShareActionSheetWithOptions({
+      url: 'http://google.ca',
+      message: this.props.title,
+      tintColor: 'black',
+    }, (error) => {
+      console.log(error)
+    }, (success, method) => {
+      console.log(`Shared with ${method}`);
+    });
+  }
 
   render(): ReactElement {
     let { push, pop, style, ...data } = this.props;
@@ -80,12 +95,18 @@ class SpotCard extends Component {
               <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.commentsCount}</Text>
             </View>
 
-            <Icon
-              name="share-apple"
-              size={30}
-              color="#AAA"
-              style={{ textAlign: 'right', flex: 1 }}
-            />
+            <TouchableOpacity
+              style={{ flex: 1 }}
+              onPress={this.showShareActionSheet.bind(this)}
+            >
+
+              <Icon
+                name="share-apple"
+                size={30}
+                color="#AAA"
+                style={{ textAlign: 'right' }}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
