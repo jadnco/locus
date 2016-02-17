@@ -3,6 +3,7 @@ declare module 'react-native' {
   declare var StyleSheet: any;
   declare var Animated: any;
   declare var Dimensions: any;
+  declare var ActionSheetIOS: any;
   declare var AppRegistry: any;
   declare var ActivityIndicatorIOS: any;
   declare var ART: any;
