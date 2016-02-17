@@ -13,15 +13,10 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import {
-  Avatar,
-  ResponsiveImage,
-} from '.';
+import { Avatar, ResponsiveImage } from '.';
+import { Profile, Spot } from '../views';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
-
-import ProfileView from '../views/Profile';
-import SpotView from '../views/Spot';
 
 type Props = {
   style: Object,
@@ -54,7 +49,7 @@ class SpotCard extends Component {
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
-        onPress={() => push({ component: SpotView, ...data })}
+        onPress={() => push({ component: Spot, ...data })}
       >
 
         <View style={{ padding: 14, flexDirection: 'row' }}>
@@ -70,7 +65,7 @@ class SpotCard extends Component {
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => push({ component: ProfileView, ...data.spotter })}
+                onPress={() => push({ component: Profile, ...data.spotter })}
               >
 
                 <Avatar size={40} />

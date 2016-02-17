@@ -9,11 +9,13 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import FeedView from './app/views/Feed';
-import ProfileView from './app/views/Profile';
-import CameraView from './app/views/Camera';
-import NotificationsView from './app/views/Notifications';
-import MessagesView from './app/views/Messages';
+import {
+  Camera,
+  Feed,
+  Messages,
+  Notifications,
+  Profile,
+} from './app/views'
 
 type State = {
   selectedTab: string,
@@ -78,7 +80,7 @@ class locus extends Component {
         >
 
           <Navigator
-            initialRoute={{ component: FeedView }}
+            initialRoute={{ component: Feed }}
             renderScene={this.renderScene.bind(this)}
           />
 
@@ -92,7 +94,7 @@ class locus extends Component {
           onPress={() => this.tabChange('notifications')}
         >
 
-          <NotificationsView />
+          <Notifications />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
@@ -102,7 +104,7 @@ class locus extends Component {
           onPress={() => this.tabChange('camera')}
         >
 
-          <CameraView />
+          <Camera />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
@@ -112,7 +114,7 @@ class locus extends Component {
           onPress={() => this.tabChange('messages')}
         >
 
-          <MessagesView />
+          <Messages />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
@@ -123,7 +125,7 @@ class locus extends Component {
         >
 
           <Navigator
-            initialRoute={{ component: ProfileView, ...this.me }}
+            initialRoute={{ component: Profile, ...this.me }}
             renderScene={this.renderScene.bind(this)}
           />
 

@@ -14,8 +14,6 @@ import React, {
   Image,
 } from 'react-native';
 
-import Spot from './Spot';
-
 import { TopBar, SearchButton } from '../components';
 
 class Messages extends Component {
@@ -56,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Messages;
+export { Messages };

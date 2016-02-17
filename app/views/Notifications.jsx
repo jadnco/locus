@@ -14,8 +14,6 @@ import React, {
   Image,
 } from 'react-native';
 
-import Spot from './Spot';
-
 import { TopBar, SearchButton, List } from '../components';
 
 class Notifications extends Component {
@@ -56,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Notifications;
+export { Notifications };

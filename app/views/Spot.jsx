@@ -24,7 +24,7 @@ import {
   StatBar,
 } from '../components';
 
-import ProfileView from './Profile';
+import { Profile } from '.';
 
 type Props = {
   navigator: Object,
@@ -100,7 +100,7 @@ class Spot extends Component {
           <View style={{ padding: 10 }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => push({ component: ProfileView, ...data.spotter })}
+              onPress={() => push({ component: Profile, ...data.spotter })}
             >
 
               <Avatar size={40} />
@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Spot;
+export { Spot };

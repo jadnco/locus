@@ -14,8 +14,6 @@ import React, {
   Image,
 } from 'react-native';
 
-import Spot from './Spot';
-
 import NavigationBar from 'react-native-navbar';
 import { SearchButton } from '../components';
 
@@ -50,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Camera;
+export { Camera };

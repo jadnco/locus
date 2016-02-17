@@ -24,9 +24,7 @@ import {
   ResponsiveImage,
 } from '../components';
 
-import SpotView from './Spot';
-import SearchView from './Search';
-import ProfileView from './Profile';
+import { Search } from '.';
 
 type Props = {
   push: Function,
@@ -108,7 +106,7 @@ class Feed extends Component {
         <TopBar
           title='L O C U S'
           rightButton={
-            <SearchButton onPress={() => push({ component: SearchView })} />
+            <SearchButton onPress={() => push({ component: Search })} />
           }
         />
 
@@ -139,4 +137,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Feed;
+export { Feed };
