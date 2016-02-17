@@ -16,9 +16,7 @@ import React, {
 
 import Spot from './Spot';
 
-import TopBar from '../components/TopBar';
-import SearchButton from '../components/SearchButton';
-import List from '../components/List';
+import { TopBar, SearchButton, List } from '../components';
 
 class Notifications extends Component {
   constructor(props: Object): void {

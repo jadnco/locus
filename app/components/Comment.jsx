@@ -11,7 +11,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import Avatar from './Avatar';
+import { Avatar } from '.';
 
 type Props = {
   content: string,
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Comment;
+export { Comment };

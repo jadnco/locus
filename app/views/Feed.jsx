@@ -15,18 +15,18 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-import SearchButton from '../components/SearchButton';
-import ResponsiveImage from '../components/ResponsiveImage';
-import Avatar from '../components/Avatar';
+import {
+  Avatar,
+  List,
+  SpotCard,
+  TopBar,
+  SearchButton,
+  ResponsiveImage,
+} from '../components';
 
 import SpotView from './Spot';
 import SearchView from './Search';
 import ProfileView from './Profile';
-
-import SpotCard from '../components/SpotCard';
-
-import List from '../components/List';
 
 type Props = {
   push: Function,

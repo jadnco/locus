@@ -13,10 +13,12 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import ResponsiveImage from './ResponsiveImage';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import {
+  Avatar,
+  ResponsiveImage,
+} from '.';
 
-import Avatar from './Avatar';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import ProfileView from '../views/Profile';
 import SpotView from '../views/Spot';
@@ -137,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SpotCard;
+export { SpotCard };

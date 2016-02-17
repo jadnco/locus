@@ -14,13 +14,15 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-import BackButton from '../components/BackButton';
-import StatBar from '../components/StatBar';
-import Avatar from '../components/Avatar';
-import ResponsiveImage from '../components/ResponsiveImage';
-import List from '../components/List';
-import Comment from '../components/Comment';
+import {
+  Avatar,
+  BackButton,
+  Comment,
+  List,
+  TopBar,
+  ResponsiveImage,
+  StatBar,
+} from '../components';
 
 import ProfileView from './Profile';
 

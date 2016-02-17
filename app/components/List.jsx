@@ -10,7 +10,7 @@ import React, {
   Text,
 } from 'react-native';
 
-import ListItem from './ListItem';
+import { ListItem } from '.';
 
 type Props = {
   items: Array<Object>,
@@ -50,4 +50,4 @@ class List extends Component {
   }
 }
 
-export default List;
+export { List };

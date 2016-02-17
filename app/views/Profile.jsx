@@ -16,19 +16,20 @@ import React, {
   SegmentedControlIOS,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
-import TopBar from '../components/TopBar';
+import {
+  Avatar,
+  BackButton,
+  FollowButton,
+  List,
+  ProfileTabBar,
+  TopBar,
+  ResponsiveImage,
+  SpotCard,
+} from '../components';
 
-import FollowButton from '../components/FollowButton';
-import ResponsiveImage from '../components/ResponsiveImage';
-import Avatar from '../components/Avatar';
-import BackButton from '../components/BackButton';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
-import SpotCard from '../components/SpotCard';
-import List from '../components/List';
-import ProfileTabBar from '../components/ProfileTabBar';
 
 type Props = {
   push: Function,

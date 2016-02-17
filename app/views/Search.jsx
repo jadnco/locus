@@ -14,9 +14,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-
-import BackButton from '../components/BackButton';
+import { BackButton, TopBar }  from '../components';
 
 type Props = {
   pop: Function,

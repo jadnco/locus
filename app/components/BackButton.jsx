@@ -27,4 +27,4 @@ class BackButton extends Component {
   }
 }
 
-export default BackButton;
+export { BackButton };

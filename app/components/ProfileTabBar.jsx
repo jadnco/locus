@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileTabBar;
+export { ProfileTabBar };

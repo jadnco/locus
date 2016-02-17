@@ -16,8 +16,7 @@ import React, {
 
 import Spot from './Spot';
 
-import TopBar from '../components/TopBar';
-import SearchButton from '../components/SearchButton';
+import { TopBar, SearchButton } from '../components';
 
 class Messages extends Component {
   constructor(props: Object): void {

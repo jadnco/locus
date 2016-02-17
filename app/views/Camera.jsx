@@ -17,7 +17,7 @@ import React, {
 import Spot from './Spot';
 
 import NavigationBar from 'react-native-navbar';
-import SearchButton from '../components/SearchButton';
+import { SearchButton } from '../components';
 
 type Props = {};
 
