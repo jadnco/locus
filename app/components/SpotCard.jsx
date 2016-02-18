@@ -43,7 +43,7 @@ class SpotCard extends Component {
     };
   }
 
-  like() {
+  toggleLike() {
     // Send request to server
     this.setState({ liked: !this.state.liked });
   }
@@ -102,7 +102,7 @@ class SpotCard extends Component {
 
           <View style={{ padding: 14, borderTopWidth: 1, borderColor: '#EEE', flexDirection: 'row' }}>
             <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity onPress={this.like.bind(this)}>
+              <TouchableOpacity onPress={this.toggleLike.bind(this)}>
                 <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
               </TouchableOpacity>
               <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.likesCount}</Text>
