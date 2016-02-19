@@ -37,7 +37,10 @@ class Feed extends Component {
   constructor(props: Props): void {
     super(props);
 
-    this.state = {};
+    this.state = {
+      spots: [],
+      loading: true,
+    };
 
     this.spots = [
       {
@@ -98,8 +101,43 @@ class Feed extends Component {
     ];
   }
 
+  componentDidMount(): void {
+    console.log("Feed View Mounted");
+
+    fetch(`http://10.28.163.16:1998/api/spots`, {
+      method: 'GET'
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      let spots = res.spots;
+
+      this.setState({ spots, loading: false });
+
+      console.log(spots);
+    })
+    .catch(err => alert(err));
+  }
+
   render(): ReactElement {
     let { push, pop } = this.props;
+
+    let content = <Text>Loading...</Text>;
+
+    if (!this.state.loading) {
+      content = (
+        <List
+          items={this.state.spots}
+          style={styles.container}
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+          row={data =>
+            <SpotCard {...data} push={push} pop={pop} />
+          }
+        />
+      );
+    }
 
     return (
       <View style={styles.container}>
@@ -110,15 +148,7 @@ class Feed extends Component {
           }
         />
 
-          <List
-            items={this.spots}
-            style={styles.container}
-            contentInset={{ bottom: 49 }}
-            automaticallyAdjustContentInsets={false}
-            row={data =>
-              <SpotCard {...data} push={push} pop={pop} />
-            }
-          />
+          {content}
 
       </View>
     );

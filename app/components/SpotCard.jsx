@@ -63,6 +63,8 @@ class SpotCard extends Component {
   render(): ReactElement {
     let { push, pop, style, ...data } = this.props;
 
+    console.log("DATA", data);
+
     return (
       <TouchableOpacity
         activeOpacity={0.8}
