@@ -101,6 +101,9 @@ class Feed extends Component {
     ];
   }
 
+  /**
+   * TODO: This should load all feed data and the embedded images
+   */
   componentDidMount(): void {
     console.log("Feed View Mounted");
 
