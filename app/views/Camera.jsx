@@ -48,6 +48,8 @@ class Camera extends Component {
     CameraRoll.getPhotos({ first: 1 }, (a) => {
       console.log(a);
 
+      // This should only get called when the user
+      // clicks on a 'Post/Submit' button.
       this.upload(a);
     }, () => {
       console.log('Error uploading file');
@@ -58,7 +60,7 @@ class Camera extends Component {
     let data = new FormData();
 
     // Create a new fieldname
-    data.append('spot', { ...photo.edges[0].node.image });
+    data.append('spot', { ...photo.edges[0].node.image, name: 'spot' });
 
     // Send the request to the server
     fetch('http://192.168.100.102:1998/upload', {
@@ -72,7 +74,6 @@ class Camera extends Component {
       <View style={{flex: 1}}>
         <Cam
           ref={cam => this.camera = cam}
-          captureTarget={Cam.constants.CaptureTarget.disk}
           style={{alignItems: 'center', width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
 
           <Text
