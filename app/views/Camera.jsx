@@ -47,13 +47,24 @@ class Camera extends Component {
     console.log('Getting photos');
     CameraRoll.getPhotos({ first: 1 }, (a) => {
       console.log(a);
-    }, () => {
 
+      this.upload(a);
+    }, () => {
+      console.log('Error uploading file');
     });
   }
 
-  upload(): void {
+  upload(photo: Object): void {
+    let data = new FormData();
 
+    // Create a new fieldname
+    data.append('spot', { ...photo.edges[0].node.image });
+
+    // Send the request to the server
+    fetch('http://192.168.100.102:1998/upload', {
+      method: 'POST',
+      body: data,
+    });
   }
 
   render(): ReactElement {
