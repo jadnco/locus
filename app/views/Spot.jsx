@@ -92,7 +92,7 @@ class Spot extends Component {
 
           <View>
             <ResponsiveImage
-              source={img}
+              source={'http://192.168.100.102:1998/uploads/' + data.photo}
               style={styles.image}
             />
           </View>
