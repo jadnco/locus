@@ -77,7 +77,10 @@ class SpotCard extends Component {
           <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{data.created}</Text>
         </View>
 
-        <ResponsiveImage source={data.img} style={styles.image} />
+        <ResponsiveImage
+          source={'http://192.168.100.102:1998/uploads/' + data.photo}
+          style={styles.image}
+        />
 
         <View style={{ flexDirection: 'column' }}>
 

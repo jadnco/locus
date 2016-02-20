@@ -104,18 +104,14 @@ class Feed extends Component {
   componentDidMount(): void {
     console.log("Feed View Mounted");
 
-    fetch(`http://10.28.163.16:1998/api/spots`, {
+    fetch(`http://192.168.100.102:1998/api/spots`, {
       method: 'GET'
     })
-    .then(res => {
-      return res.json();
-    })
+    .then(res => res.json())
     .then(res => {
       let spots = res.spots;
 
       this.setState({ spots, loading: false });
-
-      console.log(spots);
     })
     .catch(err => alert(err));
   }
