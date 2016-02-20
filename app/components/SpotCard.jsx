@@ -16,6 +16,8 @@ import React, {
 import { Avatar, ResponsiveImage } from '.';
 import { Profile, Spot } from '../views';
 
+import { formatTime } from '../utils';
+
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 type Props = {
@@ -63,8 +65,6 @@ class SpotCard extends Component {
   render(): ReactElement {
     let { push, pop, style, ...data } = this.props;
 
-    console.log("DATA", data);
-
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -74,7 +74,7 @@ class SpotCard extends Component {
 
         <View style={{ padding: 14, flexDirection: 'row' }}>
           <Text>{data.title}</Text>
-          <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{data.created}</Text>
+          <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{formatTime(data.created)}</Text>
         </View>
 
         <ResponsiveImage
