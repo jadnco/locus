@@ -4,6 +4,8 @@
 
 import React, {
   Component,
+  CameraRoll,
+  Dimensions,
   StyleSheet,
   Text,
   View,
@@ -14,8 +16,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import NavigationBar from 'react-native-navbar';
-import { SearchButton } from '../components';
+import Cam from 'react-native-camera';
 
 type Props = {};
 
@@ -26,11 +27,51 @@ class Camera extends Component {
     super(props);
 
     this.state = {};
+    this.camera = null;
+    this.photo = '';
+  }
+
+  capture(): void {
+
+    // This will capture the image an save to the camera roll
+    this.camera.capture((error, photo) => {
+      console.log('Photo -->', photo);
+
+      this.photo = photo;
+
+      this.getPhoto();
+    });
+  }
+
+  getPhoto(): void {
+    console.log('Getting photos');
+    CameraRoll.getPhotos({ first: 1 }, (a) => {
+      console.log(a);
+    }, () => {
+
+    });
+  }
+
+  upload(): void {
+
   }
 
   render(): ReactElement {
     return (
-      <Text>This is the camera view</Text>
+      <View style={{flex: 1}}>
+        <Cam
+          ref={cam => this.camera = cam}
+          captureTarget={Cam.constants.CaptureTarget.disk}
+          style={{alignItems: 'center', width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
+
+          <Text
+            style={{marginTop: 50, padding: 10, color: 'black', backgroundColor: 'white'}}
+            onPress={this.capture.bind(this)}
+          >
+            [CAPTURE]
+          </Text>
+        </Cam>
+      </View>
     );
   }
 }
