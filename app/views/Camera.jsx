@@ -78,9 +78,9 @@ class Camera extends Component {
 
           <Text
             style={{marginTop: 50, padding: 10, color: 'black', backgroundColor: 'white'}}
-            onPress={this.capture.bind(this)}
+            onPress={this.getPhoto.bind(this)}
           >
-            [CAPTURE]
+            [GET LAST PHOTO]
           </Text>
         </Cam>
       </View>

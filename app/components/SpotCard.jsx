@@ -56,7 +56,7 @@ class SpotCard extends Component {
       message: this.props.title,
       tintColor: 'black',
     }, (error) => {
-      console.log(error)
+      console.log(error);
     }, (success, method) => {
       console.log(`Shared with ${method}`);
     });
@@ -65,13 +65,14 @@ class SpotCard extends Component {
   render(): ReactElement {
     let { push, pop, style, ...data } = this.props;
 
+    console.log(data);
+
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
         onPress={() => push({ component: Spot, ...data })}
       >
-
         <View style={{ padding: 14, flexDirection: 'row' }}>
           <Text>{data.title}</Text>
           <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{formatTime(data.created)}</Text>

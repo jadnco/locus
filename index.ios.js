@@ -13,6 +13,7 @@ import {
   Camera,
   Feed,
   Messages,
+  NewSpotSource,
   Notifications,
   Profile,
 } from './app/views'
@@ -98,13 +99,17 @@ class locus extends Component {
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
-          title="Camera"
+          title="New Spot"
           iconName="camera"
           selected={this.state.selectedTab === 'camera'}
           onPress={() => this.tabChange('camera')}
         >
 
-          <Camera />
+          <Navigator
+            initialRoute={{ component: NewSpotSource }}
+            renderScene={this.renderScene.bind(this)}
+          />
+
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
@@ -114,7 +119,7 @@ class locus extends Component {
           onPress={() => this.tabChange('messages')}
         >
 
-          <Messages />
+          <Camera />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
