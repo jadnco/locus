@@ -26,7 +26,9 @@ class Camera extends Component {
   constructor(props: Props): void {
     super(props);
 
-    this.state = {};
+    this.state = {
+      loading: null,
+    };
     this.camera = null;
     this.photo = '';
   }
@@ -62,16 +64,22 @@ class Camera extends Component {
     // Create a new fieldname
     data.append('spot', { ...photo.edges[0].node.image, name: 'spot' });
 
+    this.setState({loading: <Text style={{color: 'black', padding: 20, borderWidth: 1, borderColor: 'white'}}>Uploading...</Text>})
+
     // Send the request to the server
     fetch('http://192.168.100.102:1998/upload', {
       method: 'POST',
       body: data,
-    });
+    })
+    .then(() => this.setState({loading: null}));
   }
 
   render(): ReactElement {
     return (
       <View style={{flex: 1}}>
+
+        {this.state.loading && this.state.loading}
+
         <Cam
           ref={cam => this.camera = cam}
           style={{alignItems: 'center', width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
