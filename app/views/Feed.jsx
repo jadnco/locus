@@ -37,9 +37,6 @@ class Feed extends Component {
   constructor(props: Props): void {
     super(props);
 
-    let time = '2016-02-18T15:55:14.876Z';
-    let time2 = new Date();
-
     this.state = {
       spots: [],
       loading: true,
