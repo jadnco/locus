@@ -7,4 +7,4 @@ export { Notifications } from './Notifications';
 export { Profile } from './Profile';
 export { Search } from './Search';
 export { Spot } from './Spot';
-
+export { SpotEditor } from './SpotEditor';

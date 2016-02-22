@@ -21,3 +21,21 @@ export function formatTime(timestamp: Date | string): string {
 
   return interval + '' + periods[i];
 }
+
+// http://stackoverflow.com/a/10600491
+export function formatNumber(number: number): string {
+  let round: (n: number, precision: number) => number = (n, precision) => {
+    let prec = Math.pow(10, precision);
+
+    return Math.round(n * prec) / prec;
+  };
+
+  let format: (n: number) => string = n => {
+    let base = Math.floor(Math.log(Math.abs(n)) / Math.log(1000));
+    let suffix = 'KMB'[base - 1];
+
+    return suffix ? round(n / Math.pow(1000, base), 2) + suffix : '' + n;
+  };
+
+  return format(number);
+}

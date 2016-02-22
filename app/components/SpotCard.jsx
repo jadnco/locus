@@ -16,7 +16,7 @@ import React, {
 import { Avatar, ResponsiveImage } from '.';
 import { Profile, Spot } from '../views';
 
-import { formatTime } from '../utils';
+import { formatNumber, formatTime } from '../utils';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -111,11 +111,11 @@ class SpotCard extends Component {
               <TouchableOpacity onPress={this.toggleLike.bind(this)}>
                 <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
               </TouchableOpacity>
-              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.likesCount}</Text>
+              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(data.likesCount)}</Text>
             </View>
             <View style={{ marginLeft: 16, flexDirection: 'row' }}>
               <Icon name="comment" size={30} color="#AAA" />
-              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{data.commentsCount}</Text>
+              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(data.commentsCount)}</Text>
             </View>
 
             <TouchableOpacity

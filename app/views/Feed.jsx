@@ -49,7 +49,7 @@ class Feed extends Component {
   componentDidMount(): void {
     console.log("Feed View Mounted");
 
-    fetch('http://192.168.100.102:1998/api/spots', {
+    fetch('http://10.28.163.16:1998/api/spots', {
       method: 'GET'
     })
     .then(res => res.json())

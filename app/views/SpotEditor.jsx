@@ -13,9 +13,9 @@ import React, {
 
 import { NextButton, TopBar } from '../components';
 
-import { SpotEditor } from '.';
+import { Search } from '.';
 
-class NewSpotSource extends Component {
+class SpotEditor extends Component {
   constructor(props: Object): void {
     super(props);
 
@@ -29,9 +29,9 @@ class NewSpotSource extends Component {
       <View style={styles.container}>
 
         <TopBar
-          title='New Spot'
+          title='Spot Editor'
           rightButton={
-            <NextButton onPress={() => push({ component: SpotEditor })} />
+            <NextButton onPress={() => push({ component: Search })} />
           }
         />
 
@@ -40,7 +40,7 @@ class NewSpotSource extends Component {
           automaticallyAdjustContentInsets={false}
         >
 
-          <Text>New Spot Source</Text>
+          <Text>New Spot Editor</Text>
         </ScrollView>
       </View>
     );
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { NewSpotSource };
+export { SpotEditor };
