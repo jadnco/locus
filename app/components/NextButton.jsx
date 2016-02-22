@@ -9,22 +9,22 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import {navigationBar} from '../styles';
+import { navigationBar } from '../styles';
 
 type Props = {
   onPress: Function,
 };
 
-class BackButton extends Component {
+class NextButton extends Component {
   props: Props;
 
   render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Icon name='chevron-left' style={navigationBar.iconLeft} />
+        <Icon name="chevron-right" style={navigationBar.iconRight} />
       </TouchableOpacity>
     );
   }
 }
 
-export default BackButton;
+export { NextButton };

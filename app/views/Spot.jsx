@@ -3,7 +3,6 @@
 'use strict';
 
 import React, {
-  AppRegistry,
   Component,
   StyleSheet,
   Text,
@@ -15,21 +14,24 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-import BackButton from '../components/BackButton';
-import StatBar from '../components/StatBar';
-import Avatar from '../components/Avatar';
-import ResponsiveImage from '../components/ResponsiveImage';
-import List from '../components/List';
-import Comment from '../components/Comment';
+import {
+  Avatar,
+  BackButton,
+  Comment,
+  List,
+  TopBar,
+  ResponsiveImage,
+  StatBar,
+} from '../components';
 
-import ProfileView from './Profile';
+import { Profile } from '.';
 
 type Props = {
   navigator: Object,
-  data: Object,
+  title: string,
   pop: Function,
   push: Function,
+  img: Object,
 };
 
 class Spot extends Component {
@@ -70,14 +72,13 @@ class Spot extends Component {
   }
 
   render(): ReactElement {
-    let {title, img} = this.props.data;
-    let {push, pop} = this.props;
+    let { push, img, pop, ...data } = this.props;
 
     return (
       <View style={styles.container}>
         <TopBar
-          title={title}
-          style={{borderBottomWidth: 0}}
+          title={data.title}
+          style={{ borderBottomWidth: 0 }}
           leftButton={<BackButton onPress={pop} />}
         />
 
@@ -85,24 +86,28 @@ class Spot extends Component {
 
         <ScrollView
           contentContainerStyle={styles.scroll}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
           <View>
             <ResponsiveImage
-              source={img}
-              style={styles.image} />
+              source={'http://192.168.100.102:1998/uploads/' + data.photo}
+              style={styles.image}
+            />
           </View>
 
-          <View style={{padding: 10}}>
+          <View style={{ padding: 10 }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => push({component: ProfileView})}>
+              onPress={() => push({ component: Profile, ...data.spotter })}
+            >
 
               <Avatar size={40} />
+              <Text>{data.spotter.name}</Text>
+              <Text>@{data.spotter.handle}</Text>
 
             </TouchableOpacity>
-            <Text>{title}</Text>
           </View>
 
           <View>
@@ -110,9 +115,10 @@ class Spot extends Component {
               items={this.comments}
               style={styles.container}
               scrollEnabled={false}
-              contentInset={{bottom: 49}}
+              contentInset={{ bottom: 49 }}
               automaticallyAdjustContentInsets={false}
-              row={data => <Comment data={data} />} />
+              row={comment => <Comment {...comment} />}
+            />
 
           </View>
         </ScrollView>
@@ -135,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Spot;
+export { Spot };

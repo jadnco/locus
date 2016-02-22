@@ -13,7 +13,7 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import {navigationBar} from '../styles';
+import { navigationBar } from '../styles';
 
 type Props = {
   tabs: Array<string>,
@@ -51,7 +51,7 @@ class ProfileTabBar extends Component {
   }
 
   render(): ReactElement {
-    let {tabs, containerWidth, scrollValue} = this.props;
+    let { tabs, containerWidth, scrollValue } = this.props;
 
     let tabUnderlineStyle = {
       position: 'absolute',
@@ -71,7 +71,7 @@ class ProfileTabBar extends Component {
         <View style={styles.tabs}>
           {tabs.map((tab, i) => this._renderTab(tab, i))}
         </View>
-        <Animated.View style={[tabUnderlineStyle, {left}]} />
+        <Animated.View style={[tabUnderlineStyle, { left }]} />
       </View>
     );
   }
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileTabBar;
+export { ProfileTabBar };

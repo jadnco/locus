@@ -14,9 +14,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
-
-import BackButton from '../components/BackButton';
+import { BackButton, TopBar }  from '../components';
 
 type Props = {
   pop: Function,
@@ -33,18 +31,20 @@ class Search extends Component {
   }
 
   render(): ReactElement {
-    let {pop} = this.props;
+    let { pop } = this.props;
 
     return (
       <View>
         <TopBar
           title='Search'
-          leftButton={<BackButton onPress={pop} />} />
+          leftButton={<BackButton onPress={pop} />}
+        />
 
         <ScrollView
-          contentInset={{bottom: 49}}
+          contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
-          style={styles.scrollView}>
+          style={styles.scrollView}
+        >
 
           <View style={styles.container}>
             <Text>This is the Search view</Text>
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search;
+export { Search };

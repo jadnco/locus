@@ -9,22 +9,22 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import {navigationBar} from '../styles';
+import { navigationBar } from '../styles';
 
 type Props = {
   onPress: Function,
 };
 
-class SearchButton extends Component {
+class BackButton extends Component {
   props: Props;
 
   render(): ReactElement {
     return (
       <TouchableOpacity onPress={this.props.onPress}>
-        <Icon name='search' color='#CC9B47' style={navigationBar.iconRight} />
+        <Icon name="chevron-left" style={navigationBar.iconLeft} />
       </TouchableOpacity>
     );
   }
 }
 
-export default SearchButton;
+export { BackButton };

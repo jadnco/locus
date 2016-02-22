@@ -7,19 +7,15 @@ import React, {
   StyleSheet,
   Text,
   View,
-  ListView,
   TextInput,
   ScrollView,
-  NavigatorIOS,
-  Image,
 } from 'react-native';
 
-import Spot from './Spot';
+import { NextButton, TopBar } from '../components';
 
-import TopBar from '../components/TopBar';
-import SearchButton from '../components/SearchButton';
+import { Search } from '.';
 
-class Messages extends Component {
+class SpotEditor extends Component {
   constructor(props: Object): void {
     super(props);
 
@@ -27,16 +23,24 @@ class Messages extends Component {
   }
 
   render(): ReactElement {
+    let { push, ...other } = this.props;
+
     return (
       <View style={styles.container}>
-        <TopBar title='Messages' />
+
+        <TopBar
+          title='Spot Editor'
+          rightButton={
+            <NextButton onPress={() => push({ component: Search })} />
+          }
+        />
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          automaticallyAdjustContentInsets={false}
+        >
 
-          <Text>This is the Messages view</Text>
+          <Text>New Spot Editor</Text>
         </ScrollView>
       </View>
     );
@@ -48,12 +52,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  image: {
-    height: 300,
-    flex: 1,
-    flexDirection: 'column',
-    resizeMode: 'cover',
-  },
 });
 
-export default Messages;
+export { SpotEditor };

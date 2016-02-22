@@ -14,11 +14,7 @@ import React, {
   Image,
 } from 'react-native';
 
-import Spot from './Spot';
-
-import TopBar from '../components/TopBar';
-import SearchButton from '../components/SearchButton';
-import List from '../components/List';
+import { TopBar, SearchButton, List } from '../components';
 
 class Notifications extends Component {
   constructor(props: Object): void {
@@ -34,21 +30,11 @@ class Notifications extends Component {
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
           <Text>This is the Notifications view</Text>
-          <List items={[
-            {
-              title: 'row 1'
-            },
-            {
-              title: 'row 2'
-            },
-            {
-              title: 'row 3',
-            }
-          ]} />
         </ScrollView>
       </View>
     );
@@ -68,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Notifications;
+export { Notifications };

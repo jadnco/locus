@@ -21,14 +21,15 @@ class StatBar extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {title, ...other} = this.props;
+    let { title, ...other } = this.props;
 
     return (
       <View>
         <ScrollView
           horizontal={true}
           automaticallyAdjustContentInsets={false}
-          contentContainerStyle={styles.container}>
+          contentContainerStyle={styles.container}
+        >
 
           <View style={styles.stat}>
             <Text>560hp</Text>
@@ -76,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StatBar;
+export { StatBar };

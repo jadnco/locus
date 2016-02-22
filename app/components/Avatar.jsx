@@ -20,20 +20,18 @@ class Avatar extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {style, size, ...other} = this.props;
+    let { style, size, ...other } = this.props;
 
     return (
       <Image
         source={{
           uri: 'http://www.canalnoticias.com/wp-content/uploads/2015/01/Oscar-Isaac.jpg',
         }}
-        style={[
-          styles.avatar,
-          {borderRadius: size / 2},
-          style]}
+        style={[styles.avatar, { borderRadius: size / 2 }, style]}
         width={size}
         height={size}
-        {...other} />
+        {...other}
+      />
     );
   }
 }
@@ -44,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Avatar;
+export { Avatar };

@@ -20,16 +20,16 @@ class ListItem extends Component {
   props: Props;
 
   render(): ReactElement {
-    let {data, style, ...other} = this.props;
+    let { data, style, ...other } = this.props;
 
     return (
       <TouchableHighlight
-        onPress={() => alert('List item pressed')}>
+        onPress={() => alert('List item pressed')}
+      >
 
         <View>
-        <Text>{data.title}</Text>
+          <Text>{data.title}</Text>
         </View>
-
       </TouchableHighlight>
     );
   }
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export { ListItem };

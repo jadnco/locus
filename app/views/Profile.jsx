@@ -16,23 +16,34 @@ import React, {
   SegmentedControlIOS,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/EvilIcons';
-import TopBar from '../components/TopBar';
+import {
+  Avatar,
+  BackButton,
+  FollowButton,
+  List,
+  ProfileTabBar,
+  TopBar,
+  ResponsiveImage,
+  SpotCard,
+} from '../components';
 
-import FollowButton from '../components/FollowButton';
-import ResponsiveImage from '../components/ResponsiveImage';
-import Avatar from '../components/Avatar';
-import BackButton from '../components/BackButton';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
-import SpotCard from '../components/SpotCard';
-import List from '../components/List';
-import ProfileTabBar from '../components/ProfileTabBar';
 
 type Props = {
   push: Function,
   pop: Function,
+
+  // From response
+  name: string,
+  handle: string,
+  description: string,
+  location: string,
+  likesCount: number,
+  spotsCount: number,
+  followersCount: number,
+  followingCount: number,
 };
 
 class Profile extends Component {
@@ -41,7 +52,9 @@ class Profile extends Component {
   constructor(props: Props): void {
     super(props);
 
-    this.state = {};
+    this.state = {
+      loading: true,
+    };
 
     this.spots = [
       {
@@ -78,82 +91,92 @@ class Profile extends Component {
     ];
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  }
+
   render(): ReactElement {
-    let {push, pop} = this.props;
+    let { push, pop, ...data } = this.props;
+    let spots = <Text>Loading...</Text>;
+
+    if (!this.state.loading) {
+      spots = (
+        <List
+          tabLabel="Spots"
+          items={this.spots}
+          scrollEnabled={false}
+          row={data => <SpotCard {...data} push={push} />}
+          style={styles.listView}
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        />
+      );
+    }
 
     return (
       <View style={styles.container}>
         <TopBar
-          title='Oscar Isaac'
+          title={data.name}
           rightButton={<FollowButton />}
-          style={{backgroundColor: 'transparent'}}
-          leftButton={pop && <BackButton onPress={pop} />} />
+          style={{ backgroundColor: 'transparent' }}
+          leftButton={pop && <BackButton onPress={pop} />}
+        />
 
         <ScrollView
           style={styles.container}
-          contentInset={{bottom: 49}}
-          automaticallyAdjustContentInsets={false}>
+          contentInset={{ bottom: 49 }}
+          automaticallyAdjustContentInsets={false}
+        >
 
             <ResponsiveImage
               source='http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1'
               style={styles.image}
-              height={200}>
+              height={200}
+            >
 
               <View style={styles.overlay}></View>
             </ResponsiveImage>
 
             <View style={styles.top}>
 
-              
-
               <View style={styles.user}>
                 <Avatar size={80} style={styles.avatar} />
 
                 <View>
-                  <Text style={styles.name}>Oscar Isaac</Text>
-                  <Text style={styles.handle}>@oscar</Text>
+                  <Text style={styles.name}>{data.name}</Text>
+                  <Text style={styles.handle}>@{data.handle}</Text>
 
                   <View style={styles.countItems}>
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>156</Text>
+                      <Text style={styles.infoNumber}>{data.spotsCount}</Text>
                       <Text style={styles.infoTitle}>Spots</Text>
                     </View>
 
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>869</Text>
+                      <Text style={styles.infoNumber}>{data.followingCount}</Text>
                       <Text style={styles.infoTitle}>Following</Text>
                     </View>
 
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>896.2K</Text>
+                      <Text style={styles.infoNumber}>{data.followersCount}</Text>
                       <Text style={styles.infoTitle}>Followers</Text>
                     </View>
                   </View>
-
-                 
                 </View>
-                 
               </View>
 
-              <Text style={styles.bio}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat mollis dolor.</Text>
-              <Text style={styles.location}>Winnipeg, Canada</Text>
-
-              
+              <Text style={styles.bio}>{data.description}</Text>
+              <Text style={styles.location}>{data.location}</Text>
             </View>
 
-            <ScrollableTabView
-              renderTabBar={() => <ProfileTabBar />}>
+            <ScrollableTabView renderTabBar={() => <ProfileTabBar />}>
+              <View tabLabel={`Spots (${data.spotsCount})`}>
+                {spots}
+              </View>
 
-              <List
-                tabLabel='spots'
-                items={this.spots}
-                scrollEnabled={false}
-                row={data => <SpotCard data={data} push={push} />}
-                style={styles.listView}
-                contentInset={{bottom: 49}}
-                automaticallyAdjustContentInsets={false} />
-
-              <View height={600} tabLabel='likes'>
+              <View height={600} tabLabel={`Likes (${data.likesCount})`}>
                 <Text>Likes</Text>
               </View>
             </ScrollableTabView>
@@ -262,4 +285,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export { Profile };

@@ -1,13 +1,8 @@
 /* @flow */
 
-'use strict';
-
 import React, {
   AppRegistry,
   Component,
-  StyleSheet,
-  Text,
-  View,
   Navigator,
   TabBarIOS,
   Animated,
@@ -16,11 +11,14 @@ import React, {
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import FeedView from './app/views/Feed';
-import ProfileView from './app/views/Profile';
-import CameraView from './app/views/Camera';
-import NotificationsView from './app/views/Notifications';
-import MessagesView from './app/views/Messages';
+import {
+  Camera,
+  Feed,
+  Messages,
+  NewSpotSource,
+  Notifications,
+  Profile,
+} from './app/views'
 
 import Avatar from './app/components/Avatar';
 
@@ -35,6 +33,22 @@ type State = {
 class locus extends Component {
   constructor(props: Object): void {
     super(props);
+
+    // This should be cached
+    // as the user only logs in once
+    this.me = {
+      name: "John Smith",
+      handle: "smith89",
+      location: "Toronto, Canada",
+      email: "smith@example.com",
+      description: "Just a normal dude with a normal name.",
+      _id: "56b95ffa9a663798f7c98330",
+      created: "2016-02-09T03:41:46.934Z",
+      spotsCount: 26,
+      followingCount: 627,
+      followersCount: 165,
+      likesCount: 938
+    };
 
     this.state = {
 
@@ -54,21 +68,25 @@ class locus extends Component {
     }).start();
   }
 
-  _tabChange(tab: string): void {
+  tabChange(tab: string): void {
     this.setState({
       selectedTab: tab,
     });
   }
 
-  _renderScene(route: {component: ReactElement, data: Object}, navigator: Navigator): ReactElement {
-    let _isInitialRoute = Object.is(navigator.props.initialRoute.component, route.component);
+  renderScene(route: {component: ReactElement}, navigator: Navigator): ReactElement {
+    let { component, ...props } = route;
+    const isInitialRoute = Object.is(navigator.props.initialRoute.component, component);
 
     return (
+
+      // `component` by itself does not work
       <route.component
-        data={route.data}
-        pop={!_isInitialRoute && navigator.pop}
+        pop={!isInitialRoute && navigator.pop}
         push={navigator.push}
-        _onScroll={this._setOffsetValue.bind(this)} />
+        _onScroll={this._setOffsetValue.bind(this)}
+        {...props}
+      />
     );
   }
 

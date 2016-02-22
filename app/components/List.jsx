@@ -10,7 +10,7 @@ import React, {
   Text,
 } from 'react-native';
 
-import ListItem from './ListItem';
+import { ListItem } from '.';
 
 type Props = {
   items: Array<Object>,
@@ -38,15 +38,16 @@ class List extends Component {
   }
 
   render(): ReactElement {
-    let {row, ...other} = this.props;
+    let { row, ...other } = this.props;
 
     return (
       <ListView
         dataSource={this.state.data}
         renderRow={row || (data => <ListItem data={data} />)}
-        {...other} />
+        {...other}
+      />
     );
   }
 }
 
-export default List;
+export { List };
