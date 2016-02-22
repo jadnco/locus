@@ -1,5 +1,6 @@
 declare module 'react-native' {
   declare var Component: any;
+  declare var CameraRoll: any;
   declare var StyleSheet: any;
   declare var Animated: any;
   declare var Dimensions: any;
