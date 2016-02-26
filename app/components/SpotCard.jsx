@@ -40,14 +40,26 @@ class SpotCard extends Component {
   constructor(props: Props): void {
     super(props);
 
+    // This should send a request and check if the
+    // authed user liked this Spot
+
     this.state = {
       liked: false,
     };
   }
 
   toggleLike() {
-    // Send request to server
-    this.setState({ liked: !this.state.liked });
+    // should send an object that has a user id
+    let data = { user: '56b95ffa9a663798f7c98330' };
+
+    fetch('http://10.28.163.16:1998/api/spots/56c9549c638dab8f0061b993/likes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(() => this.setState({ liked: !this.state.liked }));
   }
 
   showShareActionSheet(): void {
