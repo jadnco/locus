@@ -29,6 +29,7 @@ import { Search } from '.';
 type Props = {
   push: Function,
   pop: Function,
+  _onScroll: Function,
 };
 
 class Feed extends Component {
@@ -50,7 +51,7 @@ class Feed extends Component {
     console.log("Feed View Mounted");
 
     fetch('http://10.28.163.16:1998/api/spots', {
-      method: 'GET'
+      method: 'GET',
     })
     .then(res => res.json())
     .then(res => {
@@ -73,6 +74,7 @@ class Feed extends Component {
           style={styles.container}
           contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
+          onScroll={this.props._onScroll}
           row={data =>
             <SpotCard {...data} push={push} pop={pop} />
           }

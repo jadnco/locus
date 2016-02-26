@@ -50,3 +50,11 @@ declare module 'react-native' {
 declare module 'react-native-vector-icons/EvilIcons' {
   declare var exports: (callback: any) => any
 }
+
+declare module 'react-native-tab-navigator' {
+  declare var exports: (callback: any) => any
+}
+
+declare module 'react-native-camera' {
+  declare var exports: (callback: any) => any
+}

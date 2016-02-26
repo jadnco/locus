@@ -3,6 +3,7 @@
 import React, {
   AppRegistry,
   Component,
+  Dimensions,
   Navigator,
   TabBarIOS,
   Animated,
@@ -18,9 +19,9 @@ import {
   NewSpotSource,
   Notifications,
   Profile,
-} from './app/views'
+} from './app/views';
 
-import Avatar from './app/components/Avatar';
+import { Avatar, Text } from './app/components';
 
 import TabBar from 'react-native-tab-navigator';
 
@@ -56,16 +57,16 @@ class locus extends Component {
       selectedTab: 'feed',
     };
 
-    this.height = new Animated.Value(0);
+    this.offset = new Animated.Value(0);
 
     this.scrollValue = 0;
   }
 
   componentDidMount(): void {
-    Animated.timing(this.height, {
-      duration: 100,
-      toValue: 49,
-    }).start();
+    // Animated.timing(this.height, {
+    //   duration: 100,
+    //   toValue: 49,
+    // }).start();
   }
 
   tabChange(tab: string): void {
@@ -92,10 +93,20 @@ class locus extends Component {
 
   _setOffsetValue(event) {
     let offset = event.nativeEvent.contentOffset.y;
+    let height = Dimensions.get('window').height;
 
-    if (offset < 0) offset = 0;
+    if (offset > 0) {
+      this.offset.setValue(offset);
+    } else if (offset < 1) {
+      this.offset.setValue(0);
+    }
 
     //this.height.setValue((offset <= this.scrollValue ? 0 : 49));
+
+    // Animated.timing(this.height, {
+    //   duration: 100,
+    //   toValue: (offset <= this.scrollValue ? 0 : 49),
+    // }).start();
 
     this.scrollValue = offset;
   }
@@ -103,24 +114,25 @@ class locus extends Component {
   render(): ReactElement {
     return (
       <TabBar
-        tabBarStyle={{transform: [{translateY: this.height}], overflow: 'hidden'}}
-        sceneStyle={{paddingBottom: 20}}>
+        tabBarStyle={{transform: [{translateY: this.offset}], overflow: 'hidden'}}
+        sceneStyle={{paddingBottom: 20}}
+      >
         <TabBar.Item
           title='Some'
           selected={this.state.selectedTab === 'feed'}
           badgeText='5'
           renderIcon={() => <Icon name='location' color='green' size={30} />}
-          onPress={() => this._tabChange('feed')}>
+          onPress={() => this.tabChange('feed')}>
 
           <Navigator
-            initialRoute={{component: FeedView}}
-            renderScene={this._renderScene.bind(this)} />
+            initialRoute={{component: Feed}}
+            renderScene={this.renderScene.bind(this)} />
         </TabBar.Item>
         <TabBar.Item
           title='another'
-          onPress={() => this._value()}>
+          onPress={() => this._setOffsetValue()}>
 
-          <Text>The next rab</Text>
+          <Text>The next tab</Text>
         </TabBar.Item>
       </TabBar>
     );
