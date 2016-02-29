@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  AsyncStorage,
   Component,
   StyleSheet,
   Text,

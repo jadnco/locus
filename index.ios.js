@@ -1,7 +1,6 @@
 /* @flow */
 
 import React, {
-  AsyncStorage,
   AppRegistry,
   Component,
   Navigator,
@@ -11,6 +10,8 @@ import React, {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
+
+import Store from 'react-native-simple-store';
 
 import {
   Camera,
@@ -64,14 +65,14 @@ class locus extends Component {
   changeUser(user): void {
     this.setState({ me: user });
 
-    AsyncStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    Store.save(this.USER_KEY, user);
 
     alert('Now logged in as ' + this.state.me.name);
   }
 
   getUser(): void {
-    AsyncStorage.getItem(this.USER_KEY)
-      .then(user => alert(JSON.parse(user).handle));
+    Store.get(this.USER_KEY)
+      .then(user => alert(user.handle));
   }
 
   render(): ReactElement {
