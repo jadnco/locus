@@ -45,6 +45,7 @@ class SpotCard extends Component {
 
     this.state = {
       liked: false,
+      likesCount: this.props.likesCount,
     };
   }
 
@@ -56,14 +57,16 @@ class SpotCard extends Component {
     // should send an object that has a user id
     let data = { user: '56b95ffa9a663798f7c98330' };
 
-    fetch('http://192.168.100.102:1998/api/spots/56c9549c638dab8f0061b993/likes', {
+    fetch(`http://10.28.163.16:1998/api/spots/${this.props._id}/likes`, {
       method: this.state.liked ? 'DELETE' : 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    .then(() => this.setState({ liked: !this.state.liked }));
+    .then(() => {
+      this.setState({ liked: !this.state.liked, likesCount: this.state.likesCount + (this.state.liked ? -1 : 1) })
+    });
   }
 
   showShareActionSheet(): void {
@@ -95,7 +98,7 @@ class SpotCard extends Component {
         </View>
 
         <ResponsiveImage
-          source={'http://192.168.100.102:1998/uploads/' + data.photo}
+          source={'http://10.28.163.16:1998/uploads/' + data.photo}
           style={styles.image}
         />
 
@@ -127,7 +130,7 @@ class SpotCard extends Component {
               <TouchableOpacity onPress={this.toggleLike.bind(this)}>
                 <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
               </TouchableOpacity>
-              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(data.likesCount)}</Text>
+              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(this.state.likesCount)}</Text>
             </View>
             <View style={{ marginLeft: 16, flexDirection: 'row' }}>
               <Icon name="comment" size={30} color="#AAA" />
