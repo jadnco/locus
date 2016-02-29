@@ -48,12 +48,16 @@ class SpotCard extends Component {
     };
   }
 
+  componentDidMount(): void {
+    // TODO: Check if this Spot is liked by the authed user
+  }
+
   toggleLike() {
     // should send an object that has a user id
     let data = { user: '56b95ffa9a663798f7c98330' };
 
-    fetch('http://10.28.163.16:1998/api/spots/56c9549c638dab8f0061b993/likes', {
-      method: 'POST',
+    fetch('http://192.168.100.102:1998/api/spots/56c9549c638dab8f0061b993/likes', {
+      method: this.state.liked ? 'DELETE' : 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
