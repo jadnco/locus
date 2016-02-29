@@ -71,7 +71,34 @@ class Camera extends Component {
       method: 'POST',
       body: data,
     })
-    .then(() => this.setState({loading: null}));
+    .then(res => {
+      this.setState({loading: null});
+
+      return res.json();
+    })
+    .then(u => this.saveSpot(u))
+    .catch((e) => console.error(e));
+  }
+
+  saveSpot(upload): void {
+    console.log(upload.upload.filename);
+    let spot = {
+      title: 'Some new spot title ' + (Math.random() * 100).toFixed(2),
+      photo: upload.upload.filename,
+
+      // This should be current authed user
+      spotter: '56d3bfe0f2654f377cf5de92',
+    };
+
+    fetch('http://192.168.100.102:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ spot: spot }),
+    })
+    .then(() => alert('New spot saved'))
+    .catch((e) => console.error(e));
   }
 
   render(): ReactElement {
