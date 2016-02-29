@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, {
+  AsyncStorage,
   AppRegistry,
   Component,
   Navigator,
@@ -26,6 +27,8 @@ type State = {
 };
 
 class locus extends Component {
+  USER_KEY: string = '@Locus:user';
+
   constructor(props: Object): void {
     super(props);
 
@@ -61,13 +64,20 @@ class locus extends Component {
   changeUser(user): void {
     this.setState({ me: user });
 
+    AsyncStorage.setItem(this.USER_KEY, JSON.stringify(user));
+
     alert('Now logged in as ' + this.state.me.name);
+  }
+
+  getUser(): void {
+    AsyncStorage.getItem(this.USER_KEY)
+      .then(user => alert(JSON.parse(user).handle));
   }
 
   render(): ReactElement {
     return (
       <View style={{ flex: 1 }}>
-      <Text style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
+      <Text onPress={this.getUser.bind(this)} style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
 
       <TabBarIOS tintColor="#CC9B47" barTintColor="black">
         <Icon.TabBarItem
