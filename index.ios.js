@@ -5,6 +5,8 @@ import React, {
   Component,
   Navigator,
   TabBarIOS,
+  View,
+  Text,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
@@ -16,6 +18,7 @@ import {
   NewSpotSource,
   Notifications,
   Profile,
+  UserToggle,
 } from './app/views'
 
 type State = {
@@ -26,26 +29,11 @@ class locus extends Component {
   constructor(props: Object): void {
     super(props);
 
-    // This should be cached
-    // as the user only logs in once
-    this.me = {
-      name: "John Smith",
-      handle: "smith89",
-      location: "Toronto, Canada",
-      email: "smith@example.com",
-      description: "Just a normal dude with a normal name.",
-      _id: "56b95ffa9a663798f7c98330",
-      created: "2016-02-09T03:41:46.934Z",
-      spotsCount: 26,
-      followingCount: 627,
-      followersCount: 165,
-      likesCount: 938
-    };
-
     this.state = {
 
       // Default selected tab
-      selectedTab: 'feed',
+      selectedTab: 'toggleUser',
+      me: {},
     };
   }
 
@@ -70,8 +58,17 @@ class locus extends Component {
     );
   }
 
+  changeUser(user): void {
+    this.setState({ me: user });
+
+    alert('Now logged in as ' + this.state.me.name);
+  }
+
   render(): ReactElement {
     return (
+      <View style={{ flex: 1 }}>
+      <Text style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
+
       <TabBarIOS tintColor="#CC9B47" barTintColor="black">
         <Icon.TabBarItem
           title="Home"
@@ -88,6 +85,17 @@ class locus extends Component {
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
+          title="Switch User"
+          iconName="redo"
+          selected={this.state.selectedTab === 'toggleUser'}
+          onPress={() => this.tabChange('toggleUser')}
+        >
+
+          <UserToggle toggle={this.changeUser.bind(this)} />
+
+        </Icon.TabBarItem>
+
+        {/* <Icon.TabBarItem
           title="Notifications"
           iconName="bell"
           badge={3}
@@ -96,7 +104,7 @@ class locus extends Component {
         >
 
           <Notifications />
-        </Icon.TabBarItem>
+        </Icon.TabBarItem> */}
 
         <Icon.TabBarItem
           title="New Spot"
@@ -130,12 +138,13 @@ class locus extends Component {
         >
 
           <Navigator
-            initialRoute={{ component: Profile, ...this.me }}
+            initialRoute={{ component: Profile, ...this.state.me }}
             renderScene={this.renderScene.bind(this)}
           />
 
         </Icon.TabBarItem>
       </TabBarIOS>
+      </View>
     );
   }
 }

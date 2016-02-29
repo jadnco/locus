@@ -8,3 +8,4 @@ export { Profile } from './Profile';
 export { Search } from './Search';
 export { Spot } from './Spot';
 export { SpotEditor } from './SpotEditor';
+export { UserToggle } from './UserToggle';

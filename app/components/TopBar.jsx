@@ -11,6 +11,8 @@ import React, {
 
 import NavigationBar from 'react-native-navbar';
 
+import { UserToggle } from '.';
+
 type Props = {
   title: string,
   style: Object,
@@ -20,13 +22,14 @@ class TopBar extends Component {
   props: Props;
 
   render(): ReactElement {
-    let { title, style, ...other } = this.props;
+    let { title, style, navigator, ...other } = this.props;
 
     return (
       <View style={[styles.topBar, style]}>
         <NavigationBar
           tintColor='white'
-          title={{ title }} {...other}
+          title={{ title }}
+          {...other}
         />
       </View>
     );

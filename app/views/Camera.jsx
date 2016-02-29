@@ -90,7 +90,7 @@ class Camera extends Component {
       spotter: '56d3bfe0f2654f377cf5de92',
     };
 
-    fetch('http://192.168.100.102:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
+    fetch('http://10.28.163.16:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

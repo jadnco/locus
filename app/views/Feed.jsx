@@ -24,7 +24,9 @@ import {
   ResponsiveImage,
 } from '../components';
 
-import { Search } from '.';
+import { Search, UserToggle } from '.';
+
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 type Props = {
   push: Function,
@@ -49,7 +51,7 @@ class Feed extends Component {
   componentDidMount(): void {
     console.log("Feed View Mounted");
 
-    fetch('http://192.168.100.102:1998/api/spots', {
+    fetch('http://10.28.163.16:1998/api/spots', {
       method: 'GET',
     })
     .then(res => res.json())

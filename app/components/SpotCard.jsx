@@ -65,7 +65,10 @@ class SpotCard extends Component {
       body: JSON.stringify(data),
     })
     .then(() => {
-      this.setState({ liked: !this.state.liked, likesCount: this.state.likesCount + (this.state.liked ? -1 : 1) })
+      this.setState({
+        liked: !this.state.liked,
+        likesCount: this.state.likesCount + (this.state.liked ? -1 : 1),
+      });
     });
   }
 
