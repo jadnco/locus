@@ -18,10 +18,13 @@ import React, {
 
 import Cam from 'react-native-camera';
 
+import Store from 'react-native-simple-store';
+
 type Props = {};
 
 class Camera extends Component {
   props: Props;
+  USER_KEY: string = '@Locus:user';
 
   constructor(props: Props): void {
     super(props);
@@ -67,7 +70,7 @@ class Camera extends Component {
     this.setState({loading: <Text style={{color: 'black', padding: 20, borderWidth: 1, borderColor: 'white'}}>Uploading...</Text>})
 
     // Send the request to the server
-    fetch('http://192.168.100.102:1998/upload', {
+    fetch('http://10.28.163.16:1998/upload', {
       method: 'POST',
       body: data,
     })
@@ -85,20 +88,20 @@ class Camera extends Component {
     let spot = {
       title: 'Some new spot title ' + (Math.random() * 100).toFixed(2),
       photo: upload.upload.filename,
-
-      // This should be current authed user
-      spotter: '56d3bfe0f2654f377cf5de92',
     };
 
-    fetch('http://10.28.163.16:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ spot: spot }),
-    })
-    .then(() => alert('New spot saved'))
-    .catch((e) => console.error(e));
+    Store.get(this.USER_KEY)
+      .then(user => {
+        fetch('http://10.28.163.16:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ spot: { spotter: user._id, ...spot } }),
+        })
+        .then(() => alert('New spot saved'))
+        .catch((e) => console.error(e));
+      });
   }
 
   render(): ReactElement {

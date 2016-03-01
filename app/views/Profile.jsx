@@ -54,59 +54,35 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      loading: true,
+      loaded: false,
+      spots: [],
     };
-
-    this.spots = [
-      {
-        img: 'http://grantandgreen.de/wp-content/uploads/2015/04/1-Jaguar-F-type-Coupe-main-image-large.jpg',
-        title: 'Jaguar F-Type R',
-        created: '5 minutes ago',
-        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
-      },
-      {
-        img: 'http://images.car.bauercdn.com/pagefiles/20741/mercedes-amg-gts-091.jpg',
-        title: 'Mercedes-AMG GT S',
-        created: '5 minutes ago',
-        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
-      },
-      {
-        img: 'https://s-media-cache-ak0.pinimg.com/736x/ca/05/fe/ca05fe5f23a2b3470bc82582e2e52d0a.jpg',
-        title: 'Aventador',
-        created: '5 minutes ago',
-        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
-      },
-      {
-        img: 'http://image.motortrend.ca/f/89683392+w640/2016-Mclaren-675LT-rear-end.jpg',
-        title: 'McLaren 675LT',
-        created: '5 minutes ago',
-        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
-      },
-      
-      {
-        img: 'http://www.foundonthestreet.net/wp-content/uploads/2014/08/Ferrari-458-Italia-Portrait-Detail-Front.jpg',
-        title: 'Ferrari 458 Italia',
-        created: '5 minutes ago',
-        spotter: {name: 'Jaden Dessureault', handle: 'jadnco'},
-      },
-    ];
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 1000);
+
+    // TODO: Get user spots
+    fetch(`http://10.28.163.16:1998/api/users/${this.props._id}/spots`, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(res => {
+      let spots = res.spots;
+
+      this.setState({ spots, loaded: true });
+    })
+    .catch(err => alert(err));
   }
 
   render(): ReactElement {
     let { push, pop, ...data } = this.props;
     let spots = <Text>Loading...</Text>;
 
-    if (!this.state.loading) {
+    if (this.state.loaded) {
       spots = (
         <List
           tabLabel="Spots"
-          items={this.spots}
+          items={this.state.spots}
           scrollEnabled={false}
           row={data => <SpotCard {...data} push={push} />}
           style={styles.listView}
@@ -177,7 +153,7 @@ class Profile extends Component {
                 {spots}
               </View>
 
-              <View height={600} tabLabel={`Likes (${data.likesCount})`}>
+              <View height={100} tabLabel={`Likes (${data.likesCount})`}>
                 <Text>Likes</Text>
               </View>
             </ScrollableTabView>

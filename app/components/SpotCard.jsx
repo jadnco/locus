@@ -20,6 +20,8 @@ import { formatNumber, formatTime } from '../utils';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
+import Store from 'react-native-simple-store';
+
 type Props = {
   style: Object,
   size: number,
@@ -36,6 +38,7 @@ type State = {
 class SpotCard extends Component {
   props: Props;
   state: State;
+  USER_KEY: string = '@Locus:user';
 
   constructor(props: Props): void {
     super(props);
@@ -56,6 +59,8 @@ class SpotCard extends Component {
   toggleLike() {
     // should send an object that has a user id
     let data = { user: '56b95ffa9a663798f7c98330' };
+
+    // TODO: Like should send request of authed users
 
     fetch(`http://10.28.163.16:1998/api/spots/${this.props._id}/likes`, {
       method: this.state.liked ? 'DELETE' : 'POST',
@@ -86,8 +91,6 @@ class SpotCard extends Component {
 
   render(): ReactElement {
     let { push, pop, style, ...data } = this.props;
-
-    console.log(data);
 
     return (
       <TouchableOpacity

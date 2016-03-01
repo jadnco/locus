@@ -36,9 +36,23 @@ class locus extends Component {
     this.state = {
 
       // Default selected tab
-      selectedTab: 'toggleUser',
+      selectedTab: 'feed',
       me: {},
     };
+  }
+
+  componentDidMount(): void {
+    Store.get(this.USER_KEY)
+      .then(user => {
+
+        // No current user so we need to fetch one
+        if (!user._id) {
+          this.setState({ selectedTab: 'toggleUser' });
+        }
+
+
+        this.setState({ me: user });
+      });
   }
 
   tabChange(tab: string): void {
