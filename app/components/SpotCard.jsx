@@ -14,7 +14,7 @@ import React, {
 } from 'react-native';
 
 import { Avatar, ResponsiveImage } from '.';
-import { Profile, Spot } from '../views';
+import { Profile, Spot, Likes } from '../views';
 
 import { formatNumber, formatTime } from '../utils';
 
@@ -57,24 +57,27 @@ class SpotCard extends Component {
   }
 
   toggleLike() {
-    // should send an object that has a user id
-    let data = { user: '56b95ffa9a663798f7c98330' };
 
     // TODO: Like should send request of authed users
+    
+    Store.get(this.USER_KEY)
+      .then(user => {
+        let data = { user: user._id };
 
-    fetch(`http://10.28.163.16:1998/api/spots/${this.props._id}/likes`, {
-      method: this.state.liked ? 'DELETE' : 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(() => {
-      this.setState({
-        liked: !this.state.liked,
-        likesCount: this.state.likesCount + (this.state.liked ? -1 : 1),
+        return fetch(`http://10.28.163.16:1998/api/spots/${this.props._id}/likes`, {
+          method: this.state.liked ? 'DELETE' : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+      })
+      .then(() => {
+        this.setState({
+          liked: !this.state.liked,
+          likesCount: this.state.likesCount + (this.state.liked ? -1 : 1),
+        });
       });
-    });
   }
 
   showShareActionSheet(): void {
@@ -136,7 +139,10 @@ class SpotCard extends Component {
               <TouchableOpacity onPress={this.toggleLike.bind(this)}>
                 <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
               </TouchableOpacity>
-              <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(this.state.likesCount)}</Text>
+
+              <TouchableOpacity onPress={() => push({ component: Likes, ...data })}>
+                <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(this.state.likesCount)}</Text>
+              </TouchableOpacity>
             </View>
             <View style={{ marginLeft: 16, flexDirection: 'row' }}>
               <Icon name="comment" size={30} color="#AAA" />
