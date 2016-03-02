@@ -64,7 +64,7 @@ class Likes extends Component {
             return (
               <TouchableHighlight
                 style={{ padding: 12, borderBottomWidth: 1, borderColor: '#CCC' }}
-                onPress={() => toggle(data)}
+                onPress={() => {}}
               >
                 <View>
                   <Text>{data.name}</Text>

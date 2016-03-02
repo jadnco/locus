@@ -13,6 +13,7 @@ import React, {
   Navigator,
   Image,
   TouchableOpacity,
+  RefreshControl,
 } from 'react-native';
 
 import {
@@ -42,6 +43,7 @@ class Feed extends Component {
     this.state = {
       spots: [],
       loading: true,
+      isRefreshing: false,
     };
   }
 
@@ -63,6 +65,22 @@ class Feed extends Component {
     .catch(err => alert(err));
   }
 
+  refresh(): void {
+    this.setState({ isRefreshing: true });
+
+    // TODO: Only push *new* records
+    fetch('http://10.28.163.16:1998/api/spots', {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(res => {
+      let spots = res.spots;
+
+      this.setState({ spots, isRefreshing: false });
+    })
+    .catch(err => alert(err));
+  }
+
   render(): ReactElement {
     let { push, pop } = this.props;
 
@@ -75,6 +93,12 @@ class Feed extends Component {
           style={styles.container}
           contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.isRefreshing}
+              onRefresh={this.refresh.bind(this)}
+            />
+          }
           row={data =>
             <SpotCard {...data} push={push} pop={pop} />
           }

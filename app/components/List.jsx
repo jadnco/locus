@@ -37,6 +37,16 @@ class List extends Component {
     };
   }
 
+  componentWillReceiveProps(props): void {
+    console.log("Next PROPS -->>", props.items);
+
+    let dataSource = new ListView.DataSource({
+      rowHasChanged: (first, second) => first !== second,
+    });
+
+    this.setState({ data: dataSource.cloneWithRows(props.items) });
+  }
+
   render(): ReactElement {
     let { row, ...other } = this.props;
 
