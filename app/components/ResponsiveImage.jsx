@@ -36,8 +36,11 @@ class ResponsiveImage extends Component {
     let _window: { width: number } = Dimensions.get('window');
     let ratio: number;
 
-    Image.getSize(this.props.source, (width, height) => {
+    Image.getSize(this.props.source.uri, (width, height) => {
       ratio = width / height;
+
+      this.props.getSize &&
+      this.props.getSize.call(null, this.props.width || _window.width, this.props.height || (_window.width / ratio) );
 
       this.setState({
         width: this.props.width || _window.width,
@@ -53,7 +56,7 @@ class ResponsiveImage extends Component {
     return (
       <View style={{ overflow: 'hidden' }}>
         <Image
-          source={{ uri: source }}
+          source={source}
           style={[{ width, height }, style]}
           {...other}
         >

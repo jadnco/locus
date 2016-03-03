@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  CameraRoll,
   Component,
   StyleSheet,
   Text,
@@ -11,7 +12,12 @@ import React, {
   ScrollView,
 } from 'react-native';
 
-import { NextButton, TopBar } from '../components';
+import {
+  ImageEditor,
+  NextButton,
+  TopBar,
+  ResponsiveImage,
+} from '../components';
 
 import { SpotEditor } from '.';
 
@@ -19,11 +25,36 @@ class NewSpotSource extends Component {
   constructor(props: Object): void {
     super(props);
 
-    this.state = {};
+    this.state = {
+      photo: null,
+    };
+  }
+
+  componentDidMount(): void {
+    this.getLastPhoto();
+  }
+
+  getLastPhoto(): void {
+    console.log('Getting photos');
+    CameraRoll.getPhotos({ first: 1 }, photo => {
+      console.log(photo);
+
+      this.setState({ photo });
+    }, () => {
+      console.log('Error getting latest photo.');
+    });
   }
 
   render(): ReactElement {
     let { push, ...other } = this.props;
+    let content = <Text>Loading image...</Text>;
+
+    if (this.state.photo) {
+      content = (
+        <ImageEditor
+          source={this.state.photo.edges[0].node.image} />
+      );
+    }
 
     return (
       <View style={styles.container}>
@@ -39,8 +70,7 @@ class NewSpotSource extends Component {
           style={styles.container}
           automaticallyAdjustContentInsets={false}
         >
-
-          <Text>New Spot Source</Text>
+          {content}
         </ScrollView>
       </View>
     );

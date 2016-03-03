@@ -107,7 +107,7 @@ class SpotCard extends Component {
         </View>
 
         <ResponsiveImage
-          source={'http://10.28.163.16:1998/uploads/' + data.photo}
+          source={{ uri: 'http://10.28.163.16:1998/uploads/' + data.photo }}
           style={styles.image}
         />
 
