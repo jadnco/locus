@@ -37,9 +37,7 @@ class List extends Component {
     };
   }
 
-  componentWillReceiveProps(props): void {
-    console.log("Next PROPS -->>", props.items);
-
+  componentWillReceiveProps(props: Object): void {
     let dataSource = new ListView.DataSource({
       rowHasChanged: (first, second) => first !== second,
     });

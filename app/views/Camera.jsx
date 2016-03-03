@@ -20,6 +20,8 @@ import Cam from 'react-native-camera';
 
 import Store from 'react-native-simple-store';
 
+import { CaptureButton } from '../components';
+
 type Props = {};
 
 class Camera extends Component {
@@ -112,14 +114,12 @@ class Camera extends Component {
 
         <Cam
           ref={cam => this.camera = cam}
-          style={{alignItems: 'center', width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
+          style={[styles.container, {width: Dimensions.get('window').width, height: Dimensions.get('window').height}]}>
 
-          <Text
-            style={{marginTop: 50, padding: 10, color: 'black', backgroundColor: 'white'}}
+          <CaptureButton
             onPress={this.getPhoto.bind(this)}
-          >
-            [GET LAST PHOTO]
-          </Text>
+            style={styles.captureButton}
+          />
         </Cam>
       </View>
     );
@@ -129,13 +129,18 @@ class Camera extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   image: {
     height: 300,
     flex: 1,
-    flexDirection: 'column',
+    //flexDirection: 'column',
     resizeMode: 'cover',
+  },
+  captureButton: {
+    alignSelf: 'flex-end',
+    marginBottom: 30,
   },
 });
 

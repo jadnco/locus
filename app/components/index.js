@@ -1,5 +1,6 @@
 export { Avatar } from './Avatar';
 export { BackButton } from './BackButton';
+export { CaptureButton } from './CaptureButton';
 export { Comment } from './Comment';
 export { FollowButton } from './FollowButton';
 export { List } from './List';
