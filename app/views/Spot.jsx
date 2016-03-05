@@ -26,6 +26,8 @@ import {
 
 import { Profile } from '.';
 
+import config from '../config';
+
 type Props = {
   navigator: Object,
   title: string,
@@ -92,7 +94,7 @@ class Spot extends Component {
 
           <View>
             <ResponsiveImage
-              source={{ uri: 'http://10.28.163.16:1998/uploads/' + data.photo }}
+              source={{ uri: `http://${config.address}:1998/uploads/${data.photo}` }}
               style={styles.image}
             />
           </View>

@@ -29,6 +29,8 @@ import { Search, UserToggle } from '.';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
+import config from '../config';
+
 type Props = {
   push: Function,
   pop: Function,
@@ -53,7 +55,7 @@ class Feed extends Component {
   componentDidMount(): void {
     console.log("Feed View Mounted");
 
-    fetch('http://10.28.163.16:1998/api/spots', {
+    fetch(`http://${config.address}:1998/api/spots`, {
       method: 'GET',
     })
     .then(res => res.json())
@@ -69,7 +71,7 @@ class Feed extends Component {
     this.setState({ isRefreshing: true });
 
     // TODO: Only push *new* records
-    fetch('http://10.28.163.16:1998/api/spots', {
+    fetch(`http://${config.address}:1998/api/spots`, {
       method: 'GET',
     })
     .then(res => res.json())

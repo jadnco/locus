@@ -21,7 +21,7 @@ import {
   Notifications,
   Profile,
   UserToggle,
-} from './app/views'
+} from './app/views';
 
 type State = {
   selectedTab: string,

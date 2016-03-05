@@ -17,6 +17,8 @@ import React, {
 
 import { BackButton, TopBar, List }  from '../components';
 
+import config from '../config';
+
 type Props = {
   pop: Function,
   push: Function,
@@ -35,7 +37,8 @@ class UserToggle extends Component {
   }
 
   componentDidMount(): void {
-    fetch('http://10.28.163.16:1998/api/users', {
+    console.log("config, ", config);
+    fetch(`http://${config.address}:1998/api/users`, {
       method: 'GET',
     })
     .then(res => res.json())

@@ -22,6 +22,8 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Store from 'react-native-simple-store';
 
+import config from '../config';
+
 type Props = {
   style: Object,
   size: number,
@@ -64,7 +66,7 @@ class SpotCard extends Component {
       .then(user => {
         let data = { user: user._id };
 
-        return fetch(`http://10.28.163.16:1998/api/spots/${this.props._id}/likes`, {
+        return fetch(`http://${config.address}:1998/api/spots/${this.props._id}/likes`, {
           method: this.state.liked ? 'DELETE' : 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -107,7 +109,7 @@ class SpotCard extends Component {
         </View>
 
         <ResponsiveImage
-          source={{ uri: 'http://10.28.163.16:1998/uploads/' + data.photo }}
+          source={{ uri: `http://${config.address}:1998/uploads/${data.photo}` }}
           style={styles.image}
         />
 

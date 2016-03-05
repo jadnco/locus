@@ -22,6 +22,8 @@ import Store from 'react-native-simple-store';
 
 import { CaptureButton } from '../components';
 
+import config from '../config';
+
 type Props = {};
 
 class Camera extends Component {
@@ -94,7 +96,7 @@ class Camera extends Component {
 
     Store.get(this.USER_KEY)
       .then(user => {
-        fetch('http://10.28.163.16:1998/api/users/56d3bfe0f2654f377cf5de92/spots', {
+        fetch(`http://${config.address}:1998/api/users/56d3bfe0f2654f377cf5de92/spots`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

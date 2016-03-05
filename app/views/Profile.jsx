@@ -32,6 +32,8 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
+import config from '../config';
+
 type Props = {
   push: Function,
   pop: Function,
@@ -62,7 +64,7 @@ class Profile extends Component {
   componentDidMount() {
 
     // TODO: Get user spots
-    fetch(`http://10.28.163.16:1998/api/users/${this.props._id}/spots`, {
+    fetch(`http://${config.address}:1998/api/users/${this.props._id}/spots`, {
       method: 'GET',
     })
     .then(res => res.json())
