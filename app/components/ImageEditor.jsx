@@ -12,13 +12,14 @@ import React, {
 } from 'react-native';
 
 import {
-  Surface,
   Path,
+  Surface,
+  Shape,
 } from 'ReactNativeART';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-import { ResponsiveImage } from '.';
+import { GridOverlay, ResponsiveImage } from '.';
 
 type Props = {
   size: number,
@@ -37,36 +38,26 @@ class ImageEditor extends Component {
     };
   }
 
-  drawGrid(): ReactElement {
-    let { width, height } = this.state;
+  componentDidMount(): void {
+    ResponsiveImage.getSize(this.props.source.uri)
+      .then(({ width, height }) => {
+        console.log('FROM GET SIZE', width, height);
+
+        this.setState({ width, height });
+      })
+      .catch(error => console.log(error));
   }
 
   render(): ReactElement {
     let { style, source, ...other } = this.props;
+    let { width, height } = this.state;
 
     return (
       <View>
-        <ResponsiveImage
-          source={source}
-          getSize={(width, height) => {
-            console.log('SIZE: ', width, ' - ', height);
-            this.setState({ width, height });
-          }}
-        />
+        <ResponsiveImage source={source}>
 
-          <Surface
-            width={this.state.width}
-            height={this.state.height}
-          >
-            {/* <Path
-              x={100}
-              y={100}
-              stroke='#333333'
-              strokeWidth={1}
-
-            /> */}
-          </Surface>
-          <Text>{this.state.height} - {this.state.width}</Text>
+          <GridOverlay width={width} height={height} />
+        </ResponsiveImage>
       </View>
     );
   }

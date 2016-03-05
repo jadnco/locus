@@ -3,6 +3,7 @@ export { BackButton } from './BackButton';
 export { CaptureButton } from './CaptureButton';
 export { Comment } from './Comment';
 export { FollowButton } from './FollowButton';
+export { GridOverlay } from './GridOverlay';
 export { ImageEditor } from './ImageEditor';
 export { List } from './List';
 export { ListItem } from './ListItem';

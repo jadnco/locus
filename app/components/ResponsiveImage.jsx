@@ -49,6 +49,23 @@ class ResponsiveImage extends Component {
     });
   }
 
+  static getSize(uri): Object<number, number> {
+    let _window: { width: number } = Dimensions.get('window');
+    let ratio: number;
+    let scaled: { width: number, height: number } = { width: 0, height: 0 };
+
+    return new Promise((resolve, reject) => {
+      Image.getSize(uri, (width, height) => {
+        ratio = width / height;
+
+        scaled.width = _window.width;
+        scaled.height = (_window.width / ratio);
+
+        resolve({ width: scaled.width, height: scaled.height });
+      }, reject);
+    });
+  }
+
   render(): ReactElement {
     let { source, style, children, ...other } = this.props;
     let { width, height } = this.state;
