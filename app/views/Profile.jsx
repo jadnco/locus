@@ -110,7 +110,7 @@ class Profile extends Component {
         >
 
             <ResponsiveImage
-              source='http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1'
+              source={{ uri: 'http://community.carfax.com/t5/image/serverpage/image-id/48i3E88DE49FA11E2E2?v=mpbl-1' }}
               style={styles.image}
               height={200}
             >
