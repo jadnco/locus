@@ -39,7 +39,7 @@ class ImageEditor extends Component {
   }
 
   componentDidMount(): void {
-    ResponsiveImage.getSize(this.props.source.uri)
+    ResponsiveImage.getScaledSize(this.props.source.uri)
       .then(({ width, height }) => {
         console.log('FROM GET SIZE', width, height);
 

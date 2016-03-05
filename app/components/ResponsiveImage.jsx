@@ -33,23 +33,17 @@ class ResponsiveImage extends Component {
   }
 
   componentDidMount(): void {
-    let _window: { width: number } = Dimensions.get('window');
-    let ratio: number;
-
-    Image.getSize(this.props.source.uri, (width, height) => {
-      ratio = width / height;
-
-      this.props.getSize &&
-      this.props.getSize.call(null, this.props.width || _window.width, this.props.height || (_window.width / ratio) );
-
-      this.setState({
-        width: this.props.width || _window.width,
-        height: this.props.height || (_window.width / ratio),
-      });
-    });
+    ResponsiveImage.getScaledSize(this.props.source.uri)
+      .then(({ width, height }) => {
+        this.setState({
+          width: this.props.width || width,
+          height: this.props.height || height,
+        });
+      })
+      .catch(error => console.log(error));
   }
 
-  static getSize(uri): Object<number, number> {
+  static getScaledSize(uri): Object<number, number> {
     let _window: { width: number } = Dimensions.get('window');
     let ratio: number;
     let scaled: { width: number, height: number } = { width: 0, height: 0 };
