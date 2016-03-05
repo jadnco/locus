@@ -34,3 +34,4 @@ node_modules/
 npm-debug.log
 
 ios/locus/AppDelegate.m
+app/config.js
