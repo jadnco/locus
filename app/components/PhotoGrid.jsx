@@ -64,9 +64,14 @@ class PhotoGrid extends Component {
             <Image
               key={i}
               height={this.state.width / 4}
-              width={this.state.width / 4}
+
+              // Subtracting 1.5 from 4 images leaves
+              // 6 which can be used as whitespace
+              // 6 / 3 margins = 2
+              width={(this.state.width / 4) - 1.5}
+              style={{ marginBottom: 2 }}
+
               source={photo.node.image}
-              style={{ borderWidth: 0.5, borderColor: 'white' }}
             />
           );
         });
@@ -74,11 +79,12 @@ class PhotoGrid extends Component {
 
     return (
       <View style={{
-        borderTopWidth: 3,
+        borderTopWidth: 2,
         borderColor: 'white',
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
+        justifyContent: 'space-between',
       }}>
 
         {images}
