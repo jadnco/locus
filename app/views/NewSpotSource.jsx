@@ -13,10 +13,11 @@ import React, {
 } from 'react-native';
 
 import {
-  ImageEditor,
+  PhotoEditor,
   NextButton,
   TopBar,
   ResponsiveImage,
+  PhotoGrid,
 } from '../components';
 
 import { SpotEditor } from '.';
@@ -51,7 +52,7 @@ class NewSpotSource extends Component {
 
     if (this.state.photo) {
       content = (
-        <ImageEditor
+        <PhotoEditor
           source={this.state.photo.edges[0].node.image} />
       );
     }
@@ -68,9 +69,12 @@ class NewSpotSource extends Component {
 
         <ScrollView
           style={styles.container}
+          contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
         >
           {content}
+
+          <PhotoGrid />
         </ScrollView>
       </View>
     );
