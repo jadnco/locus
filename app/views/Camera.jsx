@@ -41,9 +41,10 @@ class Camera extends Component {
   }
 
   capture(): void {
+    console.log('CAPTURE');
 
-    // This will capture the image an save to the camera roll
-    this.camera.capture((error, photo) => {
+    // This will capture the image and save to the camera roll
+    this.camera.capture({ location: true }, (error, photo) => {
       console.log('Photo -->', photo);
 
       this.photo = photo;
@@ -53,13 +54,8 @@ class Camera extends Component {
   }
 
   getPhoto(): void {
-    console.log('Getting photos');
     CameraRoll.getPhotos({ first: 1 }, (a) => {
-      console.log(a);
-
-      // This should only get called when the user
-      // clicks on a 'Post/Submit' button.
-      this.upload(a);
+      console.log('Took photo', a);
     }, () => {
       console.log('Error uploading file');
     });
@@ -67,15 +63,33 @@ class Camera extends Component {
 
   upload(photo: Object): void {
     let data = new FormData();
+    let node = photo.edges[0].node;
+
+    console.log('PHOTO:::', photo);
+
+    node.location = {
+      longitude: 1234,
+      latitude: 9873,
+    };
 
     // Create a new fieldname
-    data.append('spot', { ...photo.edges[0].node.image, name: 'spot' });
+    data.append('spot', { ...node.image, name: 'spot' });
+
+    // TODO: Send location and dimension data alongside the photo
+    // data.append('location', JSON.stringify({ ...node.location }));
+
+    //data.append('dimensions', { width: 'test', height: 123 });
+
+    console.log('DATA --> ', data);
 
     this.setState({loading: <Text style={{color: 'black', padding: 20, borderWidth: 1, borderColor: 'white'}}>Uploading...</Text>})
 
     // Send the request to the server
-    fetch('http://10.28.163.16:1998/upload', {
+    fetch(`http://${config.address}:1998/upload`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: data,
     })
     .then(res => {
@@ -84,28 +98,7 @@ class Camera extends Component {
       return res.json();
     })
     .then(u => this.saveSpot(u))
-    .catch((e) => console.error(e));
-  }
-
-  saveSpot(upload): void {
-    console.log(upload.upload.filename);
-    let spot = {
-      title: 'Some new spot title ' + (Math.random() * 100).toFixed(2),
-      photo: upload.upload.filename,
-    };
-
-    Store.get(this.USER_KEY)
-      .then(user => {
-        fetch(`http://${config.address}:1998/api/users/56d3bfe0f2654f377cf5de92/spots`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ spot: { spotter: user._id, ...spot } }),
-        })
-        .then(() => alert('New spot saved'))
-        .catch((e) => console.error(e));
-      });
+    .catch(e => console.error(e));
   }
 
   render(): ReactElement {
@@ -119,7 +112,7 @@ class Camera extends Component {
           style={[styles.container, {width: Dimensions.get('window').width, height: Dimensions.get('window').height}]}>
 
           <CaptureButton
-            onPress={this.getPhoto.bind(this)}
+            onPress={this.capture.bind(this)}
             style={styles.captureButton}
           />
         </Cam>

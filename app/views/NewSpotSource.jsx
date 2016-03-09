@@ -10,6 +10,7 @@ import React, {
   View,
   TextInput,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -20,7 +21,7 @@ import {
   PhotoGrid,
 } from '../components';
 
-import { SpotEditor } from '.';
+import { Camera, SpotEditor } from '.';
 
 class NewSpotSource extends Component {
   constructor(props: Object): void {
@@ -66,6 +67,24 @@ class NewSpotSource extends Component {
             <NextButton onPress={() => push({ component: SpotEditor })} />
           }
         />
+
+        <View style={{
+          padding: 10,
+          borderBottomWidth: 1,
+          borderColor: '#EEEEEE',
+          alignItems: 'center',
+        }}>
+
+
+            <Text>Library</Text>
+
+            <TouchableOpacity
+              onPress={() => push({ component: Camera })}>
+
+              <Text>Photo</Text>
+            </TouchableOpacity>
+
+        </View>
 
         <ScrollView
           style={styles.container}
