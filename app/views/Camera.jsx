@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  Animated,
   Component,
   CameraRoll,
   Dimensions,
@@ -14,13 +15,14 @@ import React, {
   ScrollView,
   NavigatorIOS,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 
 import Cam from 'react-native-camera';
 
 import Store from 'react-native-simple-store';
 
-import { CaptureButton } from '../components';
+import { CaptureButton, GridOverlay } from '../components';
 
 import config from '../config';
 
@@ -35,6 +37,8 @@ class Camera extends Component {
 
     this.state = {
       loading: null,
+      isGridVisible: false,
+      gridOverlayOpacity: new Animated.Value(0),
     };
     this.camera = null;
     this.photo = '';
@@ -59,6 +63,15 @@ class Camera extends Component {
     }, () => {
       console.log('Error uploading file');
     });
+  }
+
+  toggleGridOverlay(): void {
+    Animated.timing(this.state.gridOverlayOpacity, {
+      toValue: this.state.isGridVisible ? 0 : 1,
+      duration: 25,
+    }).start();
+
+    this.setState({ isGridVisible: !this.state.isGridVisible });
   }
 
   upload(photo: Object): void {
@@ -105,16 +118,30 @@ class Camera extends Component {
     return (
       <View style={{flex: 1}}>
 
-        {this.state.loading && this.state.loading}
+      {this.state.loading && this.state.loading}
 
         <Cam
           ref={cam => this.camera = cam}
           style={[styles.container, {width: Dimensions.get('window').width, height: Dimensions.get('window').height}]}>
 
+          <GridOverlay
+            width={Dimensions.get('window').width}
+            height={Dimensions.get('window').height}
+            stroke="white"
+            style={{ position: 'absolute', left: 0, top: 0, opacity: this.state.gridOverlayOpacity }}
+          />
+
           <CaptureButton
             onPress={this.capture.bind(this)}
             style={styles.captureButton}
           />
+
+          <TouchableOpacity
+            onPress={() => this.toggleGridOverlay()}
+            style={styles.toggleOverlayButton}
+          >
+            <Text>Toggle Grid Overlay</Text>
+          </TouchableOpacity>
         </Cam>
       </View>
     );
@@ -136,6 +163,13 @@ const styles = StyleSheet.create({
   captureButton: {
     alignSelf: 'flex-end',
     marginBottom: 30,
+  },
+  toggleOverlayButton: {
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

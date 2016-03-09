@@ -23,17 +23,26 @@ import {
 
 import { Camera, SpotEditor } from '.';
 
+import TabNavigator from 'react-native-tab-navigator';
+
 class NewSpotSource extends Component {
   constructor(props: Object): void {
     super(props);
 
     this.state = {
       photo: null,
+      selectedTab: 'camera',
     };
   }
 
   componentDidMount(): void {
     this.getLastPhoto();
+  }
+
+  tabChange(tab: string): void {
+    this.setState({
+      selectedTab: tab,
+    });
   }
 
   getLastPhoto(): void {
@@ -59,43 +68,46 @@ class NewSpotSource extends Component {
     }
 
     return (
-      <View style={styles.container}>
 
-        <TopBar
-          title='New Spot'
-          rightButton={
-            <NextButton onPress={() => push({ component: SpotEditor })} />
-          }
-        />
-
-        <View style={{
-          padding: 10,
-          borderBottomWidth: 1,
-          borderColor: '#EEEEEE',
-          alignItems: 'center',
-        }}>
-
-
-            <Text>Library</Text>
-
-            <TouchableOpacity
-              onPress={() => push({ component: Camera })}>
-
-              <Text>Photo</Text>
-            </TouchableOpacity>
-
-        </View>
-
-        <ScrollView
-          style={styles.container}
-          contentInset={{ bottom: 49 }}
-          automaticallyAdjustContentInsets={false}
+      <TabNavigator tabBarStyle={styles.tabNavigator}>
+        <TabNavigator.Item
+          title="Library"
+          titleStyle={styles.tabTitle}
+          selected={this.state.selectedTab === 'library'}
+          onPress={() => this.tabChange('library')}
         >
-          {content}
 
-          <PhotoGrid />
-        </ScrollView>
-      </View>
+          <View style={styles.container}>
+
+          <TopBar
+            title='New Spot'
+            rightButton={
+              <NextButton onPress={() => push({ component: SpotEditor })} />
+            }
+          />
+
+          <ScrollView
+            style={styles.container}
+            contentInset={{ bottom: 49 }}
+            automaticallyAdjustContentInsets={false}
+          >
+            {content}
+
+            <PhotoGrid />
+          </ScrollView>
+          </View>
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          title="Photo"
+          titleStyle={styles.tabTitle}
+          selected={this.state.selectedTab === 'camera'}
+          onPress={() => this.tabChange('camera')}
+        >
+
+          <Camera />
+        </TabNavigator.Item>
+      </TabNavigator>
     );
   }
 }
@@ -104,6 +116,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+  },
+  tabNavigator: {
+    bottom: 49,
+    height: null,
+    padding: 8,
+  },
+  tabTitle: {
+
+    // Use the default font size
+    fontSize: null,
   },
 });
 

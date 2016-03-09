@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  Animated,
   Component,
   StyleSheet,
   TouchableHighlight,
@@ -49,8 +50,8 @@ class GridOverlay extends Component {
   }
 
   render(): ReactElement {
-    let { stroke, rows, cols } = this.props;
-    let { width, height } = this.state;
+    let { width, height, stroke, rows, cols, ...other } = this.props;
+    //let { width, height } = this.state;
     let content = <View></View>;
 
     if (width && height) {
@@ -109,7 +110,11 @@ class GridOverlay extends Component {
       );
     }
 
-    return content;
+    return (
+      <Animated.View {...other}>
+        {content}
+      </Animated.View>
+    );
   }
 }
 
