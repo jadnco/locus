@@ -152,7 +152,7 @@ class locus extends Component {
           onPress={() => this.tabChange('messages')}
         >
 
-          <Camera />
+          <Messages />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem
