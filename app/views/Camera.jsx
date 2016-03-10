@@ -22,6 +22,8 @@ import Cam from 'react-native-camera';
 
 import Store from 'react-native-simple-store';
 
+import Icon from 'react-native-vector-icons/EvilIcons';
+
 import { CaptureButton, GridOverlay } from '../components';
 
 import config from '../config';
@@ -131,17 +133,22 @@ class Camera extends Component {
             style={{ position: 'absolute', left: 0, top: 0, opacity: this.state.gridOverlayOpacity }}
           />
 
-          <CaptureButton
-            onPress={this.capture.bind(this)}
-            style={styles.captureButton}
-          />
+          <View style={{ alignSelf: 'flex-end', alignItems: 'center', marginBottom: 50, flexDirection: 'row' }}>
 
-          <TouchableOpacity
-            onPress={() => this.toggleGridOverlay()}
-            style={styles.toggleOverlayButton}
-          >
-            <Text>Toggle Grid Overlay</Text>
-          </TouchableOpacity>
+            <CaptureButton
+              onPress={this.capture.bind(this)}
+              style={styles.captureButton}
+            />
+
+            <TouchableOpacity
+              onPress={() => this.toggleGridOverlay()}
+              style={styles.toggleOverlayButton}
+            >
+
+              <Icon name="navicon" size={32} color="white" />
+            </TouchableOpacity>
+
+          </View>
         </Cam>
       </View>
     );
@@ -161,15 +168,11 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   captureButton: {
-    alignSelf: 'flex-end',
-    marginBottom: 30,
+    //alignSelf: 'flex-end',
+    //marginBottom: 30,
   },
   toggleOverlayButton: {
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 16,
   },
 });
 
