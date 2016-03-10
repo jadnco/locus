@@ -4,6 +4,7 @@ import React, {
   AppRegistry,
   Component,
   Navigator,
+  Modal,
   TabBarIOS,
   View,
   Text,
@@ -36,8 +37,9 @@ class locus extends Component {
     this.state = {
 
       // Default selected tab
-      selectedTab: 'camera',
+      selectedTab: 'feed',
       me: {},
+      displayCamera: false,
     };
   }
 
@@ -89,9 +91,26 @@ class locus extends Component {
       .then(user => alert(user.handle));
   }
 
+  closeModal(): void {
+    this.setState({ displayCamera: false });
+
+    console.log('Close modal called');
+  }
+
   render(): ReactElement {
     return (
       <View style={{ flex: 1 }}>
+
+      <Modal
+        animated={true}
+        visible={this.state.displayCamera}
+      >
+        <Navigator
+          initialRoute={{ component: NewSpotSource, closeModal: this.closeModal.bind(this) }}
+          renderScene={this.renderScene.bind(this)}
+        />
+      </Modal>
+
       <Text onPress={this.getUser.bind(this)} style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
 
       <TabBarIOS tintColor="#CC9B47" barTintColor="black">
@@ -135,13 +154,15 @@ class locus extends Component {
           title="New Spot"
           iconName="camera"
           selected={this.state.selectedTab === 'camera'}
-          onPress={() => this.tabChange('camera')}
+          onPress={() => this.setState({ displayCamera: true })}
         >
 
-          <Navigator
+          {/* <Navigator
             initialRoute={{ component: NewSpotSource }}
             renderScene={this.renderScene.bind(this)}
-          />
+          /> */}
+
+          <View></View>
 
         </Icon.TabBarItem>
 

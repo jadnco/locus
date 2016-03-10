@@ -5,6 +5,7 @@ export { Login } from './Login';
 export { Messages } from './Messages';
 export { NewSpotSource } from './NewSpotSource';
 export { Notifications } from './Notifications';
+export { PhotoSelector} from './PhotoSelector';
 export { Profile } from './Profile';
 export { Search } from './Search';
 export { Spot } from './Spot';

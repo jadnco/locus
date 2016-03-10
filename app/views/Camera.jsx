@@ -16,6 +16,7 @@ import React, {
   NavigatorIOS,
   Image,
   TouchableOpacity,
+  StatusBarIOS,
 } from 'react-native';
 
 import Cam from 'react-native-camera';
@@ -44,6 +45,16 @@ class Camera extends Component {
     };
     this.camera = null;
     this.photo = '';
+  }
+
+  componentDidMount(): void {
+    StatusBarIOS.setHidden(true, 'slide');
+  }
+
+  componentWillReceiveProps(props): void {
+    let { visible } = props;
+
+    visible && StatusBarIOS.setHidden(true, 'slide');
   }
 
   capture(): void {
@@ -117,8 +128,10 @@ class Camera extends Component {
   }
 
   render(): ReactElement {
+    let { closeModal } = this.props;
+
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: 'red'}}>
 
       {this.state.loading && this.state.loading}
 
@@ -133,7 +146,15 @@ class Camera extends Component {
             style={{ position: 'absolute', left: 0, top: 0, opacity: this.state.gridOverlayOpacity }}
           />
 
-          <View style={{ alignSelf: 'flex-end', alignItems: 'center', marginBottom: 50, flexDirection: 'row' }}>
+          <View style={{ alignSelf: 'flex-end', alignItems: 'center', marginBottom: 30, flexDirection: 'row' }}>
+
+            <TouchableOpacity
+              onPress={closeModal}
+              style={{ marginRight: 16, backgroundColor: 'transparent' }}
+            >
+
+              <Icon name="close" size={32} color="white" />
+            </TouchableOpacity>
 
             <CaptureButton
               onPress={this.capture.bind(this)}
@@ -142,7 +163,7 @@ class Camera extends Component {
 
             <TouchableOpacity
               onPress={() => this.toggleGridOverlay()}
-              style={styles.toggleOverlayButton}
+              style={{ marginLeft: 16, backgroundColor: 'transparent' }}
             >
 
               <Icon name="navicon" size={32} color="white" />
@@ -172,7 +193,7 @@ const styles = StyleSheet.create({
     //marginBottom: 30,
   },
   toggleOverlayButton: {
-    marginLeft: 16,
+    backgroundColor: 'transparent',
   },
 });
 

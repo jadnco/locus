@@ -56,7 +56,7 @@ class GridOverlay extends Component {
 
     if (width && height) {
       content = (
-        <Surface width={width} height={height}>
+        <Surface width={width} height={height} style={{ backgroundColor: 'transparent' }}>
 
           {/* Shadows */}
           <Shape
