@@ -55,6 +55,8 @@ class PhotoEditor extends Component {
   render(): ReactElement {
     let { photo, pop, push } = this.props;
 
+    console.log('Photo editor: ', photo);
+
     return (
       <View style={styles.container}>
 
@@ -66,7 +68,9 @@ class PhotoEditor extends Component {
           }
         />
 
-        {photo && <PhotoCropper source={photo} />}
+        <ScrollView>
+          <PhotoCropper source={photo} />
+        </ScrollView>
       </View>
     );
   }

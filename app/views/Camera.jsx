@@ -85,10 +85,10 @@ class Camera extends Component {
 
       this.setState({ photo });
 
-      navigator.geolocation.getCurrentPosition((loc) => {
+      navigator.geolocation.getCurrentPosition(loc => {
         console.log('LOCATION:', loc);
 
-        photo = { location: loc.coords };
+        photo = { uri, location: loc.coords };
 
         this.setState({ photo });
 
