@@ -12,6 +12,7 @@ import React, {
   ScrollView,
   TouchableOpacity,
   StatusBarIOS,
+  Navigator,
 } from 'react-native';
 
 import {
@@ -44,7 +45,7 @@ class NewSpotSource extends Component {
   }
 
   render(): ReactElement {
-    let { push, closeModal, ...other } = this.props;
+    let { push, pop, closeModal, ...other } = this.props;
 
     return (
       <TabNavigator
@@ -77,6 +78,8 @@ class NewSpotSource extends Component {
           <Camera
             closeModal={closeModal}
             visible={this.state.selectedTab === 'camera'}
+            push={push}
+            pop={pop}
           />
         </TabNavigator.Item>
       </TabNavigator>

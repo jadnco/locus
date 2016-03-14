@@ -1,4 +1,10 @@
-/* @flow */
+/**
+ * After a photo is selected and edited, this view
+ * allows the Spot to be edited with a title description etc.
+ * This is where the Spot can finally be publishe
+ *
+ * @flow
+ */
 
 'use strict';
 
@@ -11,7 +17,7 @@ import React, {
   ScrollView,
 } from 'react-native';
 
-import { NextButton, TopBar } from '../components';
+import { BackButton, NextButton, TopBar } from '../components';
 
 import { Search } from '.';
 
@@ -23,16 +29,14 @@ class SpotEditor extends Component {
   }
 
   render(): ReactElement {
-    let { push, ...other } = this.props;
+    let { push, pop, ...other } = this.props;
 
     return (
       <View style={styles.container}>
 
         <TopBar
           title='Spot Editor'
-          rightButton={
-            <NextButton onPress={() => push({ component: Search })} />
-          }
+          leftButton={<BackButton onPress={pop} />}
         />
 
         <ScrollView
@@ -51,6 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: 'white',
   },
 });
 

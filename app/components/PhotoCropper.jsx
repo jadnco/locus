@@ -26,7 +26,7 @@ type Props = {
   style: Object,
 };
 
-class PhotoEditor extends Component {
+class PhotoCropper extends Component {
   props: Props;
 
   constructor(props: Props): void {
@@ -56,11 +56,11 @@ class PhotoEditor extends Component {
       <View>
         <ResponsiveImage source={source}>
 
-          <GridOverlay
+          {/* <GridOverlay
             width={width}
             height={height}
             stroke="white"
-          />
+          /> */}
         </ResponsiveImage>
       </View>
     );
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { PhotoEditor };
+export { PhotoCropper };

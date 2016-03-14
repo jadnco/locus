@@ -29,7 +29,7 @@ class CaptureButton extends Component {
         style={[styles.button, style]}
         {...other}
       >
-        <Icon name="camera" size={32} />
+        <Icon name="eye" size={42} color="white" />
       </TouchableHighlight>
     );
   }
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: 'white',
+    backgroundColor: '#CC9B47',
     alignItems: 'center',
     justifyContent: 'center',
   },

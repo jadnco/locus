@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  ActivityIndicatorIOS,
   Animated,
   Component,
   CameraRoll,
@@ -12,6 +13,7 @@ import React, {
   View,
   ListView,
   TextInput,
+  Modal,
   ScrollView,
   NavigatorIOS,
   Image,
@@ -27,24 +29,33 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import { CaptureButton, GridOverlay } from '../components';
 
+import { PhotoEditor } from '.';
+
 import config from '../config';
 
 type Props = {};
 
+type State = {
+  photo: Object,
+  isGridVisible: boolean,
+  gridOverlayOpacity: number,
+};
+
 class Camera extends Component {
   props: Props;
+  state: State;
   USER_KEY: string = '@Locus:user';
 
   constructor(props: Props): void {
     super(props);
 
     this.state = {
-      loading: null,
       isGridVisible: false,
       gridOverlayOpacity: new Animated.Value(0),
+      photo: {},
     };
+
     this.camera = null;
-    this.photo = '';
   }
 
   componentDidMount(): void {
@@ -57,24 +68,38 @@ class Camera extends Component {
     visible && StatusBarIOS.setHidden(true, 'slide');
   }
 
+  toEditor(): void {
+    this.props.push({ component: PhotoEditor, photo: this.state.photo });
+  }
+
   capture(): void {
+    let photo = {};
+
     console.log('CAPTURE');
 
     // This will capture the image and save to the camera roll
-    this.camera.capture({ location: true }, (error, photo) => {
-      console.log('Photo -->', photo);
+    this.camera.capture({ location: true }, (error, uri) => {
+      console.log('Photo -->', uri);
 
-      this.photo = photo;
+      photo = { uri };
 
-      this.getPhoto();
-    });
-  }
+      this.setState({ photo });
 
-  getPhoto(): void {
-    CameraRoll.getPhotos({ first: 1 }, (a) => {
-      console.log('Took photo', a);
-    }, () => {
-      console.log('Error uploading file');
+      navigator.geolocation.getCurrentPosition((loc) => {
+        console.log('LOCATION:', loc);
+
+        photo = { location: loc.coords };
+
+        this.setState({ photo });
+
+        this.toEditor();
+      },
+
+      error => this.toEditor(),
+
+      {
+        enableHighAccuracy: true,
+      });
     });
   }
 
@@ -87,28 +112,15 @@ class Camera extends Component {
     this.setState({ isGridVisible: !this.state.isGridVisible });
   }
 
-  upload(photo: Object): void {
+
+  // TODO: Move this and `savePhoto` to Editor view.
+  upload(photo): void {
     let data = new FormData();
-    let node = photo.edges[0].node;
-
-    console.log('PHOTO:::', photo);
-
-    node.location = {
-      longitude: 1234,
-      latitude: 9873,
-    };
 
     // Create a new fieldname
-    data.append('spot', { ...node.image, name: 'spot' });
+    data.append('photo', { uri: photo.uri, name: 'photo' });
 
-    // TODO: Send location and dimension data alongside the photo
-    // data.append('location', JSON.stringify({ ...node.location }));
-
-    //data.append('dimensions', { width: 'test', height: 123 });
-
-    console.log('DATA --> ', data);
-
-    this.setState({loading: <Text style={{color: 'black', padding: 20, borderWidth: 1, borderColor: 'white'}}>Uploading...</Text>})
+    this.setState({ uploading: true });
 
     // Send the request to the server
     fetch(`http://${config.address}:1998/upload`, {
@@ -118,12 +130,24 @@ class Camera extends Component {
       },
       body: data,
     })
-    .then(res => {
-      this.setState({loading: null});
+    .then(res => res.json())
+    .then(res => this.savePhoto(res.upload, photo.location))
+    .catch(e => console.error(e));
+  }
 
-      return res.json();
+  savePhoto(upload, location): void {
+    let photo = {
+      source: upload.filename,
+      location: location,
+    };
+    
+    fetch(`http://${config.address}:1998/api/photos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ photo }),
     })
-    .then(u => this.saveSpot(u))
     .catch(e => console.error(e));
   }
 
@@ -131,46 +155,47 @@ class Camera extends Component {
     let { closeModal } = this.props;
 
     return (
-      <View style={{flex: 1, backgroundColor: 'red'}}>
-
-      {this.state.loading && this.state.loading}
+      <View>
 
         <Cam
           ref={cam => this.camera = cam}
-          style={[styles.container, {width: Dimensions.get('window').width, height: Dimensions.get('window').height}]}>
+          aspect="fill"
+
+          // We want a default 4:3 aspect ratio
+          style={[styles.container, {width: Dimensions.get('window').width, height: Dimensions.get('window').width * 1.33 }]}>
 
           <GridOverlay
             width={Dimensions.get('window').width}
-            height={Dimensions.get('window').height}
+            height={Dimensions.get('window').width * 1.33}
             stroke="white"
             style={{ position: 'absolute', left: 0, top: 0, opacity: this.state.gridOverlayOpacity }}
           />
-
-          <View style={{ alignSelf: 'flex-end', alignItems: 'center', marginBottom: 30, flexDirection: 'row' }}>
-
-            <TouchableOpacity
-              onPress={closeModal}
-              style={{ marginRight: 16, backgroundColor: 'transparent' }}
-            >
-
-              <Icon name="close" size={32} color="white" />
-            </TouchableOpacity>
-
-            <CaptureButton
-              onPress={this.capture.bind(this)}
-              style={styles.captureButton}
-            />
-
-            <TouchableOpacity
-              onPress={() => this.toggleGridOverlay()}
-              style={{ marginLeft: 16, backgroundColor: 'transparent' }}
-            >
-
-              <Icon name="navicon" size={32} color="white" />
-            </TouchableOpacity>
-
-          </View>
         </Cam>
+
+        <View style={{ alignSelf: 'center', marginTop: 20, alignItems: 'center', flexDirection: 'row' }}>
+
+          <TouchableOpacity
+            onPress={closeModal}
+            style={{ marginRight: 16, backgroundColor: 'transparent' }}
+          >
+
+            <Icon name="close" size={32} color="black" />
+          </TouchableOpacity>
+
+          <CaptureButton
+            onPress={this.capture.bind(this)}
+            style={styles.captureButton}
+          />
+
+          <TouchableOpacity
+            onPress={() => this.toggleGridOverlay()}
+            style={{ marginLeft: 16, backgroundColor: 'transparent' }}
+          >
+
+            <Icon name="navicon" size={32} color="black" />
+          </TouchableOpacity>
+
+        </View>
       </View>
     );
   }
@@ -178,7 +203,6 @@ class Camera extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
   },

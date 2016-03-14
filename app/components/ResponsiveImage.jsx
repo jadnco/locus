@@ -40,7 +40,7 @@ class ResponsiveImage extends Component {
           height: this.props.height || height,
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => {});
   }
 
   static getScaledSize(uri): Object<number, number> {

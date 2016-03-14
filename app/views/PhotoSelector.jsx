@@ -20,7 +20,7 @@ import {
   BackButton,
   NextButton,
   TopBar,
-  PhotoEditor,
+  PhotoCropper,
   PhotoGrid,
 }  from '../components';
 
@@ -72,7 +72,7 @@ class PhotoSelector extends Component {
 
     if (this.state.selected) {
       editor = (
-        <PhotoEditor
+        <PhotoCropper
           source={this.state.selected}
         />
       );

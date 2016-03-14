@@ -113,7 +113,7 @@ class locus extends Component {
 
       <Text onPress={this.getUser.bind(this)} style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
 
-      <TabBarIOS tintColor="#CC9B47" barTintColor="black">
+      <TabBarIOS tintColor="#CC9B47">
         <Icon.TabBarItem
           title="Home"
           iconName="location"

@@ -7,7 +7,7 @@ export { GridOverlay } from './GridOverlay';
 export { List } from './List';
 export { ListItem } from './ListItem';
 export { NextButton } from './NextButton';
-export { PhotoEditor } from './PhotoEditor';
+export { PhotoCropper } from './PhotoCropper';
 export { PhotoGrid } from './PhotoGrid';
 export { ProfileTabBar } from './ProfileTabBar';
 export { ResponsiveImage } from './ResponsiveImage';
