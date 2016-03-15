@@ -144,13 +144,12 @@ class SpotEditor extends Component {
             onChangeText={caption => this.setState({ caption })}
           />
 
-          <TouchableOpacity onPress={this.upload.bind(this)}>
-            <Text>Publish</Text>
+          <TouchableOpacity
+            onPress={this.upload.bind(this)}
+            style={{ marginTop: 20, paddingVertical: 10, paddingHorizontal: 30, alignSelf: 'center', backgroundColor: '#CC9B47' }}
+          >
+            <Text style={{ color: 'white' }}>Publish</Text>
           </TouchableOpacity>
-
-          <View>
-            <Text>Location: </Text>
-          </View>
         </ScrollView>
       </View>
     );

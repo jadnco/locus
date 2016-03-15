@@ -81,7 +81,7 @@ class Followers extends Component {
 
     return (
       <View style={styles.container}>
-        <TopBar title='Likes' leftButton={<BackButton onPress={pop} />} />
+        <TopBar title='Followers' leftButton={<BackButton onPress={pop} />} />
 
         <View style={styles.container}>
 

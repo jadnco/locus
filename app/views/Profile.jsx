@@ -64,8 +64,6 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-
-    // TODO: Get user spots
     fetch(`http://${config.address}:1998/api/users/${this.props._id}/spots`, {
       method: 'GET',
     })
