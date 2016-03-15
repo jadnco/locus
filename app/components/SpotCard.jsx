@@ -67,7 +67,7 @@ class SpotCard extends Component {
         let data = { user: user._id };
 
         return fetch(`http://${config.address}:1998/api/spots/${this.props._id}/likes`, {
-          method: this.state.liked ? 'DELETE' : 'POST',
+          method: this.state.liked ? 'DELETE' : 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
