@@ -94,7 +94,7 @@ class Spot extends Component {
 
           <View>
             <ResponsiveImage
-              source={{ uri: `http://${config.address}:1998/uploads/${data.photo}` }}
+              source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
               style={styles.image}
             />
           </View>

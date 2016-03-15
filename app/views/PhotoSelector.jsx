@@ -24,6 +24,10 @@ import {
   PhotoGrid,
 }  from '../components';
 
+import {
+  PhotoEditor,
+} from '.';
+
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 type Props = {
@@ -60,14 +64,19 @@ class PhotoSelector extends Component {
     CameraRoll.getPhotos({ first: 1 }, photo => {
       console.log(photo);
 
-      this.setState({ selected: photo.edges[0].node.image });
+      let selected = {
+        location: photo.edges[0].node.location,
+        uri: photo.edges[0].node.image.uri,
+      };
+
+      this.setState({ selected });
     }, () => {
       console.log('Error getting latest photo.');
     });
   }
 
   render(): ReactElement {
-    let { closeModal, pop } = this.props;
+    let { closeModal, pop, push } = this.props;
     let editor = <View></View>;
 
     if (this.state.selected) {
@@ -93,7 +102,7 @@ class PhotoSelector extends Component {
             />
           }
           rightButton={
-            <NextButton onPress={() => push({ component: SpotEditor })} />
+            <NextButton onPress={() => push({ component: PhotoEditor, photo: this.state.selected, closeModal })} />
           }
         />
 

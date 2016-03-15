@@ -64,6 +64,8 @@ class NewSpotSource extends Component {
           <PhotoSelector
             closeModal={closeModal}
             visible={this.state.selectedTab === 'library'}
+            push={push}
+            pop={pop}
           />
         </TabNavigator.Item>
 

@@ -109,7 +109,7 @@ class SpotCard extends Component {
         </View>
 
         <ResponsiveImage
-          source={{ uri: `http://${config.address}:1998/uploads/${data.photo}` }}
+          source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
           style={styles.image}
         />
 
@@ -132,7 +132,7 @@ class SpotCard extends Component {
             </View>
 
             <View style={{ paddingTop: 14 }}>
-              <Text>{data.description}</Text>
+              <Text>{data.caption}</Text>
             </View>
           </View>
 

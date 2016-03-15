@@ -14,6 +14,8 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Store from 'react-native-simple-store';
 
+import { TopBar } from './app/components';
+
 import {
   Camera,
   Feed,
@@ -51,7 +53,6 @@ class locus extends Component {
         if (!user._id) {
           this.setState({ selectedTab: 'toggleUser' });
         }
-
 
         this.setState({ me: user });
       });

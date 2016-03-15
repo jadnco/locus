@@ -112,45 +112,6 @@ class Camera extends Component {
     this.setState({ isGridVisible: !this.state.isGridVisible });
   }
 
-
-  // TODO: Move this and `savePhoto` to Editor view.
-  upload(photo): void {
-    let data = new FormData();
-
-    // Create a new fieldname
-    data.append('photo', { uri: photo.uri, name: 'photo' });
-
-    this.setState({ uploading: true });
-
-    // Send the request to the server
-    fetch(`http://${config.address}:1998/upload`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: data,
-    })
-    .then(res => res.json())
-    .then(res => this.savePhoto(res.upload, photo.location))
-    .catch(e => console.error(e));
-  }
-
-  savePhoto(upload, location): void {
-    let photo = {
-      source: upload.filename,
-      location: location,
-    };
-    
-    fetch(`http://${config.address}:1998/api/photos`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ photo }),
-    })
-    .catch(e => console.error(e));
-  }
-
   render(): ReactElement {
     let { closeModal } = this.props;
 

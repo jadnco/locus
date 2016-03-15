@@ -37,7 +37,6 @@ class UserToggle extends Component {
   }
 
   componentDidMount(): void {
-    console.log("config, ", config);
     fetch(`http://${config.address}:1998/api/users`, {
       method: 'GET',
     })

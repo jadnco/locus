@@ -53,7 +53,7 @@ class PhotoEditor extends Component {
   }
 
   render(): ReactElement {
-    let { photo, pop, push } = this.props;
+    let { closeModal, photo, pop, push } = this.props;
 
     console.log('Photo editor: ', photo);
 
@@ -64,7 +64,7 @@ class PhotoEditor extends Component {
           title='Photo Editor'
           leftButton={<BackButton onPress={pop} />}
           rightButton={
-            <NextButton onPress={() => push({ component: SpotEditor })} />
+            <NextButton onPress={() => push({ component: SpotEditor, photo, closeModal })} />
           }
         />
 
