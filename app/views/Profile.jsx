@@ -28,6 +28,8 @@ import {
   SpotCard,
 } from '../components';
 
+import { Followers } from '.';
+
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -98,7 +100,7 @@ class Profile extends Component {
       <View style={styles.container}>
         <TopBar
           title={data.name}
-          rightButton={<FollowButton />}
+          rightButton={<FollowButton user={data} />}
           style={{ backgroundColor: 'transparent' }}
           leftButton={pop && <BackButton onPress={pop} />}
         />
@@ -138,10 +140,13 @@ class Profile extends Component {
                       <Text style={styles.infoTitle}>Following</Text>
                     </View>
 
-                    <View style={styles.info}>
+                    <TouchableOpacity
+                      onPress={() => push({ component: Followers, ...data })}
+                      style={styles.info}
+                    >
                       <Text style={styles.infoNumber}>{data.followersCount}</Text>
                       <Text style={styles.infoTitle}>Followers</Text>
-                    </View>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>

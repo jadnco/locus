@@ -1,5 +1,6 @@
 export { Camera } from './Camera';
 export { Feed } from './Feed';
+export { Followers } from './Followers';
 export { Likes } from './Likes';
 export { Login } from './Login';
 export { Messages } from './Messages';
