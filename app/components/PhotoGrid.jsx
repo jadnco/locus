@@ -7,7 +7,7 @@ import React, {
   Component,
   Dimensions,
   StyleSheet,
-  TouchableHighlight,
+  TouchableOpacity,
   Text,
   View,
   Image,
@@ -53,7 +53,7 @@ class PhotoGrid extends Component {
   }
 
   render(): ReactElement {
-    let { style, source, ...other } = this.props;
+    let { selected, style, source, ...other } = this.props;
     let { width, height } = this.state;
 
     let images = [];
@@ -61,18 +61,20 @@ class PhotoGrid extends Component {
     if (this.state.photos) {
         this.state.photos.edges.map((photo, i) => {
           images.push(
-            <Image
-              key={i}
-              height={this.state.width / 4}
+            <TouchableOpacity onPress={selected.bind(null, photo)}>
+              <Image
+                key={i}
+                height={this.state.width / 4}
 
-              // Subtracting 1.5 from 4 images leaves
-              // 6 which can be used as whitespace
-              // 6 / 3 margins = 2
-              width={(this.state.width / 4) - 1.5}
-              style={{ marginBottom: 2 }}
+                // Subtracting 1.5 from 4 images leaves
+                // 6 which can be used as whitespace
+                // 6 / 3 margins = 2
+                width={(this.state.width / 4) - 1.5}
+                style={{ marginBottom: 2 }}
 
-              source={photo.node.image}
-            />
+                source={photo.node.image}
+              />
+            </TouchableOpacity>
           );
         });
     }

@@ -33,24 +33,20 @@ class PhotoCropper extends Component {
     super(props);
 
     this.state = {
-      width: 0,
-      height: 0,
+      source: {},
     };
   }
 
-  componentDidMount(): void {
-    ResponsiveImage.getScaledSize(this.props.source.uri)
-      .then(({ width, height }) => {
-        console.log('FROM GET SIZE', width, height);
+  componentWillMount(): void {
+    this.setState({ source: this.props.source });
+  }
 
-        this.setState({ width, height });
-      })
-      .catch(error => console.log(error));
+  componentWillReceiveProps(props): void {
+    this.setState({ source: props.source });
   }
 
   render(): ReactElement {
-    let { style, source, ...other } = this.props;
-    let { width, height } = this.state;
+    let { source } = this.state;
 
     return (
       <View>

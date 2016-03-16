@@ -75,6 +75,21 @@ class PhotoSelector extends Component {
     });
   }
 
+  selectPhoto(photo: Object): void {
+    console.log('Photo has been selected');
+
+    let selected = {
+      location: photo.node.location,
+      uri: photo.node.image.uri,
+    };
+
+    console.log('selected:', selected)
+
+    this.setState({ selected });
+  }
+
+  renderPhotoCropper(): void {}
+
   render(): ReactElement {
     let { closeModal, pop, push } = this.props;
     let editor = <View></View>;
@@ -112,7 +127,7 @@ class PhotoSelector extends Component {
         >
           {editor}
 
-          <PhotoGrid />
+          <PhotoGrid selected={this.selectPhoto.bind(this)} />
         </ScrollView>
       </View>
     );

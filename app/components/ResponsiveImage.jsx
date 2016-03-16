@@ -32,21 +32,38 @@ class ResponsiveImage extends Component {
     };
   }
 
-  componentDidMount(): void {
-    ResponsiveImage.getScaledSize(this.props.source.uri)
+  componentWillMount(): void {
+    let { source } = this.props;
+
+    ResponsiveImage.getScaledSize(source.uri)
       .then(({ width, height }) => {
         this.setState({
           width: this.props.width || width,
           height: this.props.height || height,
+          source,
         });
       })
       .catch(error => {});
   }
 
-  static getScaledSize(uri): Object<number, number> {
-    let _window: { width: number } = Dimensions.get('window');
+  componentWillReceiveProps(props): void {
+    let { source } = props;
+
+    ResponsiveImage.getScaledSize(source.uri)
+      .then(({ width, height }) => {
+        this.setState({
+          width: this.props.width || width,
+          height: this.props.height || height,
+          source,
+        }, ()=> console.log('state updated'));
+      })
+      .catch(error => {});
+  }
+
+  static getScaledSize(uri): Promise<Object> {
+    let _window: Object = Dimensions.get('window');
     let ratio: number;
-    let scaled: { width: number, height: number } = { width: 0, height: 0 };
+    let scaled: Object = { width: 0, height: 0 };
 
     return new Promise((resolve, reject) => {
       Image.getSize(uri, (width, height) => {
@@ -61,8 +78,8 @@ class ResponsiveImage extends Component {
   }
 
   render(): ReactElement {
-    let { source, style, children, ...other } = this.props;
-    let { width, height } = this.state;
+    let { style, children, ...other } = this.props;
+    let { width, height, source } = this.state;
 
     return (
       <View style={{ overflow: 'hidden' }}>
