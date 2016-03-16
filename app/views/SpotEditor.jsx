@@ -84,7 +84,7 @@ class SpotEditor extends Component {
     console.log('CALLED publish');
 
     let spot = {
-      type: 'photo',
+      type: 'location',
       title: this.state.title,
       caption: this.state.caption,
       photo: photo._id,

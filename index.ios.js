@@ -24,6 +24,7 @@ import {
   Notifications,
   Profile,
   UserToggle,
+  MapView,
 } from './app/views';
 
 type State = {
@@ -55,7 +56,8 @@ class locus extends Component {
         }
 
         this.setState({ me: user });
-      });
+      })
+      .catch(error => console.log(error));
   }
 
   tabChange(tab: string): void {
@@ -167,7 +169,7 @@ class locus extends Component {
           onPress={() => this.tabChange('messages')}
         >
 
-          <Messages />
+          <MapView />
         </Icon.TabBarItem>
 
         <Icon.TabBarItem

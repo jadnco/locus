@@ -23,7 +23,12 @@ import {
   PhotoGrid,
 } from '../components';
 
-import { Camera, SpotEditor, PhotoSelector } from '.';
+import {
+  Camera,
+  SpotEditor,
+  PhotoSelector,
+  MapView,
+} from '.';
 
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -83,6 +88,17 @@ class NewSpotSource extends Component {
             push={push}
             pop={pop}
           />
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          title="Location"
+          titleStyle={styles.tabTitle}
+          selectedTitleStyle={styles.selectedTabTitle}
+          selected={this.state.selectedTab === 'location'}
+          onPress={() => this.tabChange('location')}
+        >
+
+          <MapView data={{ longitude: 49.896258, latitude: -97.137447, accuracy: 10 }} />
         </TabNavigator.Item>
       </TabNavigator>
     );

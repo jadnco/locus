@@ -4,6 +4,7 @@
 
 import React, {
   ActionSheetIOS,
+  AlertIOS,
   Component,
   StyleSheet,
   TouchableHighlight,
@@ -14,7 +15,12 @@ import React, {
 } from 'react-native';
 
 import { Avatar, ResponsiveImage } from '.';
-import { Profile, Spot, Likes } from '../views';
+import {
+  Profile,
+  Spot,
+  Likes,
+  MapView,
+} from '../views';
 
 import { formatNumber, formatTime } from '../utils';
 
@@ -96,24 +102,61 @@ class SpotCard extends Component {
     });
   }
 
+  delete(): void {
+    AlertIOS.alert('Delete this Spot?', this.props.data.title, [
+    {
+      text: 'Cancel',
+      style: 'cancel',
+    },
+    {
+      text: 'OK',
+      onPress: () => {
+        fetch(`http://${config.address}:1998/api/spots/${this.props.data._id}`, {
+          method: 'DELETE',
+        })
+        .then(AlertIOS.alert('Spot has been deleted.'))
+        .catch(error => console.log(error));
+      },
+    }]);
+  }
+
   render(): ReactElement {
     let { push, pop, style, data } = this.props;
+    let visual;
+
+    if (data.type === 'location') {
+      visual = <MapView data={data.photo.location} zoom={false} style={{ height: 200 }} />;
+    } else {
+      visual = (
+        <ResponsiveImage
+          source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
+          style={styles.image}
+        />
+      );
+    }
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
         onPress={() => push({ component: Spot, data })}
+        onLongPress={this.delete.bind(this)}
       >
         <View style={{ padding: 14, flexDirection: 'row' }}>
-          <Text>{data.title}</Text>
+
+          <View>
+            <Text>{data.title}</Text>
+
+            <Text style={{textAlign: 'left'}}>
+              <Icon name="location" size={17} color="grey" style={{  }} />
+              <Text style={{ color: 'grey' }}>{data.photo.location.city || 'null'}, {data.photo.location.country || 'null'}</Text>
+            </Text>
+          </View>
+
           <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{formatTime(data.created)}</Text>
         </View>
 
-        <ResponsiveImage
-          source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
-          style={styles.image}
-        />
+        {visual}
 
         <View style={{ flexDirection: 'column' }}>
 
@@ -180,10 +223,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowRadius: 1,
+    shadowRadius: 0.8,
     shadowColor: 'black',
-    shadowOpacity: 0.2,
-    borderRadius: 2,
+    shadowOpacity: 0.1,
   },
   spotterName: {
     marginLeft: 8,

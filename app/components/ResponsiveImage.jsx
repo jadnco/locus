@@ -55,7 +55,7 @@ class ResponsiveImage extends Component {
           width: this.props.width || width,
           height: this.props.height || height,
           source,
-        }, ()=> console.log('state updated'));
+        });
       })
       .catch(error => {});
   }

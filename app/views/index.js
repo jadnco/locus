@@ -3,6 +3,7 @@ export { Feed } from './Feed';
 export { Followers } from './Followers';
 export { Likes } from './Likes';
 export { Login } from './Login';
+export { MapView } from './MapView';
 export { Messages } from './Messages';
 export { NewSpotSource } from './NewSpotSource';
 export { Notifications } from './Notifications';
