@@ -35,12 +35,13 @@ class SpotEditor extends Component {
     this.state = {
       caption: '',
       title: '',
+      uploaded: false,
     };
   }
 
   upload(): void {
     let data = new FormData();
-    let photo = this.props.data;
+    let photo = this.props.photo;
 
     // Create a new fieldname
     data.append('photo', { uri: photo.uri, name: 'photo' });
@@ -56,14 +57,13 @@ class SpotEditor extends Component {
       body: data,
     })
     .then(res => res.json())
-    .then(res => this.savePhoto(res.upload, photo.location))
+    .then(res => this.savePhoto(res.upload, this.props.location))
     .catch(e => console.error(e));
   }
 
   savePhoto(upload, location): void {
     let photo = {
       source: upload.filename,
-      location: location,
     };
 
     console.log('Save photo called');
@@ -76,19 +76,32 @@ class SpotEditor extends Component {
       body: JSON.stringify({ photo }),
     })
     .then(res => res.json())
-    .then(res => this.publish(res.photo))
+    .then(res => {
+      this.setState({ uploaded: true });
+
+      this.publish(res.photo);
+    })
     .catch(e => console.log(e));
   }
 
   publish(photo): void {
-    console.log('CALLED publish');
+    let { type } = this.props;
+
+    if (type === 'photo' && !this.state.uploaded) {
+      return this.upload();
+    }
 
     let spot = {
-      type: 'location',
+      type: this.props.type,
       title: this.state.title,
       caption: this.state.caption,
-      photo: photo._id,
+      location: this.props.location,
     };
+
+    // Create a photo record association
+    if (type === 'photo') {
+      spot.photo = photo._id;
+    }
 
     console.log('Spot', spot);
 
@@ -112,7 +125,7 @@ class SpotEditor extends Component {
   }
 
   render(): ReactElement {
-    let { data, push, pop, ...other } = this.props;
+    let { data, type, push, pop, ...other } = this.props;
 
     return (
       <View style={styles.container}>
@@ -144,8 +157,10 @@ class SpotEditor extends Component {
             onChangeText={caption => this.setState({ caption })}
           />
 
+          <Text>Type: {type}</Text>
+
           <TouchableOpacity
-            onPress={this.upload.bind(this)}
+            onPress={this.publish.bind(this)}
             style={{ marginTop: 20, paddingVertical: 10, paddingHorizontal: 30, alignSelf: 'center', backgroundColor: '#CC9B47' }}
           >
             <Text style={{ color: 'white' }}>Publish</Text>

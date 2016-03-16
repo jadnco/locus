@@ -27,7 +27,7 @@ import {
   Camera,
   SpotEditor,
   PhotoSelector,
-  MapView,
+  LocationSelector,
 } from '.';
 
 import TabNavigator from 'react-native-tab-navigator';
@@ -98,7 +98,11 @@ class NewSpotSource extends Component {
           onPress={() => this.tabChange('location')}
         >
 
-          <MapView data={{ longitude: 49.896258, latitude: -97.137447, accuracy: 10 }} />
+          <LocationSelector
+            closeModal={closeModal}
+            push={push}
+            pop={pop}
+          />
         </TabNavigator.Item>
       </TabNavigator>
     );

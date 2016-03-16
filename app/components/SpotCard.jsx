@@ -14,12 +14,16 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import { Avatar, ResponsiveImage } from '.';
+import {
+  Avatar,
+  LocationMap,
+  ResponsiveImage,
+} from '.';
+
 import {
   Profile,
   Spot,
   Likes,
-  MapView,
 } from '../views';
 
 import { formatNumber, formatTime } from '../utils';
@@ -125,7 +129,13 @@ class SpotCard extends Component {
     let visual;
 
     if (data.type === 'location') {
-      visual = <MapView data={data.photo.location} zoom={false} style={{ height: 200 }} />;
+      visual = (
+        <LocationMap
+          data={data.location}
+          zoom={false}
+          style={{ height: 200 }}
+        />
+      );
     } else {
       visual = (
         <ResponsiveImage
@@ -149,7 +159,7 @@ class SpotCard extends Component {
 
             <Text style={{textAlign: 'left'}}>
               <Icon name="location" size={17} color="grey" style={{  }} />
-              <Text style={{ color: 'grey' }}>{data.photo.location.city || 'null'}, {data.photo.location.country || 'null'}</Text>
+              <Text style={{ color: 'grey' }}>{data.location.city || 'null'}, {data.location.country || 'null'}</Text>
             </Text>
           </View>
 
@@ -217,7 +227,7 @@ class SpotCard extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    margin: 8,
+    margin: 6,
     backgroundColor: '#FFFFFF',
     shadowOffset: {
       width: 0,

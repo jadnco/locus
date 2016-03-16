@@ -19,7 +19,7 @@ type Props = {
   data: Object,
 };
 
-class MapView extends Component {
+class LocationMap extends Component {
   constructor(props: Props): void {
     super(props);
 
@@ -28,8 +28,6 @@ class MapView extends Component {
 
   render(): ReactElement {
     let { data, zoom, style } = this.props;
-
-    console.log('Map data', data);
 
     return (
       <View style={styles.container}>
@@ -69,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { MapView };
+export { LocationMap };

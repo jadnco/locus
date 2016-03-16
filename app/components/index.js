@@ -6,6 +6,7 @@ export { FollowButton } from './FollowButton';
 export { GridOverlay } from './GridOverlay';
 export { List } from './List';
 export { ListItem } from './ListItem';
+export { LocationMap } from './LocationMap';
 export { NextButton } from './NextButton';
 export { PhotoCropper } from './PhotoCropper';
 export { PhotoGrid } from './PhotoGrid';

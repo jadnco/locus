@@ -29,7 +29,10 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import { CaptureButton, GridOverlay } from '../components';
 
-import { PhotoEditor } from '.';
+import {
+  PhotoEditor,
+  SpotEditor,
+} from '.';
 
 import config from '../config';
 
@@ -53,6 +56,7 @@ class Camera extends Component {
       isGridVisible: false,
       gridOverlayOpacity: new Animated.Value(0),
       photo: {},
+      location: {},
     };
 
     this.camera = null;
@@ -69,11 +73,18 @@ class Camera extends Component {
   }
 
   toEditor(): void {
-    this.props.push({ component: PhotoEditor, data: this.state.photo, closeModal: this.props.closeModal });
+    this.props.push({
+      component: SpotEditor,
+      type: 'photo',
+      photo: this.state.photo,
+      location: this.state.location,
+      closeModal: this.props.closeModal,
+    });
   }
 
   capture(): void {
     let photo = {};
+    let location = {};
 
     console.log('CAPTURE');
 
@@ -88,9 +99,9 @@ class Camera extends Component {
       navigator.geolocation.getCurrentPosition(loc => {
         console.log('LOCATION:', loc);
 
-        photo = { uri, location: loc.coords };
+        location = loc.coords;
 
-        this.setState({ photo });
+        this.setState({ photo, location });
 
         this.toEditor();
       },
