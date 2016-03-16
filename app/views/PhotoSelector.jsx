@@ -117,7 +117,7 @@ class PhotoSelector extends Component {
             />
           }
           rightButton={
-            <NextButton onPress={() => push({ component: PhotoEditor, photo: this.state.selected, closeModal })} />
+            <NextButton onPress={() => push({ component: PhotoEditor, data: this.state.selected, closeModal })} />
           }
         />
 

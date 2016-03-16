@@ -101,9 +101,7 @@ class Feed extends Component {
               onRefresh={this.refresh.bind(this)}
             />
           }
-          row={data =>
-            <SpotCard {...data} push={push} pop={pop} />
-          }
+          row={data => <SpotCard data={data} push={push} pop={pop} />}
         />
       );
     }

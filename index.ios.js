@@ -178,7 +178,7 @@ class locus extends Component {
         >
 
           <Navigator
-            initialRoute={{ component: Profile, user: this.state.me }}
+            initialRoute={{ component: Profile, data: this.state.me }}
             renderScene={this.renderScene.bind(this)}
           />
 

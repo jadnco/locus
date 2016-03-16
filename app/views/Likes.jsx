@@ -37,7 +37,7 @@ class Likes extends Component {
   }
 
   componentDidMount(): void {
-    fetch(`http://${config.address}:1998/api/spots/${this.props._id}/likes`, {
+    fetch(`http://${config.address}:1998/api/spots/${this.props.data._id}/likes`, {
       method: 'GET',
     })
     .then(res => res.json())

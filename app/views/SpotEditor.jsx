@@ -40,7 +40,7 @@ class SpotEditor extends Component {
 
   upload(): void {
     let data = new FormData();
-    let photo = this.props.photo;
+    let photo = this.props.data;
 
     // Create a new fieldname
     data.append('photo', { uri: photo.uri, name: 'photo' });
@@ -112,7 +112,7 @@ class SpotEditor extends Component {
   }
 
   render(): ReactElement {
-    let { photo, push, pop, ...other } = this.props;
+    let { data, push, pop, ...other } = this.props;
 
     return (
       <View style={styles.container}>

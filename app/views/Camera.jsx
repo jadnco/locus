@@ -69,7 +69,7 @@ class Camera extends Component {
   }
 
   toEditor(): void {
-    this.props.push({ component: PhotoEditor, photo: this.state.photo });
+    this.props.push({ component: PhotoEditor, data: this.state.photo, closeModal: this.props.closeModal });
   }
 
   capture(): void {

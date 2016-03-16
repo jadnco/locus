@@ -30,10 +30,8 @@ import config from '../config';
 
 type Props = {
   navigator: Object,
-  title: string,
   pop: Function,
   push: Function,
-  img: Object,
 };
 
 class Spot extends Component {
@@ -74,7 +72,7 @@ class Spot extends Component {
   }
 
   render(): ReactElement {
-    let { push, img, pop, ...data } = this.props;
+    let { push, pop, data } = this.props;
 
     return (
       <View style={styles.container}>
@@ -102,7 +100,7 @@ class Spot extends Component {
           <View style={{ padding: 10 }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => push({ component: Profile, ...data.spotter })}
+              onPress={() => push({ component: Profile, data: data.spotter })}
             >
 
               <Avatar size={40} />

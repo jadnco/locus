@@ -29,8 +29,7 @@ type Props = {
   size: number,
   push: Function,
   pop: ?Function,
-
-  title: string,
+  data: Object,
 };
 
 type State = {
@@ -50,8 +49,11 @@ class SpotCard extends Component {
 
     this.state = {
       liked: false,
-      likesCount: this.props.likesCount,
     };
+  }
+
+  componentWillMount(): void {
+    this.setState({ likesCount: this.props.data.likesCount });
   }
 
   componentDidMount(): void {
@@ -64,14 +66,14 @@ class SpotCard extends Component {
     
     Store.get(this.USER_KEY)
       .then(user => {
-        let data = { user: user._id };
+        let me = this.props.data;
 
-        return fetch(`http://${config.address}:1998/api/spots/${this.props._id}/likes`, {
+        return fetch(`http://${config.address}:1998/api/spots/${me._id}/likes`, {
           method: this.state.liked ? 'DELETE' : 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ user: user._id }),
         });
       })
       .then(() => {
@@ -95,13 +97,13 @@ class SpotCard extends Component {
   }
 
   render(): ReactElement {
-    let { push, pop, style, ...data } = this.props;
+    let { push, pop, style, data } = this.props;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         style={[styles.wrapper, style]}
-        onPress={() => push({ component: Spot, ...data })}
+        onPress={() => push({ component: Spot, data })}
       >
         <View style={{ padding: 14, flexDirection: 'row' }}>
           <Text>{data.title}</Text>
@@ -119,7 +121,7 @@ class SpotCard extends Component {
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => push({ component: Profile, user: data.spotter })}
+                onPress={() => push({ component: Profile, data: data.spotter })}
               >
 
                 <Avatar size={40} />
@@ -142,7 +144,7 @@ class SpotCard extends Component {
                 <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => push({ component: Likes, ...data })}>
+              <TouchableOpacity onPress={() => push({ component: Likes, data })}>
                 <Text style={{ marginLeft: 8, marginTop: 4, color: '#AAA' }}>{formatNumber(this.state.likesCount)}</Text>
               </TouchableOpacity>
             </View>

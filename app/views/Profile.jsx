@@ -39,7 +39,7 @@ import config from '../config';
 type Props = {
   push: Function,
   pop: Function,
-  user: Object,
+  data: Object,
 };
 
 class Profile extends Component {
@@ -56,11 +56,11 @@ class Profile extends Component {
   }
 
   componentWillMount(): void {
-    this.setState({ user: this.props.user });
+    this.setState({ user: this.props.data });
   }
 
   componentDidMount() {
-    let { user } = this.props;
+    let user = this.props.data;
 
     fetch(`http://${config.address}:1998/api/users/${user._id}/spots`, {
       method: 'GET',
@@ -86,7 +86,7 @@ class Profile extends Component {
           tabLabel="Spots"
           items={this.state.spots}
           scrollEnabled={false}
-          row={data => <SpotCard {...data} push={push} />}
+          row={data => <SpotCard data={data} push={push} />}
           style={styles.listView}
           contentInset={{ bottom: 49 }}
           automaticallyAdjustContentInsets={false}
