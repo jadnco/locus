@@ -22,6 +22,7 @@ import {
   TopBar,
   ResponsiveImage,
   StatBar,
+  LocationMap,
 } from '../components';
 
 import { Profile } from '.';
@@ -73,6 +74,24 @@ class Spot extends Component {
 
   render(): ReactElement {
     let { push, pop, data } = this.props;
+    let visual;
+
+    if (data.type === 'location') {
+      visual = (
+        <LocationMap
+          data={data.location}
+          zoom={true}
+          style={{ height: 300 }}
+        />
+      );
+    } else {
+      visual = (
+        <ResponsiveImage
+          source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
+          style={styles.image}
+        />
+      );
+    }
 
     return (
       <View style={styles.container}>
@@ -91,10 +110,7 @@ class Spot extends Component {
         >
 
           <View>
-            <ResponsiveImage
-              source={{ uri: `http://${config.address}:1998/uploads/${data.photo.source}` }}
-              style={styles.image}
-            />
+            {visual}
           </View>
 
           <View style={{ padding: 10 }}>
