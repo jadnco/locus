@@ -39,16 +39,7 @@ import config from '../config';
 type Props = {
   push: Function,
   pop: Function,
-
-  // From response
-  name: string,
-  handle: string,
-  description: string,
-  location: string,
-  likesCount: number,
-  spotsCount: number,
-  followersCount: number,
-  followingCount: number,
+  user: Object,
 };
 
 class Profile extends Component {
@@ -60,11 +51,18 @@ class Profile extends Component {
     this.state = {
       loaded: false,
       spots: [],
+      user: {},
     };
   }
 
+  componentWillMount(): void {
+    this.setState({ user: this.props.user });
+  }
+
   componentDidMount() {
-    fetch(`http://${config.address}:1998/api/users/${this.props._id}/spots`, {
+    let { user } = this.props;
+
+    fetch(`http://${config.address}:1998/api/users/${user._id}/spots`, {
       method: 'GET',
     })
     .then(res => res.json())
@@ -77,7 +75,9 @@ class Profile extends Component {
   }
 
   render(): ReactElement {
-    let { push, pop, ...data } = this.props;
+    let { push, pop, ...other } = this.props;
+    let { user } = this.state;
+
     let spots = <Text>Loading...</Text>;
 
     if (this.state.loaded) {
@@ -97,8 +97,8 @@ class Profile extends Component {
     return (
       <View style={styles.container}>
         <TopBar
-          title={data.name}
-          rightButton={<FollowButton user={data} />}
+          title={user.name}
+          rightButton={<FollowButton user={user} />}
           style={{ backgroundColor: 'transparent' }}
           leftButton={pop && <BackButton onPress={pop} />}
         />
@@ -124,41 +124,41 @@ class Profile extends Component {
                 <Avatar size={80} style={styles.avatar} />
 
                 <View>
-                  <Text style={styles.name}>{data.name}</Text>
-                  <Text style={styles.handle}>@{data.handle}</Text>
+                  <Text style={styles.name}>{user.name}</Text>
+                  <Text style={styles.handle}>@{user.handle}</Text>
 
                   <View style={styles.countItems}>
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>{data.spotsCount}</Text>
+                      <Text style={styles.infoNumber}>{user.spotsCount}</Text>
                       <Text style={styles.infoTitle}>Spots</Text>
                     </View>
 
                     <View style={styles.info}>
-                      <Text style={styles.infoNumber}>{data.followingCount}</Text>
+                      <Text style={styles.infoNumber}>{user.followingCount}</Text>
                       <Text style={styles.infoTitle}>Following</Text>
                     </View>
 
                     <TouchableOpacity
-                      onPress={() => push({ component: Followers, ...data })}
+                      onPress={() => push({ component: Followers, ...user })}
                       style={styles.info}
                     >
-                      <Text style={styles.infoNumber}>{data.followersCount}</Text>
+                      <Text style={styles.infoNumber}>{user.followersCount}</Text>
                       <Text style={styles.infoTitle}>Followers</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
               </View>
 
-              <Text style={styles.bio}>{data.description}</Text>
-              <Text style={styles.location}>{data.location}</Text>
+              <Text style={styles.bio}>{user.description}</Text>
+              <Text style={styles.location}>{user.location}</Text>
             </View>
 
             <ScrollableTabView renderTabBar={() => <ProfileTabBar />}>
-              <View tabLabel={`Spots (${data.spotsCount})`}>
+              <View tabLabel={`Spots (${user.spotsCount})`}>
                 {spots}
               </View>
 
-              <View height={100} tabLabel={`Likes (${data.likesCount})`}>
+              <View height={100} tabLabel={`Likes (${user.likesCount})`}>
                 <Text>Likes</Text>
               </View>
             </ScrollableTabView>

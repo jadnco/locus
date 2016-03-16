@@ -87,11 +87,6 @@ class locus extends Component {
     alert('Now logged in as ' + this.state.me.name);
   }
 
-  getUser(): void {
-    Store.get(this.USER_KEY)
-      .then(user => alert(user.handle));
-  }
-
   closeModal(): void {
     this.setState({ displayCamera: false });
 
@@ -111,8 +106,6 @@ class locus extends Component {
           renderScene={this.renderScene.bind(this)}
         />
       </Modal>
-
-      <Text onPress={this.getUser.bind(this)} style={{ textAlign: 'center', marginTop: 24 }}>Logged in as {this.state.me.name}</Text>
 
       <TabBarIOS tintColor="#CC9B47">
         <Icon.TabBarItem
@@ -136,7 +129,7 @@ class locus extends Component {
           onPress={() => this.tabChange('toggleUser')}
         >
 
-          <UserToggle toggle={this.changeUser.bind(this)} />
+          <UserToggle current={this.state.me} toggle={this.changeUser.bind(this)} />
 
         </Icon.TabBarItem>
 
@@ -185,7 +178,7 @@ class locus extends Component {
         >
 
           <Navigator
-            initialRoute={{ component: Profile, ...this.state.me }}
+            initialRoute={{ component: Profile, user: this.state.me }}
             renderScene={this.renderScene.bind(this)}
           />
 

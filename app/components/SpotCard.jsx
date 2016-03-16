@@ -119,7 +119,7 @@ class SpotCard extends Component {
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => push({ component: Profile, ...data.spotter })}
+                onPress={() => push({ component: Profile, user: data.spotter })}
               >
 
                 <Avatar size={40} />

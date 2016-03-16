@@ -50,7 +50,7 @@ class UserToggle extends Component {
   }
 
   render(): ReactElement {
-    let { toggle, pop, push } = this.props;
+    let { toggle, current, pop, push } = this.props;
     let content = <Text>Loading...</Text>;
 
     if (!this.state.loading) {
@@ -63,7 +63,10 @@ class UserToggle extends Component {
           row={data => {
             return (
               <TouchableHighlight
-                style={{ padding: 12, borderBottomWidth: 1, borderColor: '#CCC' }}
+                style={[
+                  { padding: 12, borderBottomWidth: 1, borderColor: '#CCC' },
+                  current._id === data._id && { backgroundColor: '#efefef' }
+                ]}
                 onPress={() => toggle(data)}
               >
                 <View>
