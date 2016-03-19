@@ -49,7 +49,7 @@ class LocationSelector extends Component {
         this.setState({ location });
       },
 
-      error => this.toEditor(),
+      error => console.log(error),
 
       { enableHighAccuracy: true });
   }

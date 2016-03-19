@@ -49,12 +49,18 @@ class LocationMap extends Component {
             strokeColor="transparent"
           />
 
-          <RNMap.Circle
-            center={{ latitude: data.latitude, longitude: data.longitude }}
-            radius={5}
-            fillColor="rgba(204, 155, 71, 1)"
-            strokeColor="transparent"
-          />
+          <RNMap.Marker
+            coordinate={{ latitude: data.latitude, longitude: data.longitude }}
+          >
+            <View
+              style={{
+                width: 12,
+                height: 12,
+                backgroundColor: 'rgba(204, 155, 71, 1)',
+                borderRadius: 6,
+              }}
+            />
+          </RNMap.Marker>
         </RNMap>
       </View>
     );
