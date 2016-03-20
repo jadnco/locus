@@ -27,20 +27,20 @@ class LocationMap extends Component {
   }
 
   render(): ReactElement {
-    let { data, zoom, style } = this.props;
+    let { data, style, ...other } = this.props;
 
     return (
       <View style={styles.container}>
         <RNMap
           style={[{ flex: 1 }, style]}
           showsPointsOfInterest={false}
-          zoomEnabled={zoom}
           initialRegion={{
             latitude: data.latitude,
             longitude: data.longitude,
             latitudeDelta: 0.003,
             longitudeDelta: 0.003,
           }}
+          {...other}
         >
           <RNMap.Circle
             center={{ latitude: data.latitude, longitude: data.longitude }}

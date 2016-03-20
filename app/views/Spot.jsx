@@ -80,7 +80,7 @@ class Spot extends Component {
       visual = (
         <LocationMap
           data={data.location}
-          zoom={true}
+          pitchEnabled={true}
           style={{ height: 300 }}
         />
       );

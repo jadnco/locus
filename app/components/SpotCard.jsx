@@ -132,7 +132,10 @@ class SpotCard extends Component {
       visual = (
         <LocationMap
           data={data.location}
-          zoom={false}
+          zoomEnabled={false}
+          rotateEnabled={false}
+          scrollEnabled={false}
+          pitchEnabled={false}
           style={{ height: 200 }}
         />
       );
