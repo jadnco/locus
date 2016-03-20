@@ -3,6 +3,7 @@
 'use strict';
 
 import React, {
+  Animated,
   CameraRoll,
   Component,
   StyleSheet,
@@ -37,6 +38,7 @@ class LocationSelector extends Component {
 
     this.state = {
       location: {},
+      markerScaleValue: new Animated.Value(1),
     };
   }
 
@@ -52,6 +54,35 @@ class LocationSelector extends Component {
       error => console.log(error),
 
       { enableHighAccuracy: true });
+  }
+
+  dragMarkerStart(): void {
+    this.setState({ location: { accuracy: 0 } });
+
+    Animated.spring(this.state.markerScaleValue, {
+      toValue: 8,
+      stiffness: 300,
+      damping: 50,
+      duration: 25,
+    }).start();
+  }
+
+  dragMarkerEnd(coordinate): void {
+
+    // Update the location
+    this.setState({
+      location: {
+        latitude: coordinate.latitude,
+        longitude: coordinate.longitude,
+      },
+    });
+
+    Animated.spring(this.state.markerScaleValue, {
+      toValue: 1,
+      stiffness: 300,
+      damping: 50,
+      duration: 25,
+    }).start();
   }
 
   render(): ReactElement {
@@ -82,7 +113,13 @@ class LocationSelector extends Component {
           }
         />
 
-        <LocationMap data={this.state.location} />
+        <LocationMap
+          data={this.state.location}
+          draggableMarker={true}
+          onDragStart={this.dragMarkerStart.bind(this)}
+          onDragEnd={(e) => this.dragMarkerEnd(e.nativeEvent.coordinate)}
+          scaleValue={this.state.markerScaleValue}
+        />
       </View>
     );
   }

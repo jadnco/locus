@@ -39,6 +39,10 @@ class SpotEditor extends Component {
     };
   }
 
+  componentDidMount(): void {
+    console.log('LOC', this.props.location);
+  }
+
   upload(): void {
     let data = new FormData();
     let photo = this.props.photo;
