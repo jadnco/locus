@@ -86,6 +86,13 @@ class LocationMap extends Component {
                 transform: [{
                   scale: scaleValue || 1,
                 }],
+                shadowColor: "black",
+                shadowOpacity: 0.2,
+                shadowRadius: 1,
+                shadowOffset: {
+                  height: 1,
+                  width: 0,
+                },
               }}
             />
           </RNMap.Marker>
