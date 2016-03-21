@@ -34,6 +34,47 @@ import TabNavigator from 'react-native-tab-navigator';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 
+var NavigationBarRouteMapper = {
+
+  leftButton: function(route, navigator, index, navState) {
+    if (index === 0) {
+      return null;
+    }
+
+    var previousRoute = navState.routeStack[index - 1];
+    return (
+      <TouchableOpacity
+        onPress={() => navigator.pop()}
+        style={styles.navBarLeftButton}>
+        <Text style={[styles.navBarText, styles.navBarButtonText]}>
+          {previousRoute.title}
+        </Text>
+      </TouchableOpacity>
+    );
+  },
+
+  rightButton: function(route, navigator, index, navState) {
+    return (
+      <TouchableOpacity
+        onPress={() => navigator.push(newRandomRoute())}
+        style={styles.navBarRightButton}>
+        <Text style={[styles.navBarText, styles.navBarButtonText]}>
+          Next
+        </Text>
+      </TouchableOpacity>
+    );
+  },
+
+  title: function(route, navigator, index, navState) {
+    return (
+      <Text style={[styles.navBarText, styles.navBarTitleText]}>
+        {route.title} [{index}]
+      </Text>
+    );
+  },
+
+};
+
 class NewSpotSource extends Component {
   constructor(props: Object): void {
     super(props);
@@ -47,6 +88,20 @@ class NewSpotSource extends Component {
     this.setState({
       selectedTab: tab,
     });
+  }
+
+  renderScene(route: Object, navigator: Navigator): ReactElement {
+    let { component, ...props } = route;
+    const isInitialRoute = Object.is(navigator.props.initialRoute.component, component);
+
+    return (
+      <route.component
+        pop={!isInitialRoute && navigator.pop}
+        push={navigator.push}
+        navigator={navigator}
+        {...props}
+      />
+    );
   }
 
   render(): ReactElement {
@@ -82,11 +137,34 @@ class NewSpotSource extends Component {
           onPress={() => this.tabChange('camera')}
         >
 
-          <Camera
+          {/* <Camera
             closeModal={closeModal}
             visible={this.state.selectedTab === 'camera'}
             push={push}
             pop={pop}
+          /> */}
+
+          <Navigator
+            initialRoute={{
+              component: Camera, closeModal, push, pop,
+              visible: this.state.selectedTab === 'camera',
+            }}
+            renderScene={this.renderScene.bind(this)}
+            navigationBar={
+              <Navigator.NavigationBar
+              style={{backgroundColor: 'white'}}
+                routeMapper={{
+                LeftButton(route, navigator) {
+                  return <Text>Back</Text>;
+                },
+                RightButton(route, navigator) {
+                  return <Text>Next</Text>;
+                },
+                Title(route, navigator) {
+                  return <Text>Title</Text>;
+                }
+              }} />
+            }
           />
         </TabNavigator.Item>
 
