@@ -165,7 +165,7 @@ class SpotEditor extends Component {
 
           <TouchableOpacity
             onPress={this.publish.bind(this)}
-            style={{ marginTop: 20, paddingVertical: 10, paddingHorizontal: 30, alignSelf: 'center', backgroundColor: '#CC9B47' }}
+            style={{ marginTop: 20, paddingVertical: 10, paddingHorizontal: 30, alignSelf: 'center', backgroundColor: '#E26C23' }}
           >
             <Text style={{ color: 'white' }}>Publish</Text>
           </TouchableOpacity>

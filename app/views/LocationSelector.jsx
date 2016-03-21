@@ -60,7 +60,7 @@ class LocationSelector extends Component {
     this.setState({ location: { accuracy: 0 } });
 
     Animated.spring(this.state.markerScaleValue, {
-      toValue: 8,
+      toValue: 5,
       stiffness: 300,
       damping: 50,
       duration: 25,

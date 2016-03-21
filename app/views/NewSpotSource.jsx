@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: 11,
   },
   selectedTabTitle: {
-    color: '#CC9B47',
+    color: '#E26C23',
   },
   scene: {
     backgroundColor: 'white',

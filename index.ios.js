@@ -108,7 +108,7 @@ class locus extends Component {
         />
       </Modal>
 
-      <TabBarIOS tintColor="#CC9B47">
+      <TabBarIOS tintColor="#E26C23">
         <Icon.TabBarItem
           title="Home"
           iconName="location"

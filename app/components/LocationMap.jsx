@@ -67,7 +67,7 @@ class LocationMap extends Component {
           <RNMap.Circle
             center={{ latitude: data.latitude, longitude: data.longitude }}
             radius={this.state.accuracy}
-            fillColor="rgba(204, 155, 71, 0.2)"
+            fillColor="rgba(226, 108, 35, 0.2)"
             strokeColor="transparent"
           />
 
@@ -81,7 +81,7 @@ class LocationMap extends Component {
               style={{
                 width: 16,
                 height: 16,
-                backgroundColor: 'rgba(204, 155, 71, 1)',
+                backgroundColor: '#E26C23',
                 borderRadius: 16 / 2,
                 transform: [{
                   scale: scaleValue || 1,
