@@ -22,7 +22,7 @@ import { BackButton, NextButton, TopBar } from '../components';
 
 import Store from 'react-native-simple-store';
 
-import { Search } from '.';
+import { Search, LocationSelector } from '.';
 
 import config from '../config';
 
@@ -129,7 +129,7 @@ class SpotEditor extends Component {
   }
 
   render(): ReactElement {
-    let { data, type, push, pop, ...other } = this.props;
+    let { type, location, push, pop, ...other } = this.props;
 
     return (
       <View style={styles.container}>
@@ -162,6 +162,11 @@ class SpotEditor extends Component {
           />
 
           <Text>Type: {type}</Text>
+          <TouchableOpacity
+            onPress={() => push({ component: LocationSelector, location })}
+          >
+            <Text>Location: {location.latitude}, {location.longitude}</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={this.publish.bind(this)}

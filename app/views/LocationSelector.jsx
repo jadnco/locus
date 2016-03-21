@@ -43,9 +43,10 @@ class LocationSelector extends Component {
   }
 
   componentWillMount(): void {
-    let location;
+    let location = this.props.location || null;
 
-    navigator.geolocation.getCurrentPosition(loc => {
+    if (!location) {
+      navigator.geolocation.getCurrentPosition(loc => {
         location = loc.coords;
 
         this.setState({ location });
@@ -54,6 +55,9 @@ class LocationSelector extends Component {
       error => console.log(error),
 
       { enableHighAccuracy: true });
+    } else {
+      this.setState({ location });
+    }
   }
 
   dragMarkerStart(): void {
