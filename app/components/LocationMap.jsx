@@ -79,10 +79,10 @@ class LocationMap extends Component {
           >
             <Animated.View
               style={{
-                width: 12,
-                height: 12,
+                width: 16,
+                height: 16,
                 backgroundColor: 'rgba(204, 155, 71, 1)',
-                borderRadius: 12 / 2,
+                borderRadius: 16 / 2,
                 transform: [{
                   scale: scaleValue || 1,
                 }],

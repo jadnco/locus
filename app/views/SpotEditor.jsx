@@ -116,7 +116,7 @@ class SpotEditor extends Component {
 
         console.log('Got user', me.name);
 
-        fetch(`http://${config.address}:1998/api/users/${me._id}/spots`, {
+        fetch(`http://${config.address}:1998/api/spots`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
