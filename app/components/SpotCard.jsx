@@ -97,7 +97,7 @@ class SpotCard extends Component {
   showShareActionSheet(): void {
     ActionSheetIOS.showShareActionSheetWithOptions({
       url: 'http://google.ca',
-      message: this.props.title,
+      message: this.props.data.title,
       tintColor: 'black',
     }, (error) => {
       console.log(error);
@@ -197,7 +197,7 @@ class SpotCard extends Component {
           <View style={{ padding: 14, borderTopWidth: 1, borderColor: '#EEE', flexDirection: 'row' }}>
             <View style={{ flexDirection: 'row' }}>
               <TouchableOpacity onPress={this.toggleLike.bind(this)}>
-                <Icon name="star" size={30} color={this.state.liked ? '#CC9B47' : '#AAA'} />
+                <Icon name="star" size={30} color={this.state.liked ? '#E26C23' : '#AAA'} />
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => push({ component: Likes, data })}>
