@@ -81,14 +81,12 @@ class ResponsiveImage extends Component {
     let { style, children, ...other } = this.props;
     let { width, height, source } = this.state;
 
-    console.log(source);
-
     return (
       <View style={{ overflow: 'hidden' }}>
         <Image
 
           // Small hack to make the image isn't cached
-          key={Math.random()}
+          key={JSON.stringify(source)}
           source={source}
           style={[{ width, height }, style]}
           {...other}

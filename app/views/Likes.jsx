@@ -12,10 +12,12 @@ import React, {
   ScrollView,
   NavigatorIOS,
   Image,
-  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
-import { BackButton, TopBar, List }  from '../components';
+import { Avatar, BackButton, TopBar, List }  from '../components';
+
+import { Profile } from '.';
 
 import config from '../config';
 
@@ -44,8 +46,6 @@ class Likes extends Component {
     .then(res => {
       let users = res.likes.users;
 
-      console.log('USERs', users);
-
       this.setState({ users, loading: false });
     })
     .catch(err => console.log(err) && alert(err));
@@ -64,15 +64,19 @@ class Likes extends Component {
           automaticallyAdjustContentInsets={false}
           row={data => {
             return (
-              <TouchableHighlight
-                style={{ padding: 12, borderBottomWidth: 1, borderColor: '#CCC' }}
-                onPress={() => {}}
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => push({ component: Profile, data })}
+                style={{ flexDirection: 'row', padding: 12, borderBottomWidth: 1, borderColor: '#CCC' }}
               >
+
+                <Avatar source={data.avatar} size={40} />
+
                 <View>
-                  <Text>{data.name}</Text>
-                  <Text style={{ color: '#aaa' }}>{data.handle}</Text>
+                  <Text style={{ marginLeft: 8, marginTop: 2 }}>{data.name}</Text>
+                  <Text style={{ color: 'grey', marginLeft: 8 }}>@{data.handle}</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             );
           }}
         />

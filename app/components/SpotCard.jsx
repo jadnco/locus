@@ -128,6 +128,17 @@ class SpotCard extends Component {
     let { push, pop, style, data } = this.props;
     let visual;
 
+    let location;
+
+    if (data.location.city && data.location.country) {
+      location = (
+        <Text style={{textAlign: 'left'}}>
+          {/* <Icon name="location" size={17} color="grey" /> */}
+          <Text style={{ color: 'grey' }}>{data.location.city}, {data.location.country}</Text>
+        </Text>
+      );
+    }
+
     if (data.type === 'location') {
       visual = (
         <LocationMap
@@ -160,10 +171,7 @@ class SpotCard extends Component {
           <View>
             <Text>{data.title}</Text>
 
-            <Text style={{textAlign: 'left'}}>
-              <Icon name="location" size={17} color="grey" style={{  }} />
-              <Text style={{ color: 'grey' }}>{data.location.city || 'null'}, {data.location.country || 'null'}</Text>
-            </Text>
+            {location}
           </View>
 
           <Text style={{ color: 'grey', textAlign: 'right', flex: 1 }}>{formatTime(data.created)}</Text>

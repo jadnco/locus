@@ -158,9 +158,9 @@ class Profile extends Component {
                 {spots}
               </View>
 
-              <View height={100} tabLabel={`Likes (${user.likesCount})`}>
+              {/* <View height={100} tabLabel={`Likes (${user.likesCount})`}>
                 <Text>Likes</Text>
-              </View>
+              </View> */}
             </ScrollableTabView>
         </ScrollView>
       </View>

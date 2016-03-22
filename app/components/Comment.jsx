@@ -36,7 +36,7 @@ class Comment extends Component {
 
         <Avatar
           size={40}
-          source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/c/c4/Futurama_106_-_A_Fishful_of_Dollars.jpg' }}
+          source={'https://upload.wikimedia.org/wikipedia/en/c/c4/Futurama_106_-_A_Fishful_of_Dollars.jpg'}
         />
 
         <View style={{ marginLeft: 8, flex: 1 }}>

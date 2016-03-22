@@ -76,6 +76,8 @@ class Spot extends Component {
     let { push, pop, data } = this.props;
     let visual;
 
+    console.log(data);
+
     if (data.type === 'location') {
       visual = (
         <LocationMap
@@ -113,17 +115,23 @@ class Spot extends Component {
             {visual}
           </View>
 
-          <View style={{ padding: 10 }}>
+          <View style={{ padding: 10, flexDirection: 'row' }}>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => push({ component: Profile, data: data.spotter })}
             >
 
               <Avatar source={data.spotter.avatar} size={40} />
-              <Text>{data.spotter.name}</Text>
-              <Text>@{data.spotter.handle}</Text>
-
             </TouchableOpacity>
+
+            <View>
+              <Text style={{ marginLeft: 8, marginTop: 2 }}>{data.spotter.name}</Text>
+              <Text style={{ color: 'grey', marginLeft: 8 }}>@{data.spotter.handle}</Text>
+            </View>
+          </View>
+
+          <View style={{ padding: 14 }}>
+            <Text>{data.caption}</Text>
           </View>
 
           <View>
