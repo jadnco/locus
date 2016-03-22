@@ -40,21 +40,21 @@ class ResponsiveImage extends Component {
         this.setState({
           width: this.props.width || width,
           height: this.props.height || height,
-          source,
+          source: source,
         });
       })
       .catch(error => {});
   }
 
   componentWillReceiveProps(props): void {
-    let { source } = props;
+    let { source, width, height } = props;
 
     ResponsiveImage.getScaledSize(source.uri)
       .then(({ width, height }) => {
         this.setState({
-          width: this.props.width || width,
-          height: this.props.height || height,
-          source,
+          width: props.width || width,
+          height: props.height || height,
+          source: source,
         });
       })
       .catch(error => {});
@@ -81,9 +81,14 @@ class ResponsiveImage extends Component {
     let { style, children, ...other } = this.props;
     let { width, height, source } = this.state;
 
+    console.log(source);
+
     return (
       <View style={{ overflow: 'hidden' }}>
         <Image
+
+          // Small hack to make the image isn't cached
+          key={Math.random()}
           source={source}
           style={[{ width, height }, style]}
           {...other}

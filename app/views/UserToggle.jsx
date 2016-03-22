@@ -12,10 +12,10 @@ import React, {
   ScrollView,
   NavigatorIOS,
   Image,
-  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
-import { BackButton, TopBar, List }  from '../components';
+import { Avatar, BackButton, TopBar, List }  from '../components';
 
 import config from '../config';
 
@@ -62,18 +62,22 @@ class UserToggle extends Component {
           automaticallyAdjustContentInsets={false}
           row={data => {
             return (
-              <TouchableHighlight
+              <TouchableOpacity
                 style={[
                   { padding: 12, borderBottomWidth: 1, borderColor: '#CCC' },
                   current._id === data._id && { backgroundColor: '#efefef' }
                 ]}
                 onPress={() => toggle(data)}
               >
-                <View>
-                  <Text>{data.name}</Text>
-                  <Text style={{ color: '#aaa' }}>{data.handle}</Text>
+                <View style={{ flexDirection: 'row' }}>
+                  <Avatar size={40} source={data.avatar} />
+
+                  <View style={{ marginLeft: 8 }}>
+                    <Text>{data.name}</Text>
+                    <Text style={{ color: '#aaa' }}>{data.handle}</Text>
+                  </View>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             );
           }}
         />

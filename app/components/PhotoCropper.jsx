@@ -38,11 +38,14 @@ class PhotoCropper extends Component {
   }
 
   componentWillMount(): void {
+    console.log('will mount');
     this.setState({ source: this.props.source });
   }
 
   componentWillReceiveProps(props): void {
-    this.setState({ source: props.source });
+    if (props.source !== this.state.source) {
+      this.setState({ source: props.source });
+    }
   }
 
   render(): ReactElement {

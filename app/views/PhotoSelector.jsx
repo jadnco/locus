@@ -63,8 +63,6 @@ class PhotoSelector extends Component {
 
   getLastPhoto(): void {
     CameraRoll.getPhotos({ first: 1 }, _photo => {
-      console.log(photo);
-
       let photo = {
         uri: _photo.edges[0].node.image.uri,
       };
@@ -115,6 +113,7 @@ class PhotoSelector extends Component {
                 component: SpotEditor,
                 type: 'photo',
                 photo: this.state.photo,
+                location: this.state.location,
                 closeModal,
               })}
             />

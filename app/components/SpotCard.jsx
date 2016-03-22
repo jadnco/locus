@@ -180,7 +180,7 @@ class SpotCard extends Component {
                 onPress={() => push({ component: Profile, data: data.spotter })}
               >
 
-                <Avatar size={40} />
+                <Avatar source={data.spotter.avatar} size={40} />
               </TouchableOpacity>
 
               <View>

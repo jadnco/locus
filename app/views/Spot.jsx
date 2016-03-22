@@ -119,7 +119,7 @@ class Spot extends Component {
               onPress={() => push({ component: Profile, data: data.spotter })}
             >
 
-              <Avatar size={40} />
+              <Avatar source={data.spotter.avatar} size={40} />
               <Text>{data.spotter.name}</Text>
               <Text>@{data.spotter.handle}</Text>
 

@@ -20,12 +20,12 @@ class Avatar extends Component {
   props: Props;
 
   render(): ReactElement {
-    let { style, size, ...other } = this.props;
+    let { style, source, size, ...other } = this.props;
 
     return (
       <Image
         source={{
-          uri: 'http://www.canalnoticias.com/wp-content/uploads/2015/01/Oscar-Isaac.jpg',
+          uri: source,
         }}
         style={[styles.avatar, { borderRadius: size / 2 }, style]}
         width={size}

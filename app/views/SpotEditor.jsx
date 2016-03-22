@@ -41,6 +41,8 @@ class SpotEditor extends Component {
 
   componentDidMount(): void {
     console.log('LOC', this.props.location);
+
+    console.log(this.props.location);
   }
 
   upload(): void {
@@ -131,6 +133,9 @@ class SpotEditor extends Component {
   render(): ReactElement {
     let { type, location, push, pop, ...other } = this.props;
 
+    location.latitude = location.latitude || '';
+    location.longitude = location.longitude || '';
+
     return (
       <View style={styles.container}>
 
@@ -165,7 +170,7 @@ class SpotEditor extends Component {
           <TouchableOpacity
             onPress={() => push({ component: LocationSelector, location })}
           >
-            <Text>Location: {location.latitude}, {location.longitude}</Text>
+            <Text>Location: {location.latitude ? `${location.latitude}, ${location.longitude}` : 'No location data found'}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

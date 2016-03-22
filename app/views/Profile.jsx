@@ -121,7 +121,7 @@ class Profile extends Component {
             <View style={styles.top}>
 
               <View style={styles.user}>
-                <Avatar size={80} style={styles.avatar} />
+                <Avatar source={user.avatar} size={80} style={styles.avatar} />
 
                 <View>
                   <Text style={styles.name}>{user.name}</Text>
