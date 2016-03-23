@@ -12,6 +12,7 @@ import React, {
   ScrollView,
   Image,
   TouchableOpacity,
+  InteractionManager,
 } from 'react-native';
 
 import {
@@ -75,8 +76,6 @@ class Spot extends Component {
   render(): ReactElement {
     let { push, pop, data } = this.props;
     let visual;
-
-    console.log(data);
 
     if (data.type === 'location') {
       visual = (

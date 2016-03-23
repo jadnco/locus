@@ -46,15 +46,23 @@ class LocationSelector extends Component {
     let location = this.props.location || null;
 
     if (!location) {
-      navigator.geolocation.getCurrentPosition(loc => {
-        location = loc.coords;
+      this.setState({
+        location: {
+          latitude: 49.895838,
+          longitude: -97.138701,
+          altitude: 0, 
+          accuracy: 15,
+        }
+      });
+      // navigator.geolocation.getCurrentPosition(loc => {
+      //   location = loc.coords;
 
-        this.setState({ location });
-      },
+      //   this.setState({ location });
+      // },
 
-      error => console.log(error),
+      // error => console.log(error),
 
-      { enableHighAccuracy: true });
+      // { enableHighAccuracy: true });
     } else {
       this.setState({ location });
     }

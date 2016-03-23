@@ -61,8 +61,12 @@ class FollowButton extends Component {
           body: JSON.stringify({ user: me._id }),
         });
       })
-      .then(res => this.setState({ active: !this.state.active}))
-      .catch(error => console.error(error));;
+      .then(res => {
+        this.setState({ active: !this.state.active});
+
+        this.props.onToggle(this.state.active);
+      })
+      .catch(error => console.error(error));
   }
 
   render(): ReactElement {

@@ -77,6 +77,17 @@ class Profile extends Component {
     });
   }
 
+  toggleFollow(active): void {
+    let { followersCount, ...user } = this.state.user;
+
+    this.setState({
+      user: {
+        followersCount: active ? followersCount + 1 : followersCount - 1,
+        ...user,
+      },
+    });
+  }
+
   render(): ReactElement {
     let { push, pop, ...other } = this.props;
     let { user } = this.state;
@@ -101,7 +112,7 @@ class Profile extends Component {
       <View style={styles.container}>
         <TopBar
           title={user.name}
-          rightButton={<FollowButton user={user} />}
+          rightButton={<FollowButton user={user} onToggle={active => this.toggleFollow(active)} />}
           style={{ backgroundColor: 'transparent' }}
           leftButton={pop && <BackButton onPress={pop} />}
         />
