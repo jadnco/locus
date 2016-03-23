@@ -36,8 +36,10 @@ class LocationMap extends Component {
   }
 
   componentWillReceiveProps(props): void {
-    console.log('Updated accuracy', props.data.accuracy);
-    this.setState({ accuracy: props.data.accuracy });
+    
+    this.setState({ accuracy: props.data.accuracy || 0 });
+
+    console.log('Updated accuracy', this.state.accuracy);
   }
 
   render(): ReactElement {

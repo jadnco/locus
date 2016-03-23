@@ -12,6 +12,7 @@ import React, {
   TextInput,
   ScrollView,
   NavigatorIOS,
+  InteractionManager,
   Image,
   TouchableOpacity,
   SegmentedControlIOS,
@@ -62,16 +63,18 @@ class Profile extends Component {
   componentDidMount() {
     let user = this.props.data;
 
-    fetch(`http://${config.address}:1998/api/users/${user._id}/spots`, {
-      method: 'GET',
-    })
-    .then(res => res.json())
-    .then(res => {
-      let spots = res.spots;
+    InteractionManager.runAfterInteractions(() => {
+      fetch(`http://${config.address}:1998/api/users/${user._id}/spots`, {
+        method: 'GET',
+      })
+      .then(res => res.json())
+      .then(res => {
+        let spots = res.spots;
 
-      this.setState({ spots, loaded: true });
-    })
-    .catch(err => alert(err));
+        this.setState({ spots, loaded: true });
+      })
+      .catch(err => alert(err));
+    });
   }
 
   render(): ReactElement {
