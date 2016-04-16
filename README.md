@@ -1,59 +1,31 @@
 # Locus
-January 7, 2016
 
-An iOS and/or web that is essentially Instagram dedicated for car spotters.
+Car spotting iOS app.
 
-Audience is of all ages, anyone can be a car spotter.
+## Getting Started
+
+Locus needs a Mongo database to connect to, so make sure that's installed and an instance is running. The backend REST API also needs to be running.
+
+Install all dependencies with npm:
+```sh
+npm install
+```
+
+Start running the React Native packager:
+```sh
+npm start
+```
+
+## Running the app on iOS
+
+1. Open `ios/locus.xcodeproj` with Xcode.
+2. Edit the `jsCodeLocation` variable in the `AppDelegate.m` file to your machine's IP address.
+3. Select a device or simulator to run the app on.
+4. Build and Run.
 
 ## Development
 
-### Views
+Run the Enzyme component tests:
 
-#### Home Feed
-
-#### Photo/Post/Spot
-- Title displaying car info, make etc. eg *2016 Jaguar F-Type R AWD*
-- Photo itself
-- Poster's comment with a *view more/ellipsis* that shows more detailed information of the car; horsepower, engine, gearbox etc.
-- Location of shot, which would go to a map view when tapped on.
-
-#### User Profile
-- Shows name, location, bio, avatar etc.
-- Most photographed car company
-- What car they own
-
-#### Feed
-- Shows recent posts by all the users that are followed.
-
-#### Camera
-- Interface that takes the photo/videos
-- Includes blur feature for license plates.
-
-#### Notifications
-
-#### Search
-
-### Ideas
-
-#### Features
-- Places the taken image on a map so people could see the exact location of where the car was.
-- Tap the license plate, the app would automatically blur/censor the license plate.
-- Car selector. After taking an image, the user could manually select the car make, year etc. This would allow categories to be made. e.g. If someone wanted to see pictures of a 2012 Tesla Model S P85D, they would input that and results would be given back. This would be the ‘title’ of the image, use could also add their own comments.
-
-A Spot can have multiple photos (different angles). The user can choose which one is the 'featured' image, then it can be viewed as a slideshow.
-
-#### Technology
-- React Native
-- Potential APIs
-  - [Edmunds Vehicle API](http://developer.edmunds.com/api-documentation/vehicle/index.html)
-  - [CarQuery API](http://www.carqueryapi.com)
-
-#### User Onboarding
-- Ask for favourite car types/brands, which would be used to help recommend following certain accounts.
-
-#### Business Models
-- Free app/service – revenue would come in through sponsored posts/ads. I think this is particularly a good idea because of the niche market. Car spotters would likely have their own car projects, so services like car detailing, parts, photography equipment etc. could potentially get a good amount of traction.
-  
-  *This car is available at your local dealer* could be shown on posts, from sponsoring dealerships. Book a test drive, etc.
-
-- One time paid app – The iOS app would have a one time purchase fee, something like $2.49. This might be a good idea, however I don’t know if people would be willing to pay a fee when they could use something like Instagram for free. One plus is that a fee may increase the quality of posts and it might feel more like an exclusive ‘club’.
+```sh
+```
